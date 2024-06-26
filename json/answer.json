@@ -1,6 +1,0 @@
-{
-  "LEAN Form": "\n-- Define a type for Person\ninductive Person where\n| alice : Person\n| brother : Person\n\n-- Define a function that returns the number of sisters a person has\ndef has_sisters : Person \u2192 Nat\n| Person.alice => 1\n| Person.brother => 2\n\n-- Define a function that returns the number of brothers a person has\ndef has_brothers : Person \u2192 Nat\n| Person.alice => 4\n| Person.brother => 4\n\n-- Axioms stating the number of sisters and brothers for Alice\naxiom A1 : has_sisters Person.alice = 1\naxiom A2 : has_brothers Person.alice = 4\n\n-- Verify the number of sisters Alice's brother has\n-- example : has_sisters Person.brother = 2 := A1\n#eval has_sisters Person.brother",
-  "LEAN File": "path/to/lean/file/verification.lean",
-  "GPT Answer": "Alice's brother has 2 sisters.",
-  "LEAN Answer": "2"
-}
