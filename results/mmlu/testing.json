@@ -1,0 +1,67 @@
+[
+  {
+    "question": "Let k be the number of real solutions of the equation e^x + x - 2 = 0 in the interval [0, 1], and let n be the number of real solutions that are not in [0, 1]. Which of the following is true?",
+    "options": [
+      "k = 0 and n = 1",
+      "k = 1 and n = 0",
+      "k = n = 1",
+      "k > 1"
+    ],
+    "gpt_result": "### \nDefine predicates:\nE(x): e^x + x - 2 = 0\nK(x): x is a real solution of E(x) in the interval [0, 1]\nN(x): x is a real solution of E(x) not in the interval [0, 1]\n\nParse problem into logic rules:\n\u2200x: E(x) \u2194 e^x + x - 2 = 0\n\u2200x: K(x) \u2194 E(x) \u2227 0 \u2264 x \u2264 1\n\u2200x: N(x) \u2194 E(x) \u2227 (x < 0 \u2228 x > 1)\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nDetermine the values of k and n such that:\nk = |{x | K(x)}| and n = |{x | N(x)}|\n\nFinal Answer: B",
+    "final_answer": 1,
+    "correct_answer": 1,
+    "is_correct": true
+  },
+  {
+    "question": "Up to isomorphism, how many additive abelian groups G of order 16 have the property that x + x + x + x = 0 for each x in G ?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- AAG(G, n): G is an additive abelian group of order n.\n- P(G): For each x in G, x + x + x + x = 0.\n- Iso(G1, G2): G1 is isomorphic to G2.\n\nParse problem into logic rules:\n1. \u2200G: AAG(G, 16) \u2192 |G| = 16\n2. \u2200G: P(G) \u2194 \u2200x \u2208 G, 4x = 0\n3. \u2200G1, G2: Iso(G1, G2) \u2194 G1 and G2 are structurally identical.\n\nWrite facts:\n- The order of the group is 16.\n- Each element x in the group satisfies 4x = 0.\n\nParse the question:\nFind the number of distinct (up to isomorphism) groups G such that AAG(G, 16) \u2227 P(G).\n\nFinal Answer: C",
+    "final_answer": 2,
+    "correct_answer": 3,
+    "is_correct": false
+  },
+  {
+    "question": "Suppose P is the set of polynomials with coefficients in Z_5 and degree less than or equal to 7. If the operator D sends p(x) in P to its derivative p\u2032(x), what are the dimensions of the null space n and range r of D?",
+    "options": [
+      "n = 1 and r = 6",
+      "n = 1 and r = 7",
+      "n = 2 and r = 5",
+      "n = 2 and r = 6"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- P(x): x is a polynomial with coefficients in Z_5 and degree less than or equal to 7.\n- D(p, q): q is the derivative of polynomial p.\n\nParse the problem into logic rules:\n- \u2200p \u2208 P, \u2203q: D(p, q) \u2194 q = p\u2032(x)\n- The null space of D, denoted as n, consists of all polynomials p in P such that D(p, q) and q = 0.\n- The range of D, denoted as r, consists of all polynomials q that can be obtained as the derivative of some polynomial p in P.\n\nWrite facts:\n- The null space n of D consists of constant polynomials, since the derivative of a constant polynomial is zero. Therefore, n = 1 (only the constant polynomial).\n- The range r of D consists of all polynomials with degree less than or equal to 6, since differentiating a polynomial of degree 7 results in a polynomial of degree 6. Therefore, r = 7.\n\nParse the question:\n- Determine the dimensions of the null space n and the range r of the operator D.\n\nFinal Answer: B",
+    "final_answer": 1,
+    "correct_answer": 3,
+    "is_correct": false
+  },
+  {
+    "question": "The shortest distance from the curve xy = 8 to the origin is",
+    "options": [
+      "4",
+      "8",
+      "16",
+      "2sqrt(2)"
+    ],
+    "gpt_result": "### \nDefine predicates:\nC(x, y): The point (x, y) lies on the curve xy = 8\nD(x, y, d): d is the distance from the point (x, y) to the origin\n\nParse problem into logic rules:\n\u2200x,y: C(x, y) \u2194 xy = 8\n\u2200x,y,d: D(x, y, d) \u2194 d = \u221a(x^2 + y^2)\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nFind the minimum d such that: \u2203x, y: C(x, y) \u2227 D(x, y, d)\n\nFinal Answer: A",
+    "final_answer": 0,
+    "correct_answer": 0,
+    "is_correct": true
+  },
+  {
+    "question": "There are 25 suitcases, 5 of which are damaged. Three suitcases are selected at random. What is the probability that exactly 2 are damaged?",
+    "options": [
+      "2/69",
+      "1/30",
+      "2/23",
+      "12/125"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- S(x): x is a suitcase\n- D(x): x is a damaged suitcase\n- C(n, k): number of combinations of n items taken k at a time\n- P(k, n, m): probability of selecting k damaged suitcases out of n total selected suitcases from m total damaged suitcases\n\nParse problem into logic rules:\n- Total suitcases = 25\n- Damaged suitcases = 5\n- Non-damaged suitcases = 25 - 5 = 20\n- Total selected suitcases = 3\n- Probability of selecting exactly 2 damaged suitcases: P(2, 3, 5)\n\nWrite facts:\n- C(5, 2): number of ways to choose 2 damaged suitcases from 5\n- C(20, 1): number of ways to choose 1 non-damaged suitcase from 20\n- C(25, 3): total number of ways to choose 3 suitcases from 25\n\nParse the question:\nFind the probability P(2, 3, 5) = (C(5, 2) * C(20, 1)) / C(25, 3)\n\nFinal Answer: D",
+    "final_answer": 3,
+    "correct_answer": 2,
+    "is_correct": false
+  }
+]
