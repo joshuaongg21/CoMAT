@@ -27,21 +27,24 @@ def ensure_dir(file_path):
 def main():
     parser = argparse.ArgumentParser(description="Process MMLU, MMLU-Pro, AQUA, or GaoKao questions")
     parser.add_argument("--dataset", choices=["mmlu", "mmlu-pro", "aqua", "gaokao"], required=True, help="Choose the dataset: 'mmlu', 'mmlu-pro', 'aqua', or 'gaokao'")
+    parser.add_argument("--method", choices=["cot", "non-cot", "symbolicot"], required=True, help="Choose the method: 'cot', 'non-cot', or 'symbolicot'")
     args = parser.parse_args()
 
-    # Set up the output file path based on the dataset
-    output_dir = f"results/{args.dataset}"
-    output_file_path = f"{output_dir}/testing.json"
+    # Set up the output file path based on the dataset and method
+    output_dir = f"results/{args.dataset}/{args.method}"
+    output_file_path = f"{output_dir}/{args.method}.json"
 
-    # Set up the formulation prompt path based on the dataset
+    # Set up the formulation prompt path based on the dataset and method
     if args.dataset == "mmlu":
-        formulation_prompt_path = 'prompts/MMLU-Mathematics/formulation.txt'
+        prompt_dir = 'prompts/MMLU-Mathematics'
     elif args.dataset == "mmlu-pro":
-        formulation_prompt_path = 'prompts/MMLU-Pro-Mathematics/formulation.txt'
+        prompt_dir = 'prompts/MMLU-Pro-Mathematics'
     elif args.dataset == "aqua":
-        formulation_prompt_path = 'prompts/AQUA-Mathematics/CoT.txt'
+        prompt_dir = 'prompts/AQUA-Mathematics'
     else:  # gaokao
-        formulation_prompt_path = 'prompts/GaoKao-Math/formulation.txt'
+        prompt_dir = 'prompts/GaoKao-Math'
+
+    formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
 
     # Ensure the directory exists
     ensure_dir(output_file_path)

@@ -1,0 +1,638 @@
+[
+  {
+    "question": "1. 设集合 $A=\\{x \\quad x=3 k+1, k \\in Z\\}, B=\\{x \\quad x=3 k+2, k \\in Z\\}, U$ 为整数集， $\\mathbf{U}(A \\cup B)=(\\cdots)$\nA. $\\{x \\mid x=3 k, k \\in \\mathbf{Z}\\}$\nB. $\\{x \\mid x=3 k-1, k \\in Z\\}$\nC. $\\{x \\mid x=3 k-2, k \\in Z\\}$\nD. $\\varnothing$",
+    "options": [
+      "A. $\\{x \\mid x=3 k, k \\in \\mathbf{Z}\\}$",
+      "B. $\\{x \\mid x=3 k-1, k \\in Z\\}$",
+      "C. $\\{x \\mid x=3 k-2, k \\in Z\\}$",
+      "D. $\\varnothing$"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "2. 若复数 $(a+\\mathrm{i})(1-a \\mathrm{i})=2, a \\in \\mathrm{R}$, 则 $a=(\\quad)$\nA. -1\nB. 0\nC. 1\nD. 2",
+    "options": [
+      "A. -1",
+      "B. 0",
+      "C. 1",
+      "D. 2"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "4. 向量 $|\\vec{a}|=|\\vec{b}|=1,|\\vec{c}|=\\sqrt{2}$, 且 $\\vec{a}+\\vec{b}+\\vec{c}=\\overrightarrow{0}$, 则 $\\cos \\langle\\vec{a}-\\vec{c}, \\vec{b}-\\vec{c}\\rangle=()$\nA. $-\\frac{1}{5}$\nB. $-\\frac{2}{5}$\nC. $\\frac{2}{5}$\nD. $\\frac{4}{5}$",
+    "options": [
+      "A. $-\\frac{1}{5}$",
+      "B. $-\\frac{2}{5}$",
+      "C. $\\frac{2}{5}$",
+      "D. $\\frac{4}{5}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "5. 已知正项等比数列 $\\left\\{a_n\\right\\}$ 中, $a_1=1, S_n$ 为 $\\left\\{a_n\\right\\}$ 前 $n$ 项和, $S_5=5 S_3-4$, 则 $S_4=()$\nA. 7\nB. 9\nC. 15\nD. 30",
+    "options": [
+      "A. 7",
+      "B. 9",
+      "C. 15",
+      "D. 30"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "6. 有 50 人报名足球俱乐部, 60 人报名乒乓球俱乐部, 70 人报名足球或乒乓球俱乐部, 若已知某人报足球俱乐部, 则其报乒乓球俱乐部的概率为 $()$\nA. 0.8\nB. 0.4\nC. 0.2\nD. 0.1",
+    "options": [
+      "A. 0.8",
+      "B. 0.4",
+      "C. 0.2",
+      "D. 0.1"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "7. “ $\\sin ^2 \\alpha+\\sin ^2 \\beta=1$ ”是“ $\\sin \\alpha+\\cos \\beta=0$ ”的 ( )\nA. 充分条件但不是必要条件\nB. 必要条件但不是充分条件\nC. 充要条件\nD. 既不是充分条件也不是必要条件",
+    "options": [
+      "A. 充分条件但不是必要条件",
+      "B. 必要条件但不是充分条件",
+      "C. 充要条件",
+      "D. 既不是充分条件也不是必要条件"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "8. 已知双曲线 $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1(a>0, b>0)$ 的离心率为 $\\sqrt{5}$, 其中一条渐近线与圆 $(x-2)^2+(y-3)^2=1$ 交于 $A$, $B$ 两点, 则 $|A B|=()$\nA. $\\frac{1}{5} \\quad \\rightarrow$\nB. $\\frac{\\sqrt{5}}{5} \\rightarrow$\nC. $\\frac{2 \\sqrt{5}}{5} \\rightarrow$\nD. $\\frac{4 \\sqrt{5}}{5}$",
+    "options": [
+      "A. $\\frac{1}{5} \\quad \\rightarrow$",
+      "B. $\\frac{\\sqrt{5}}{5} \\rightarrow$",
+      "C. $\\frac{2 \\sqrt{5}}{5} \\rightarrow$",
+      "D. $\\frac{4 \\sqrt{5}}{5}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "9. 有五名志愿者参加社区服务, 共服务星期六、星期天两天, 每天从中任选两人参加服务, 则恰有 1 人连续参加两天服务的选择种数为 $()$\nA. 120\nB. 60\nC. 40\nD. 30",
+    "options": [
+      "A. 120",
+      "B. 60",
+      "C. 40",
+      "D. 30"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "10. 已知 $f(x)$ 为函数 $y=\\cos \\left(2 x+\\frac{\\pi}{6}\\right)$ 向左平移 $\\frac{\\pi}{6}$ 个单位所得函数, 则 $y=f(x)$ 与 $y=\\frac{1}{2} x-\\frac{1}{2}$ 的交点个数为 $()$\nA. 1\nB. 2\nC. 3\nD. 4",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "11. 在四棱雉 $P-A B C D$ 中, 底面 $A B C D$ 为正方形, $A B=4, P C=P D=3, \\angle P C A=45^{\\circ}$, 则 $\\triangle \\mathrm{PBC}$ 的面积为 $()$\nA. $2 \\sqrt{2}$\nB. $3 \\sqrt{2}$\nC. $4 \\sqrt{2}$\nD. $5 \\sqrt{2}$",
+    "options": [
+      "A. $2 \\sqrt{2}$",
+      "B. $3 \\sqrt{2}$",
+      "C. $4 \\sqrt{2}$",
+      "D. $5 \\sqrt{2}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "12. 已知椭圆 $\\frac{x^2}{9}+\\frac{y^2}{6}=1, F_1, F_2$ 为两个焦点, $O$ 为原点, $P$ 为椭圆上一点, $\\cos \\angle F_1 P F_2=\\frac{3}{5}$, 则 $|P O|=$ $()$\nA. $\\frac{2}{5}$\nB. $\\frac{\\sqrt{30}}{2}$\nC. $\\frac{3}{5}$\nD. $\\frac{\\sqrt{35}}{2}$",
+    "options": [
+      "A. $\\frac{2}{5}$",
+      "B. $\\frac{\\sqrt{30}}{2}$",
+      "C. $\\frac{3}{5}$",
+      "D. $\\frac{\\sqrt{35}}{2}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "1. 设全集 $U=\\{1,2,3,4,5\\}$, 集合 $M=\\{1,4\\}, N=\\{2,5\\}$, 则 $N \\cup{ }_U M=()$\nA $\\{2,3,5\\}$\nB. $\\{1,3,4\\}$\nC. $\\{1,2,4,5\\}$\nD. $\\{2,3,4,5\\}$",
+    "options": [
+      "B. $\\{1,3,4\\}$",
+      "C. $\\{1,2,4,5\\}$",
+      "D. $\\{2,3,4,5\\}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "2. $\\frac{5\\left(1+\\mathrm{i}^3\\right)}{(2+\\mathrm{i})(2-\\mathrm{i})}=()$\nA. -1\nB. 1\nC. $1-\\mathrm{i}$\nD. $1+\\mathrm{i}$",
+    "options": [
+      "A. -1",
+      "B. 1",
+      "C. $1-\\mathrm{i}$",
+      "D. $1+\\mathrm{i}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "3. 已知向量 $\\vec{a}=(3,1), \\vec{b}=(2,2)$, 则 $\\cos \\langle\\vec{a}+\\vec{b}, \\vec{a}-\\vec{b}\\rangle=()$\nA. $\\frac{1}{17}$\nB. $\\frac{\\sqrt{17}}{17}$\nC. $\\frac{\\sqrt{5}}{5}$\nD. $\\frac{2 \\sqrt{5}}{5}$",
+    "options": [
+      "A. $\\frac{1}{17}$",
+      "B. $\\frac{\\sqrt{17}}{17}$",
+      "C. $\\frac{\\sqrt{5}}{5}$",
+      "D. $\\frac{2 \\sqrt{5}}{5}$"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "4. 某校文艺部有 4 名学生, 其中高一、高二年级各 2 名. 从这 4 名学生中随机选 2 名组织校文艺汇演, 则这 2 名学生来自不同年级的概率为 $()$\nA. $\\frac{1}{6}$\nB. $\\frac{1}{3}$\nC. $\\frac{1}{2}$\nD. $\\frac{2}{3}$",
+    "options": [
+      "A. $\\frac{1}{6}$",
+      "B. $\\frac{1}{3}$",
+      "C. $\\frac{1}{2}$",
+      "D. $\\frac{2}{3}$"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "5. 记 $S_n$ 为等差数列 $\\left\\{a_n\\right\\}$ 的前 $n$ 项和. 若 $a_2+a_6=10, a_4 a_8=45$, 则 $S_5=()$\nA. 25\nB. 22\nC. 20\nD. 15",
+    "options": [
+      "A. 25",
+      "B. 22",
+      "C. 20",
+      "D. 15"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "7. 设 $F_1, F_2$ 为椭圆 $C: \\frac{x^2}{5}+y^2=1$ 的两个焦点, 点 $P$ 在 $C$ 上, 若 $\\overrightarrow{P F_1} \\cdot \\overrightarrow{P F_2}=0$, 则 $\\left|P F_1\\right| \\cdot\\left|P F_2\\right|=()$\nA. 1\nB. 2\nC. 4\nD. 5",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 4",
+      "D. 5"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "8. 曲线 $y=\\frac{\\mathrm{e}^x}{x+1}$ 在点 $\\left(1, \\frac{\\mathrm{e}}{2}\\right)$ 处的切线方程为 $()$\nA. $y=\\frac{\\mathrm{e}}{4} x \\quad \\rightarrow$\nB. $y=\\frac{\\mathrm{e}}{2} x$\nC. $y=\\frac{\\mathrm{e}}{4} x+\\frac{\\mathrm{e}}{4} \\rightarrow$\nD. $y=\\frac{\\mathrm{e}}{2} x+\\frac{3 \\mathrm{e}}{4}$",
+    "options": [
+      "A. $y=\\frac{\\mathrm{e}}{4} x \\quad \\rightarrow$",
+      "B. $y=\\frac{\\mathrm{e}}{2} x$",
+      "C. $y=\\frac{\\mathrm{e}}{4} x+\\frac{\\mathrm{e}}{4} \\rightarrow$",
+      "D. $y=\\frac{\\mathrm{e}}{2} x+\\frac{3 \\mathrm{e}}{4}$"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "9. 已知双曲线 $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1(a>0, b>0)$ 的离心率为 $\\sqrt{5}$, 其中一条渐近线与圆 $(x-2)^2+(y-3)^2=1$ 交于 $A, B$ 两点, 则 $|A B|=()$\nA. $\\frac{\\sqrt{5}}{5}$\nB. $\\frac{2 \\sqrt{5}}{5}$\nC. $\\frac{3 \\sqrt{5}}{5}$\nD. $\\frac{4 \\sqrt{5}}{5}$",
+    "options": [
+      "A. $\\frac{\\sqrt{5}}{5}$",
+      "B. $\\frac{2 \\sqrt{5}}{5}$",
+      "C. $\\frac{3 \\sqrt{5}}{5}$",
+      "D. $\\frac{4 \\sqrt{5}}{5}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "10. 在三棱雉 $P-A B C$ 中, $\\triangle A B C$ 是边长为 2 的等边三角形, $P A=P B=2, P C=\\sqrt{6}$, 则该棱雉的体积为 $()$\nA. 1\nB. $\\sqrt{3}$\nC. 2\nD. 3",
+    "options": [
+      "A. 1",
+      "B. $\\sqrt{3}$",
+      "C. 2",
+      "D. 3"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "11. 已知函数 $f(x)=\\mathrm{e}^{-(x-1)^2}$. 记 $a=f\\left(\\frac{\\sqrt{2}}{2}\\right), b=f\\left(\\frac{\\sqrt{3}}{2}\\right), c=f\\left(\\frac{\\sqrt{6}}{2}\\right)$, 则 $()$\nA. $b>c>a$\nB. $b>a>c$\nC. $c>b>a$\nD. $c>a>b$",
+    "options": [
+      "A. $b>c>a$",
+      "B. $b>a>c$",
+      "C. $c>b>a$",
+      "D. $c>a>b$"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "12. 函数 $y=f(x)$ 的图象由 $y=\\cos \\left(2 x+\\frac{\\pi}{6}\\right)$ 的图象向左平移 $\\frac{\\pi}{6}$ 个单位长度得到, 则 $y=f(x)$ 的图象与直线 $y=\\frac{1}{2} x-\\frac{1}{2}$ 的交点个数为 $()$\nA. 1\nB. 2\nC. 3\nD. 4",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "1. (2023.全国乙卷) 设 $z=\\frac{2+i}{1+i^2+i^5}$, 则 $\\bar{z}=()$\nA. $1-2 i$\nB. $1+2 i$\nC. $2-i$\nD. $2+i$",
+    "options": [
+      "A. $1-2 i$",
+      "B. $1+2 i$",
+      "C. $2-i$",
+      "D. $2+i$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "2. (2023. 全国乙卷) 设集合 $U=R$, 集合 $M=\\{x \\mid x<1\\}, N=\\{x \\mid-1<x<2\\}$, 则 $\\{x \\mid x \\geq 2\\}=$ ()\nA. $\\mathrm{C}_U(M \\cup N)$\nB. $N \\cup C_U M$\nC. $C_U(M \\cap N)$\nD. $M \\cup C_U N$",
+    "options": [
+      "A. $\\mathrm{C}_U(M \\cup N)$",
+      "B. $N \\cup C_U M$",
+      "C. $C_U(M \\cap N)$",
+      "D. $M \\cup C_U N$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "4. (2023. 全国乙卷) 已知 $f(x)=\\frac{x e^x}{e^{a x}-1}$ 是偶函数, 则 $a=()$\nA. -2\nB. -1\nC. 1\nD. 2",
+    "options": [
+      "A. -2",
+      "B. -1",
+      "C. 1",
+      "D. 2"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "5. (2023.全国乙卷) 设 $\\mathrm{O}$ 为平面坐标系的坐标原点, 在区域 $\\left\\{(x, y) \\mid 1 \\leq x^2+y^2 \\leq 4\\right\\}$ 内随机取一点, 记该点为 $\\mathrm{A}$, 则直线 $\\mathrm{OA}$ 的倾斜角不大于 $\\frac{\\pi}{4}$ 的概率为 ( )\nA. $\\frac{1}{8}$\nB. $\\frac{1}{6}$\nC. $\\frac{1}{4}$\nD. $\\frac{1}{2}$",
+    "options": [
+      "A. $\\frac{1}{8}$",
+      "B. $\\frac{1}{6}$",
+      "C. $\\frac{1}{4}$",
+      "D. $\\frac{1}{2}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "6. (2023. 全国乙卷) 已知函数 $f(x)=\\sin (\\omega x+\\varphi)$ 在区间 $\\left(\\frac{\\pi}{6}, \\frac{2 \\pi}{3}\\right)$ 单调递增, 直线 $x=\\frac{\\pi}{6}$ 和 $x=\\frac{2 \\pi}{3}$ 为函数 $y=f(x)$ 的图像的两条对称轴, 则 $f\\left(-\\frac{5 \\pi}{12}\\right)=()$\nA. $-\\frac{\\sqrt{3}}{2}$\nB. $-\\frac{1}{2}$\nC. $\\frac{1}{2}$\nD. $\\frac{\\sqrt{3}}{2}$",
+    "options": [
+      "A. $-\\frac{\\sqrt{3}}{2}$",
+      "B. $-\\frac{1}{2}$",
+      "C. $\\frac{1}{2}$",
+      "D. $\\frac{\\sqrt{3}}{2}$"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "7. (2023. 全国乙卷) 甲乙两位同学从 6 种课外读物中各自选读 2 种, 则这两人选读的课外读物中恰有 1 种相同的选法共有（ ）\nA. 30 种\nB. 60 种\nC. 120 种\nD. 240 种",
+    "options": [
+      "A. 30 种",
+      "B. 60 种",
+      "C. 120 种",
+      "D. 240 种"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "8. (2023. 全国乙卷) 已知圆雉 $\\mathrm{PO}$ 的底面半径为 $\\sqrt{3}, \\mathrm{O}$ 为底面圆心, $\\mathrm{PA}, \\mathrm{PB}$ 为圆雉的母线, $\\angle A O B=120^{\\circ}$, 若 $\\triangle P A B$ 的面积等于 $\\frac{9 \\sqrt{3}}{4}$, 则该圆雉的体积为 (  )\nA. $\\pi$\nB. $\\sqrt{6} \\pi$\nC. $3 \\pi$\nD. $3 \\sqrt{6} \\pi$",
+    "options": [
+      "A. $\\pi$",
+      "B. $\\sqrt{6} \\pi$",
+      "C. $3 \\pi$",
+      "D. $3 \\sqrt{6} \\pi$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "9. (2023.全国乙卷) 已知 $\\triangle A B C$ 为等腰直角三角形, $\\mathrm{AB}$ 为斜边, $\\triangle A B D$ 为等边三角形, 若二面角 $C-A B-D$ 为 $150^{\\circ}$, 则直线 $\\mathrm{CD}$ 与平面 $\\mathrm{ABC}$ 所成角的正切值为 (  )\nA. $\\frac{1}{5}$\nB. $\\frac{\\sqrt{2}}{5}$\nC. $\\frac{\\sqrt{3}}{5}$\nD. $\\frac{2}{5}$",
+    "options": [
+      "A. $\\frac{1}{5}$",
+      "B. $\\frac{\\sqrt{2}}{5}$",
+      "C. $\\frac{\\sqrt{3}}{5}$",
+      "D. $\\frac{2}{5}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "10. (2023. 全国乙卷) 已知等差数列 $\\left\\{a_n\\right\\}$ 的公差为 $\\frac{2 \\pi}{3}$, 集合 $S=\\left\\{\\cos a_n \\mid n \\in N^*\\right\\}$, 若 $S=\\{a, b\\}$, 则 $a b=()$\nA. -1\nB. $-\\frac{1}{2}$\nC. 0\nD. $\\frac{1}{2}$",
+    "options": [
+      "A. -1",
+      "B. $-\\frac{1}{2}$",
+      "C. 0",
+      "D. $\\frac{1}{2}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "11. (2023. 全国乙卷) 设 $\\mathrm{A}, \\mathrm{B}$ 为双曲线 $x^2-\\frac{y^2}{9}=1$ 上两点, 下列四个点中, 可为线段 $\\mathrm{AB}$ 中点的是 (  )\nA. $(1,1)$\nB. $(-1,2)$\nC. $(1,3)$\nD. $(-1,-4)$",
+    "options": [
+      "A. $(1,1)$",
+      "B. $(-1,2)$",
+      "C. $(1,3)$",
+      "D. $(-1,-4)$"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "12. (2023. 全国乙卷) 已知 $\\odot O$ 的半径为 1 , 直线 $\\mathrm{PA}$ 与 $\\odot O$ 相切于点 $\\mathrm{A}$, 直线 $\\mathrm{PB}$ 与 $\\odot O$ 交于 $\\mathrm{B}, \\mathrm{C}$两点, $\\mathrm{D}$ 为 $\\mathrm{BC}$ 的中点, 若 $|P O|=\\sqrt{2}$, 则 $\\overrightarrow{P A} \\cdot \\overrightarrow{P D}$ 的最大值为 ( )\nA. $\\frac{1+\\sqrt{2}}{2}$\nB. $\\frac{1+2 \\sqrt{2}}{2}$\nC. $1+\\sqrt{2}$\nD. $2+\\sqrt{2}$",
+    "options": [
+      "A. $\\frac{1+\\sqrt{2}}{2}$",
+      "B. $\\frac{1+2 \\sqrt{2}}{2}$",
+      "C. $1+\\sqrt{2}$",
+      "D. $2+\\sqrt{2}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "1. 已知集合 $M=\\{-2,-1,0,1,2\\}, N=\\left\\{x \\mid x^2-x-6 \\geq 0\\right\\}$, 则 $M \\cap N=()$\nA. $\\{-2,-1,0,1\\}$\nB. $\\{0,1,2\\}$\nC. $\\{-2\\}$\nD. 2",
+    "options": [
+      "A. $\\{-2,-1,0,1\\}$",
+      "B. $\\{0,1,2\\}$",
+      "C. $\\{-2\\}$",
+      "D. 2"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "2. 已知 $z=\\frac{1-\\mathrm{i}}{2+2 \\mathrm{i}}$, 则 $z-\\bar{z}=()$\nA. $-\\mathrm{i}$\nB. $\\mathrm{i}$\nC. 0\nD. 1",
+    "options": [
+      "A. $-\\mathrm{i}$",
+      "B. $\\mathrm{i}$",
+      "C. 0",
+      "D. 1"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "3. 已知向量 $\\vec{a}=(1,1), \\vec{b}=(1,-1)$, 若 $(\\vec{a}+\\lambda \\vec{b}) \\perp(\\vec{a}+\\mu \\vec{b})$, 则 $()$\nA. $\\lambda+\\mu=1$\nB. $\\lambda+\\mu=-1$\nC. $\\lambda \\mu=1$\nD. $\\lambda \\mu=-1$",
+    "options": [
+      "A. $\\lambda+\\mu=1$",
+      "B. $\\lambda+\\mu=-1$",
+      "C. $\\lambda \\mu=1$",
+      "D. $\\lambda \\mu=-1$"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "4. 设函数 $f(x)=2^{x(x-a)}$ 在区间 $(0,1)$ 上单调递减, 则 $a$ 的取值范围是 $()$\nA. $(-\\infty,-2]$\nB. $[-2,0)$\nC. $(0,2]$\nD. $[2,+\\infty)$",
+    "options": [
+      "A. $(-\\infty,-2]$",
+      "B. $[-2,0)$",
+      "C. $(0,2]$",
+      "D. $[2,+\\infty)$"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "5. 设椭圆 $C_1: \\frac{x^2}{a^2}+y^2=1(a>1), C_2: \\frac{x^2}{4}+y^2=1$ 的离心率分别为 $e_1, e_2$. 若 $e_2=\\sqrt{3} e_1$, 则 $a=()$\nA. $\\frac{2 \\sqrt{3}}{3}$\nB. $\\sqrt{2}$\nC. $\\sqrt{3}$\nD. $\\sqrt{6}$",
+    "options": [
+      "A. $\\frac{2 \\sqrt{3}}{3}$",
+      "B. $\\sqrt{2}$",
+      "C. $\\sqrt{3}$",
+      "D. $\\sqrt{6}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "6. 过点 $(0,-2)$ 与圆 $x^2+y^2-4 x-1=0$ 相切的两条直线的夹角为 $\\alpha$, 则 $\\sin \\alpha=()$\nA. 1\nB. $\\frac{\\sqrt{15}}{4}$\nC. $\\frac{\\sqrt{10}}{4}$\nD. $\\frac{\\sqrt{6}}{4}$",
+    "options": [
+      "A. 1",
+      "B. $\\frac{\\sqrt{15}}{4}$",
+      "C. $\\frac{\\sqrt{10}}{4}$",
+      "D. $\\frac{\\sqrt{6}}{4}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "7. 记 $S_n$ 为数列 $\\left\\{a_n\\right\\}$ 的前 $n$ 项和, 设甲: $\\left\\{a_n\\right\\}$ 为等差数列; 乙: $\\left\\{\\frac{S_n}{n}\\right\\}$ 为等差数列, 则 $()$\nA. 甲是乙的充分条件但不是必要条件\nB. 甲是乙的必要条件但不是充分条件\nC. 甲是乙的充要条件\nD. 甲既不是乙的充分条件也不是乙的必要条件",
+    "options": [
+      "A. 甲是乙的充分条件但不是必要条件",
+      "B. 甲是乙的必要条件但不是充分条件",
+      "C. 甲是乙的充要条件",
+      "D. 甲既不是乙的充分条件也不是乙的必要条件"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "8. 已知 $\\sin (\\alpha-\\beta)=\\frac{1}{3}, \\cos \\alpha \\sin \\beta=\\frac{1}{6}$, 则 $\\cos (2 \\alpha+2 \\beta)=()$.\nA. $\\frac{7}{9}$\nB. $\\frac{1}{9}$\nC. $-\\frac{1}{9}$\nD. $-\\frac{7}{9}$",
+    "options": [
+      "A. $\\frac{7}{9}$",
+      "B. $\\frac{1}{9}$",
+      "C. $-\\frac{1}{9}$",
+      "D. $-\\frac{7}{9}$"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "1. 在复平面内,$(1+3i)(3-i)$对应的点位于()\nA. 第一象限\nB. 第二象限\nC. 第三象限\nD. 第四象限",
+    "options": [
+      "A. 第一象限",
+      "B. 第二象限",
+      "C. 第三象限",
+      "D. 第四象限"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "2. 设集合 $A=\\{0,-a\\}, B=\\{1, a-2,2 a-2\\}$, 若 $A \\subseteq B$, 则 $a=()$.\nA. 2\nB. 1\nC. $\\frac{2}{3}$\nD. -1",
+    "options": [
+      "A. 2",
+      "B. 1",
+      "C. $\\frac{2}{3}$",
+      "D. -1"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "3. 某学校为了解学生参加体育运动的情况, 用比例分配的分层随机抽样方法作抽样调查, 拟从初中部和高中部两层共抽取 60 名学生, 已知该校初中部和高中部分别有 400 名和 200 名学生, 则不同的抽样结果共有 $()$.\nA. $\\mathrm{C}_{400}^{45} \\cdot \\mathrm{C}_{200}^{15}$ 种\nB. $\\mathrm{C}_{400}^{20} \\cdot \\mathrm{C}_{200}^{40}$ 种\nC. $\\mathrm{C}_{400}^{30} \\cdot \\mathrm{C}_{200}^{30}$ 种\nD. $\\mathrm{C}_{400}^{40} \\cdot \\mathrm{C}_{200}^{20}$ 种",
+    "options": [
+      "A. $\\mathrm{C}_{400}^{45} \\cdot \\mathrm{C}_{200}^{15}$ 种",
+      "B. $\\mathrm{C}_{400}^{20} \\cdot \\mathrm{C}_{200}^{40}$ 种",
+      "C. $\\mathrm{C}_{400}^{30} \\cdot \\mathrm{C}_{200}^{30}$ 种",
+      "D. $\\mathrm{C}_{400}^{40} \\cdot \\mathrm{C}_{200}^{20}$ 种"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "4. 若 $f(x)=(x+a) \\ln \\frac{2 x-1}{2 x+1}$ 为偶函数, 则 $a=()$.\nA. -1\nB. 0\nC. $\\frac{1}{2}$\nD. 1",
+    "options": [
+      "A. -1",
+      "B. 0",
+      "C. $\\frac{1}{2}$",
+      "D. 1"
+    ],
+    "gpt_result": "Final Answer: A",
+    "final_answer": "A",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "5. 已知椭圆 $C: \\frac{x^2}{3}+y^2=1$ 的左、右焦点分别为 $F_1, F_2$, 直线 $y=x+m$ 与 $C$ 交于 $A, B$ 两点, 若$\\triangle F_1 A B$ 面积是$\\triangle F_2 A B$ 面积的 2 倍, 则 $m=()$.\nA. $\\frac{2}{3}$\nB. $\\frac{\\sqrt{2}}{3}$\nC. $-\\frac{\\sqrt{2}}{3}$\nD. $-\\frac{2}{3}$",
+    "options": [
+      "A. $\\frac{2}{3}$",
+      "B. $\\frac{\\sqrt{2}}{3}$",
+      "C. $-\\frac{\\sqrt{2}}{3}$",
+      "D. $-\\frac{2}{3}$"
+    ],
+    "gpt_result": "Final Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "6. 已知函数 $f(x)=a \\mathrm{e}^x-\\ln x$ 在区间 $(1,2)$ 上单调递增，则 $a$ 的最小值为 $()$.\nA. $e^2$\nB. e\nC. $\\mathrm{e}^{-1}$\nD. $\\mathrm{e}^{-2}$",
+    "options": [
+      "A. $e^2$",
+      "B. e",
+      "C. $\\mathrm{e}^{-1}$",
+      "D. $\\mathrm{e}^{-2}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "7. 已知 $\\alpha$ 为锐角, $\\cos \\alpha=\\frac{1+\\sqrt{5}}{4}$, 则 $\\sin \\frac{\\alpha}{2}=()$.\nA. $\\frac{3-\\sqrt{5}}{8} \\rightarrow$\nB. $\\frac{-1+\\sqrt{5}}{8} \\rightarrow$\nC. $\\frac{3-\\sqrt{5}}{4} \\rightarrow$\nD. $\\frac{-1+\\sqrt{5}}{4}$",
+    "options": [
+      "A. $\\frac{3-\\sqrt{5}}{8} \\rightarrow$",
+      "B. $\\frac{-1+\\sqrt{5}}{8} \\rightarrow$",
+      "C. $\\frac{3-\\sqrt{5}}{4} \\rightarrow$",
+      "D. $\\frac{-1+\\sqrt{5}}{4}$"
+    ],
+    "gpt_result": "Final Answer: B",
+    "final_answer": "B",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "8. 记 $S_n$ 为等比数列 $\\left\\{a_n\\right\\}$ 的前 $n$ 项和, 若 $S_4=-5, S_6=21 S_2$, 则 $S_8=()$.\nA. 120\nB. 85\nC. -85\nD. -120",
+    "options": [
+      "A. 120",
+      "B. 85",
+      "C. -85",
+      "D. -120"
+    ],
+    "gpt_result": "Final Answer: D",
+    "final_answer": "D",
+    "correct_answer": "C",
+    "is_correct": false
+  }
+]
