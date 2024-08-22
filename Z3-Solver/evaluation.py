@@ -7,7 +7,7 @@ from datasets import load_dataset
 from tqdm import tqdm
 
 # Set up your OpenAI API key
-openai.api_key = 'sk-proj-ZLchg4vhYxRCm7ImKVTbT3BlbkFJM3uzKiqs87Da99rXefLM'
+openai.api_key = ''
 
 # Create the output file
 output_file_path = 'mmlu_college_mathematics_results.json'
