@@ -39,7 +39,7 @@ def main():
     elif args.dataset == "mmlu-pro":
         formulation_prompt_path = 'prompts/MMLU-Pro-Mathematics/formulation.txt'
     elif args.dataset == "aqua":
-        formulation_prompt_path = 'prompts/AQUA-Mathematics/formulation.txt'
+        formulation_prompt_path = 'prompts/AQUA-Mathematics/CoT.txt'
     else:  # gaokao
         formulation_prompt_path = 'prompts/GaoKao-Math/formulation.txt'
 
