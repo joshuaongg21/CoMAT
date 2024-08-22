@@ -7,7 +7,7 @@
       "k = n = 1",
       "k > 1"
     ],
-    "gpt_result": "### \nDefine predicates:\nE(x): e^x + x - 2 = 0\nK(x): x is a real solution of E(x) in the interval [0, 1]\nN(x): x is a real solution of E(x) not in the interval [0, 1]\n\nParse problem into logic rules:\n\u2200x: E(x) \u2194 e^x + x - 2 = 0\n\u2200x: K(x) \u2194 E(x) \u2227 0 \u2264 x \u2264 1\n\u2200x: N(x) \u2194 E(x) \u2227 (x < 0 \u2228 x > 1)\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nDetermine the values of k and n such that:\nk = |{x | K(x)}| (number of solutions in [0, 1])\nn = |{x | N(x)}| (number of solutions not in [0, 1])\n\nFinal Answer: B",
+    "gpt_result": "### \nDefine predicates:\nE(x): e^x + x - 2 = 0\nK(x): x is a real solution of E(x) in the interval [0, 1]\nN(x): x is a real solution of E(x) not in the interval [0, 1]\n\nParse problem into logic rules:\n\u2200x: E(x) \u2194 e^x + x - 2 = 0\n\u2200x: K(x) \u2194 E(x) \u2227 0 \u2264 x \u2264 1\n\u2200x: N(x) \u2194 E(x) \u2227 (x < 0 \u2228 x > 1)\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nDetermine the values of k and n such that:\nk = |{x | K(x)}| and n = |{x | N(x)}|\n\nFinal Answer: B",
     "final_answer": 1,
     "correct_answer": 1,
     "is_correct": true
