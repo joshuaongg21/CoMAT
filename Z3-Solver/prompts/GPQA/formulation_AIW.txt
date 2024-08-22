@@ -1,0 +1,63 @@
+Please solve this using symbolic logic representation by following these steps:
+
+1. Define predicates:
+   - List all relevant predicates (e.g., Person(x), Brother(x,y), Sister(x,y), etc.)
+
+2. Parse the problem into logic rules:
+   - Write out the logical relationships between predicates
+
+3. Write facts:
+   - Express the given information using the defined predicates
+
+4. Parse the question:
+   - Formulate the question using logical notation
+
+5. Derive the answer:
+   - Use the rules and facts to logically deduce the answer
+
+6. Verify:
+   - Double-check your logic and calculations
+
+7. Provide the final answer in the format:
+   ### Answer: [number]
+
+Remember to consider all relationships carefully, including indirect ones.
+
+-----------
+Here is an example:
+####
+Question: 
+Alice has 4 brothers and she also has 1 sister. How many sisters does Alice's brother have?
+
+1. Define predicates:
+   - Person(x): x is a person
+   - Brother(x,y): x is a brother of y
+   - Sister(x,y): x is a sister of y
+   - NumBrothers(x,n): x has n brothers
+   - NumSisters(x,n): x has n sisters
+
+2. Parse the problem into logic rules:
+   - ∀x,y: Brother(x,y) ↔ Brother(y,x)
+   - ∀x,y: Sister(x,y) ↔ Sister(y,x)
+   - ∀x,y,z: Brother(x,y) ∧ Sister(z,y) → Sister(z,x)
+
+3. Write facts:
+   - Person(Alice)
+   - NumBrothers(Alice, 4)
+   - NumSisters(Alice, 1)
+
+4. Parse the question:
+   - Find n such that: ∀x: Brother(x, Alice) → NumSisters(x, n)
+
+5. Derive the answer:
+   - Alice's brothers are siblings to Alice and her sister
+   - So, each of Alice's brothers has Alice's sister as their sister
+   - They also have Alice herself as a sister
+   - Therefore, n = 1 (Alice's sister) + 1 (Alice) = 2
+
+6. Verify:
+   - We've accounted for Alice's sister and Alice herself as sisters to Alice's brothers
+   - The logic follows from the given information and rules
+
+7. Provide the final answer in the format:
+   ### Answer: 2

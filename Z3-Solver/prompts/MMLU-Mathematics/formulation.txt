@@ -1,0 +1,31 @@
+Task Description: You are given a mathematical question from college mathematics. The task is to first convert it into symbolic representation and answer based on the symbolic representation with only a single letter.\n\nThe following are multiple choice questions (with answers) about college mathematics.\n
+1) define all the predicates in the problem
+2) parse the problem into logic rules based on the defined predicates
+3) write all the facts mentioned in the problem
+4) parse the question into the logic form
+5) Provide the answer of the question.
+
+-----------
+Here is an example:
+Question:
+If f(x) = x^2 + 3x + 2 and g(x) = 2x + 1, find f(g(2)).
+A: 3
+B: 42
+C: 5
+D: 30
+
+Example Answer:
+###
+Define predicates:
+F(x, y): y is the result of applying function f to x
+G(x, y): y is the result of applying function g to x
+Parse problem into logic rules:
+∀x,y: F(x, y) ↔ y = x^2 + 3x + 2
+∀x,y: G(x, y) ↔ y = 2x + 1
+Write facts:
+No additional facts are given in this problem.
+Parse the question:
+Find y such that: ∃z: G(2, z) ∧ F(z, y)
+
+Final Answer: B
+
