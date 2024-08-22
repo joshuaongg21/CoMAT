@@ -1,0 +1,638 @@
+[
+  {
+    "question": "1. 设集合 $A=\\{x \\quad x=3 k+1, k \\in Z\\}, B=\\{x \\quad x=3 k+2, k \\in Z\\}, U$ 为整数集， $\\mathbf{U}(A \\cup B)=(\\cdots)$\nA. $\\{x \\mid x=3 k, k \\in \\mathbf{Z}\\}$\nB. $\\{x \\mid x=3 k-1, k \\in Z\\}$\nC. $\\{x \\mid x=3 k-2, k \\in Z\\}$\nD. $\\varnothing$",
+    "options": [
+      "A. $\\{x \\mid x=3 k, k \\in \\mathbf{Z}\\}$",
+      "B. $\\{x \\mid x=3 k-1, k \\in Z\\}$",
+      "C. $\\{x \\mid x=3 k-2, k \\in Z\\}$",
+      "D. $\\varnothing$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- A(x): x is an element of set A, where A = {x | x = 3k + 1, k ∈ Z}\n- B(x): x is an element of set B, where B = {x | x = 3k + 2, k ∈ Z}\n- U(x): x is an element of the universal set U, which is the set of all integers Z.\n\nParse problem into logic rules:\n- ∀x: A(x) ↔ ∃k ∈ Z: x = 3k + 1\n- ∀x: B(x) ↔ ∃k ∈ Z: x = 3k + 2\n- U(x) ↔ x ∈ Z\n\nWrite facts:\n- The universal set U is the set of all integers Z.\n\nParse the question:\n- Find the set U \\ (A ∪ B), which is the set of all integers that are not in A or B.\n\nAnswer:\n- A ∪ B = {x | x = 3k + 1 or x = 3k + 2, k ∈ Z}\n- U \\ (A ∪ B) = {x | x ∈ Z and x ≠ 3k + 1 and x ≠ 3k + 2, k ∈ Z}\n- This is equivalent to the set of integers that are multiples of 3, i.e., {x | x = 3k, k ∈ Z}.\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "2. 若复数 $(a+\\mathrm{i})(1-a \\mathrm{i})=2, a \\in \\mathrm{R}$, 则 $a=(\\quad)$\nA. -1\nB. 0\nC. 1\nD. 2",
+    "options": [
+      "A. -1",
+      "B. 0",
+      "C. 1",
+      "D. 2"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- ComplexProduct(a, b): The product of the complex numbers (a + i) and (1 - ai) equals b, where a is a real number.\n\nParse problem into logic rules:\n- ∀a ∈ ℝ, b: ComplexProduct(a, b) ↔ (a + i)(1 - ai) = b\n\nWrite facts:\n- ComplexProduct(a, 2) is given.\n\nParse the question:\n- Find a such that: ∃a ∈ ℝ: ComplexProduct(a, 2)\n\nAnswer:\n[Answer the question based on the symbolic representations]\n\nTo solve the equation (a + i)(1 - ai) = 2, we expand the left-hand side:\n\n(a + i)(1 - ai) = a(1) + a(-ai) + i(1) + i(-ai) = a - a^2i + i - ai^2\n\nSince i^2 = -1, we have:\n\n= a - a^2i + i + a = 2a - a^2i + i\n\nSeparate the real and imaginary parts:\n\nReal part: 2a\nImaginary part: -a^2 + 1\n\nFor the equation to equal 2, the real part must be 2 and the imaginary part must be 0:\n\n1. 2a = 2\n2. -a^2 + 1 = 0\n\nFrom the first equation, 2a = 2, we get:\n\na = 1\n\nFrom the second equation, -a^2 + 1 = 0, we get:\n\n-a^2 + 1 = 0\na^2 = 1\na = ±1\n\nSince a = 1 satisfies both equations, we choose a = 1.\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "4. 向量 $|\\vec{a}|=|\\vec{b}|=1,|\\vec{c}|=\\sqrt{2}$, 且 $\\vec{a}+\\vec{b}+\\vec{c}=\\overrightarrow{0}$, 则 $\\cos \\langle\\vec{a}-\\vec{c}, \\vec{b}-\\vec{c}\\rangle=()$\nA. $-\\frac{1}{5}$\nB. $-\\frac{2}{5}$\nC. $\\frac{2}{5}$\nD. $\\frac{4}{5}$",
+    "options": [
+      "A. $-\\frac{1}{5}$",
+      "B. $-\\frac{2}{5}$",
+      "C. $\\frac{2}{5}$",
+      "D. $\\frac{4}{5}$"
+    ],
+    "gpt_result": "### Define predicates:\n- Magnitude(v, m): The magnitude of vector v is m.\n- VectorSum(v1, v2, v3, v4): The sum of vectors v1, v2, and v3 is vector v4.\n- CosAngle(v1, v2, c): The cosine of the angle between vectors v1 and v2 is c.\n\n### Parse the problem into logic rules:\n1. ∀v, m: Magnitude(v, m) ↔ |v| = m\n2. ∀v1, v2, v3, v4: VectorSum(v1, v2, v3, v4) ↔ v1 + v2 + v3 = v4\n3. ∀v1, v2, c: CosAngle(v1, v2, c) ↔ c = (v1 • v2) / (|v1| * |v2|)\n\n### Write facts:\n1. Magnitude(𝑎, 1)\n2. Magnitude(𝑏, 1)\n3. Magnitude(𝑐, √2)\n4. VectorSum(𝑎, 𝑏, 𝑐, 0)\n\n### Parse the question:\nFind c such that: CosAngle(𝑎 - 𝑐, 𝑏 - 𝑐, c)\n\n### Answer the question based on the symbolic representations:\nGiven that \\(\\vec{a} + \\vec{b} + \\vec{c} = \\overrightarrow{0}\\), we have \\(\\vec{c} = -(\\vec{a} + \\vec{b})\\).\n\nNow, calculate \\(\\vec{a} - \\vec{c}\\) and \\(\\vec{b} - \\vec{c}\\):\n- \\(\\vec{a} - \\vec{c} = \\vec{a} - (-(\\vec{a} + \\vec{b})) = 2\\vec{a} + \\vec{b}\\)\n- \\(\\vec{b} - \\vec{c} = \\vec{b} - (-(\\vec{a} + \\vec{b})) = \\vec{a} + 2\\vec{b}\\)\n\nNext, calculate the dot product \\((\\vec{a} - \\vec{c}) \\cdot (\\vec{b} - \\vec{c})\\):\n\\[\n(2\\vec{a} + \\vec{b}) \\cdot (\\vec{a} + 2\\vec{b}) = 2\\vec{a} \\cdot \\vec{a} + 4\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{a} + 2\\vec{b} \\cdot \\vec{b}\n\\]\n\\[\n= 2|\\vec{a}|^2 + 5\\vec{a} \\cdot \\vec{b} + 2|\\vec{b}|^2\n\\]\nSince \\(|\\vec{a}| = 1\\) and \\(|\\vec{b}| = 1\\), this simplifies to:\n\\[\n= 2(1) + 5\\vec{a} \\cdot \\vec{b} + 2(1) = 4 + 5\\vec{a} \\cdot \\vec{b}\n\\]\n\nNow, calculate the magnitudes:\n- \\(|\\vec{a} - \\vec{c}| = |2\\vec{a} + \\vec{b}| = \\sqrt{(2\\vec{a} + \\vec{b}) \\cdot (2\\vec{a} + \\vec{b})} = \\sqrt{4 + 4\\vec{a} \\cdot \\vec{b} + 1} = \\sqrt{5 + 4\\vec{a} \\cdot \\vec{b}}\\)\n- \\(|\\vec{b} - \\vec{c}| = |\\vec{a} + 2\\vec{b}| = \\sqrt{(\\vec{a} + 2\\vec{b}) \\cdot (\\vec{a} + 2\\vec{b})} = \\sqrt{1 + 4\\vec{a} \\cdot \\vec{b} + 4} = \\sqrt{5 + 4\\vec{a} \\cdot \\vec{b}}\\)\n\nFinally, calculate the cosine:\n\\[\n\\cos \\langle\\vec{a}-\\vec{c}, \\vec{b}-\\vec{c}\\rangle = \\frac{4 + 5\\vec{a} \\",
+    "final_answer": "Invalid",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "5. 已知正项等比数列 $\\left\\{a_n\\right\\}$ 中, $a_1=1, S_n$ 为 $\\left\\{a_n\\right\\}$ 前 $n$ 项和, $S_5=5 S_3-4$, 则 $S_4=()$\nA. 7\nB. 9\nC. 15\nD. 30",
+    "options": [
+      "A. 7",
+      "B. 9",
+      "C. 15",
+      "D. 30"
+    ],
+    "gpt_result": "### Define predicates:\n- A(n, a): a is the nth term of the geometric sequence {a_n}\n- S(n, s): s is the sum of the first n terms of the sequence {a_n}\n\n### Parse problem into logic rules:\n1. A(1, 1): The first term of the sequence is 1.\n2. ∀n, r: A(n, a) ↔ a = a_1 * r^(n-1) (where r is the common ratio of the geometric sequence)\n3. ∀n, s: S(n, s) ↔ s = a_1 * (1 - r^n) / (1 - r) (sum of the first n terms of a geometric sequence)\n\n### Write facts:\n- S(5, s_5) = 5 * S(3, s_3) - 4\n\n### Parse the question:\nFind s_4 such that: S(4, s_4)\n\n### Solve the question based on the symbolic representations:\n\nGiven:\n- a_1 = 1\n- S_5 = 5 * S_3 - 4\n\nUsing the sum formula for a geometric sequence:\n- S_3 = 1 * (1 - r^3) / (1 - r)\n- S_5 = 1 * (1 - r^5) / (1 - r)\n\nFrom the given condition:\n\\[ S_5 = 5 * S_3 - 4 \\]\n\\[ \\frac{1 - r^5}{1 - r} = 5 \\cdot \\frac{1 - r^3}{1 - r} - 4 \\]\n\nSimplifying:\n\\[ 1 - r^5 = 5(1 - r^3) - 4(1 - r) \\]\n\\[ 1 - r^5 = 5 - 5r^3 - 4 + 4r \\]\n\\[ 1 - r^5 = 1 - 5r^3 + 4r \\]\n\\[ r^5 = 5r^3 - 4r \\]\n\\[ r^5 = r(5r^2 - 4) \\]\n\nAssuming r = 1 (since it's a common ratio and the sequence is positive):\n- S_3 = 3\n- S_5 = 5\n\nNow, find S_4:\n\\[ S_4 = 1 * (1 - r^4) / (1 - r) \\]\nIf r = 1, then S_4 = 4.\n\nHowever, this doesn't match any of the options, so let's reconsider the assumption. If r = 1, the sequence is constant, and the sum is simply the number of terms times the first term.\n\nRe-evaluate:\n- S_3 = 3\n- S_5 = 5\n\nIf r = 1, then S_4 = 4, which is not an option. Let's try another approach:\n\nAssume r = 2:\n- S_3 = 1 + 2 + 4 = 7\n- S_5 = 1 + 2 + 4 + 8 + 16 = 31\n\nCheck the condition:\n\\[ S_5 = 5 \\cdot S_3 - 4 \\]\n\\[ 31 = 5 \\cdot 7 - 4 \\]\n\\[ 31 = 35 - 4 \\]\n\\[ 31 = 31 \\]\n\nThis works. Now find S_4:\n- S_4 = 1 + 2 + 4 + 8 = 15\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "6. 有 50 人报名足球俱乐部, 60 人报名乒乓球俱乐部, 70 人报名足球或乒乓球俱乐部, 若已知某人报足球俱乐部, 则其报乒乓球俱乐部的概率为 $()$\nA. 0.8\nB. 0.4\nC. 0.2\nD. 0.1",
+    "options": [
+      "A. 0.8",
+      "B. 0.4",
+      "C. 0.2",
+      "D. 0.1"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- F(x): x is a member of the football club\n- P(x): x is a member of the ping-pong club\n- U(x): x is a member of either the football or ping-pong club\n\nParse problem into logic rules:\n- Total number of people in the football club: |F| = 50\n- Total number of people in the ping-pong club: |P| = 60\n- Total number of people in either club: |U| = 70\n- Probability that a person is in the ping-pong club given they are in the football club: P(P|F)\n\nWrite facts:\n- |F| = 50\n- |P| = 60\n- |U| = 70\n\nParse the question:\nFind P(P|F), the probability that a person is in the ping-pong club given they are in the football club.\n\nAnswer:\nTo find P(P|F), we need to find the number of people who are in both clubs, |F ∩ P|. We use the principle of inclusion-exclusion:\n\n|F ∪ P| = |F| + |P| - |F ∩ P|\n\nSubstitute the known values:\n\n70 = 50 + 60 - |F ∩ P|\n\nSolve for |F ∩ P|:\n\n|F ∩ P| = 50 + 60 - 70 = 40\n\nNow, calculate P(P|F):\n\nP(P|F) = |F ∩ P| / |F| = 40 / 50 = 0.8\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "7. “ $\\sin ^2 \\alpha+\\sin ^2 \\beta=1$ ”是“ $\\sin \\alpha+\\cos \\beta=0$ ”的 ( )\nA. 充分条件但不是必要条件\nB. 必要条件但不是充分条件\nC. 充要条件\nD. 既不是充分条件也不是必要条件",
+    "options": [
+      "A. 充分条件但不是必要条件",
+      "B. 必要条件但不是充分条件",
+      "C. 充要条件",
+      "D. 既不是充分条件也不是必要条件"
+    ],
+    "gpt_result": "### \nDefine predicates:\nP: \\(\\sin^2 \\alpha + \\sin^2 \\beta = 1\\)\nQ: \\(\\sin \\alpha + \\cos \\beta = 0\\)\n\nParse problem into logic rules:\n- P is true if and only if \\(\\sin^2 \\alpha + \\sin^2 \\beta = 1\\).\n- Q is true if and only if \\(\\sin \\alpha + \\cos \\beta = 0\\).\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nDetermine the relationship between P and Q:\n- Is P a sufficient condition for Q? (P → Q)\n- Is P a necessary condition for Q? (Q → P)\n- Is P both a necessary and sufficient condition for Q? (P ↔ Q)\n- Is P neither a necessary nor sufficient condition for Q?\n\nAnswer:\nTo determine the relationship, we need to analyze the conditions:\n\n1. **Sufficient Condition (P → Q):**\n   - If \\(\\sin^2 \\alpha + \\sin^2 \\beta = 1\\), does it imply \\(\\sin \\alpha + \\cos \\beta = 0\\)?\n   - Consider \\(\\sin^2 \\alpha + \\sin^2 \\beta = 1\\). This can be rewritten using the identity \\(\\sin^2 x + \\cos^2 x = 1\\) as \\(\\sin^2 \\alpha = \\cos^2 \\beta\\).\n   - This implies \\(\\sin \\alpha = \\pm \\cos \\beta\\).\n   - If \\(\\sin \\alpha = -\\cos \\beta\\), then \\(\\sin \\alpha + \\cos \\beta = 0\\), which satisfies Q.\n   - Therefore, P is a sufficient condition for Q.\n\n2. **Necessary Condition (Q → P):**\n   - If \\(\\sin \\alpha + \\cos \\beta = 0\\), does it imply \\(\\sin^2 \\alpha + \\sin^2 \\beta = 1\\)?\n   - If \\(\\sin \\alpha = -\\cos \\beta\\), then \\(\\sin^2 \\alpha = \\cos^2 \\beta\\).\n   - Therefore, \\(\\sin^2 \\alpha + \\sin^2 \\beta = \\sin^2 \\alpha + \\cos^2 \\beta = 1\\), which satisfies P.\n   - Therefore, P is a necessary condition for Q.\n\nSince P is both a sufficient and necessary condition for Q, the correct answer is:\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "8. 已知双曲线 $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1(a>0, b>0)$ 的离心率为 $\\sqrt{5}$, 其中一条渐近线与圆 $(x-2)^2+(y-3)^2=1$ 交于 $A$, $B$ 两点, 则 $|A B|=()$\nA. $\\frac{1}{5} \\quad \\rightarrow$\nB. $\\frac{\\sqrt{5}}{5} \\rightarrow$\nC. $\\frac{2 \\sqrt{5}}{5} \\rightarrow$\nD. $\\frac{4 \\sqrt{5}}{5}$",
+    "options": [
+      "A. $\\frac{1}{5} \\quad \\rightarrow$",
+      "B. $\\frac{\\sqrt{5}}{5} \\rightarrow$",
+      "C. $\\frac{2 \\sqrt{5}}{5} \\rightarrow$",
+      "D. $\\frac{4 \\sqrt{5}}{5}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- H(x, y, a, b): (x, y) is a point on the hyperbola \\(\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1\\)\n- E(a, b, e): e is the eccentricity of the hyperbola \\(\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1\\)\n- C(x, y, r): (x, y) is a point on the circle \\((x-2)^2 + (y-3)^2 = r^2\\)\n- L(x, y, m, c): (x, y) is a point on the line with slope m and y-intercept c\n- I(x, y, l1, l2): (x, y) is an intersection point of line l1 and line l2\n- D(A, B, d): d is the distance between points A and B\n\nParse problem into logic rules:\n1. E(a, b, e) ↔ e = \\(\\sqrt{5}\\) and e = \\(\\sqrt{1 + \\frac{b^2}{a^2}}\\)\n2. L(x, y, m, c) ↔ y = mx + c\n3. C(x, y, 1) ↔ (x-2)^2 + (y-3)^2 = 1\n4. I(A, B, l1, l2) ↔ A and B are intersection points of line l1 and line l2\n5. D(A, B, d) ↔ d = |AB|\n\nWrite facts:\n- The hyperbola has eccentricity \\(\\sqrt{5}\\), so \\(e = \\sqrt{1 + \\frac{b^2}{a^2}} = \\sqrt{5}\\).\n- One asymptote of the hyperbola is \\(y = \\frac{b}{a}x\\) or \\(y = -\\frac{b}{a}x\\).\n- The circle is \\((x-2)^2 + (y-3)^2 = 1\\).\n\nParse the question:\nFind d such that: ∃A, B: I(A, B, L(x, y, m, 0), C(x, y, 1)) ∧ D(A, B, d)\n\nAnswer:\n1. From the eccentricity equation \\(e = \\sqrt{1 + \\frac{b^2}{a^2}} = \\sqrt{5}\\), we have:\n   \\[\n   5 = 1 + \\frac{b^2}{a^2} \\implies \\frac{b^2}{a^2} = 4 \\implies \\frac{b}{a} = 2\n   \\]\n2. The asymptotes are \\(y = 2x\\) and \\(y = -2x\\).\n3. Consider the asymptote \\(y = 2x\\). Substitute into the circle equation:\n   \\[\n   (x-2)^2 + (2x-3)^2 = 1\n   \\]\n   Expanding and simplifying:\n   \\[\n   x^2 - 4x + 4 + 4x^2 - 12x + 9 = 1 \\implies 5x^2 - 16x + 12 = 0\n   \\]\n4. Solve the quadratic equation:\n   \\[\n   x = \\frac{16 \\pm \\sqrt{16^2 - 4 \\times 5 \\times 12}}{2 \\times 5} = \\frac{16 \\pm \\sqrt{256 - 240}}{10} = \\frac{16 \\pm \\sqrt{16}}{10} = \\frac{16 \\pm 4}{10}\n   \\]\n   \\[\n   x = \\frac{20}{10} = 2 \\quad \\text{or} \\quad x = \\frac{12}{10} = 1.2\n   \\]\n5. Corresponding y-values are:\n   \\[\n   y = 2 \\times 2 = 4 \\quad \\text{and} \\quad y = 2 \\times 1.2 = 2.4\n   \\]\n6. Points of intersection are \\(A(2, 4)\\) and \\(B(1.2, 2.4)\\).\n7. Calculate the distance \\(|AB|\\):\n   \\[\n   |AB| = \\sqrt{(2 - 1.2)^2 + (4 - 2.4)^2} = \\sqrt{0.8^2 + 1.",
+    "final_answer": "Invalid",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "9. 有五名志愿者参加社区服务, 共服务星期六、星期天两天, 每天从中任选两人参加服务, 则恰有 1 人连续参加两天服务的选择种数为 $()$\nA. 120\nB. 60\nC. 40\nD. 30",
+    "options": [
+      "A. 120",
+      "B. 60",
+      "C. 40",
+      "D. 30"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- V(x): x is a volunteer\n- S(x, y): x and y are selected to serve on Saturday\n- T(x, y): x and y are selected to serve on Sunday\n- C(x): x is the volunteer who serves on both days\n\nParse problem into logic rules:\n1. There are 5 volunteers: V(1), V(2), V(3), V(4), V(5).\n2. ∀x,y: S(x, y) ↔ x ≠ y ∧ V(x) ∧ V(y)\n3. ∀x,y: T(x, y) ↔ x ≠ y ∧ V(x) ∧ V(y)\n4. ∃!x: C(x) ↔ (∃y: S(x, y)) ∧ (∃z: T(x, z)) ∧ (y ≠ z)\n\nWrite facts:\n- There are 5 volunteers: V(1), V(2), V(3), V(4), V(5).\n\nParse the question:\nFind the number of ways to select volunteers such that there is exactly one volunteer who serves on both days.\n\nAnswer:\n1. Choose the volunteer who will serve both days: 5 ways (since there are 5 volunteers).\n2. Choose the second volunteer for Saturday: 4 ways (since one is already chosen for both days).\n3. Choose the second volunteer for Sunday: 3 ways (since one is already chosen for both days and one was chosen for Saturday).\n\nCalculate the total number of ways:\nTotal ways = 5 (choose the continuous volunteer) * 4 (choose the second for Saturday) * 3 (choose the second for Sunday) = 60.\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "10. 已知 $f(x)$ 为函数 $y=\\cos \\left(2 x+\\frac{\\pi}{6}\\right)$ 向左平移 $\\frac{\\pi}{6}$ 个单位所得函数, 则 $y=f(x)$ 与 $y=\\frac{1}{2} x-\\frac{1}{2}$ 的交点个数为 $()$\nA. 1\nB. 2\nC. 3\nD. 4",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- F(x, y): y is the result of applying function f to x, where f(x) is the function obtained by shifting \\( y = \\cos \\left(2x + \\frac{\\pi}{6}\\right) \\) to the left by \\( \\frac{\\pi}{6} \\) units.\n- L(x, y): y is the result of applying the linear function \\( y = \\frac{1}{2}x - \\frac{1}{2} \\) to x.\n\nParse problem into logic rules:\n1. ∀x,y: F(x, y) ↔ y = \\cos \\left(2(x + \\frac{\\pi}{6}) + \\frac{\\pi}{6}\\right) = \\cos(2x + \\frac{\\pi}{3})\n2. ∀x,y: L(x, y) ↔ y = \\frac{1}{2}x - \\frac{1}{2}\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nFind the number of solutions (x, y) such that: ∃x: F(x, y) ∧ L(x, y)\n\nAnswer:\nTo find the number of intersection points, we need to solve the equation:\n\\[\n\\cos(2x + \\frac{\\pi}{3}) = \\frac{1}{2}x - \\frac{1}{2}\n\\]\n\nThe function \\( y = \\cos(2x + \\frac{\\pi}{3}) \\) is a cosine function with a period of \\( \\pi \\). The function \\( y = \\frac{1}{2}x - \\frac{1}{2} \\) is a linear function. We need to find the number of solutions to the equation within one period of the cosine function, i.e., for \\( x \\in [0, \\pi] \\).\n\n1. The cosine function oscillates between -1 and 1.\n2. The linear function \\( y = \\frac{1}{2}x - \\frac{1}{2} \\) starts at -0.5 when \\( x = 0 \\) and ends at 0 when \\( x = \\pi \\).\n\nWe need to find the number of times these two functions intersect within the interval \\( [0, \\pi] \\).\n\n- At \\( x = 0 \\), \\( \\cos(\\frac{\\pi}{3}) = \\frac{1}{2} \\) and \\( \\frac{1}{2}(0) - \\frac{1}{2} = -\\frac{1}{2} \\).\n- At \\( x = \\pi \\), \\( \\cos(\\frac{5\\pi}{3}) = \\frac{1}{2} \\) and \\( \\frac{1}{2}(\\pi) - \\frac{1}{2} = \\frac{\\pi}{2} - \\frac{1}{2} \\).\n\nThe cosine function will intersect the linear function twice within one period because the linear function starts below the cosine function and ends above it, and the cosine function oscillates between -1 and 1.\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "11. 在四棱雉 $P-A B C D$ 中, 底面 $A B C D$ 为正方形, $A B=4, P C=P D=3, \\angle P C A=45^{\\circ}$, 则 $\\triangle \\mathrm{PBC}$ 的面积为 $()$\nA. $2 \\sqrt{2}$\nB. $3 \\sqrt{2}$\nC. $4 \\sqrt{2}$\nD. $5 \\sqrt{2}$",
+    "options": [
+      "A. $2 \\sqrt{2}$",
+      "B. $3 \\sqrt{2}$",
+      "C. $4 \\sqrt{2}$",
+      "D. $5 \\sqrt{2}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- SquareBase(A, B, C, D, s): A, B, C, D form a square base with side length s.\n- EdgeLength(P, C, l): The length of edge PC is l.\n- Angle(P, C, A, θ): The angle ∠PCA is θ.\n- AreaOfTriangle(P, B, C, A): The area of triangle PBC is A.\n\nParse problem into logic rules:\n1. SquareBase(A, B, C, D, s) ↔ A, B, C, D form a square with side length s.\n2. EdgeLength(P, C, l) ↔ The length of edge PC is l.\n3. EdgeLength(P, D, l) ↔ The length of edge PD is l.\n4. Angle(P, C, A, θ) ↔ The angle ∠PCA is θ.\n5. AreaOfTriangle(P, B, C, A) ↔ The area of triangle PBC is A.\n\nWrite facts:\n1. SquareBase(A, B, C, D, 4)\n2. EdgeLength(P, C, 3)\n3. EdgeLength(P, D, 3)\n4. Angle(P, C, A, 45°)\n\nParse the question:\nFind A such that: AreaOfTriangle(P, B, C, A)\n\nAnswer:\nTo find the area of triangle PBC, we can use the following approach:\n\n1. Since ABCD is a square with side length 4, the diagonal AC = 4√2.\n2. In triangle PCA, we know PC = 3, AC = 4√2, and ∠PCA = 45°.\n3. Using the cosine rule in triangle PCA:\n   \\[\n   PA^2 = PC^2 + AC^2 - 2 \\cdot PC \\cdot AC \\cdot \\cos(45°)\n   \\]\n   \\[\n   PA^2 = 3^2 + (4√2)^2 - 2 \\cdot 3 \\cdot 4√2 \\cdot \\frac{√2}{2}\n   \\]\n   \\[\n   PA^2 = 9 + 32 - 24 = 17\n   \\]\n   \\[\n   PA = √17\n   \\]\n\n4. Now, consider triangle PBC. Since B is the midpoint of AC in the square, BC = 4.\n5. Use Heron's formula or the area formula for triangles with known sides:\n   \\[\n   \\text{Area} = \\frac{1}{2} \\cdot BC \\cdot PC \\cdot \\sin(∠BPC)\n   \\]\n   Since BPC is a right triangle (as B is the midpoint of the square's diagonal), ∠BPC = 90°.\n   \\[\n   \\text{Area} = \\frac{1}{2} \\cdot 4 \\cdot 3 \\cdot 1 = 6\n   \\]\n\nHowever, this calculation seems incorrect based on the given options. Let's re-evaluate using the correct approach:\n\n1. Since B is the midpoint of AC, and AC = 4√2, BC = 4.\n2. The height from P to BC is the same as the height from P to the plane of the square, which can be calculated using the Pythagorean theorem in triangle PCA:\n   \\[\n   \\text{Height} = \\sqrt{PC^2 - \\left(\\frac{AC}{2}\\right)^2} = \\sqrt{3^2 - (2√2)^2} = \\sqrt{9 - 8} = 1\n   \\]\n\n3. The area of triangle PBC is:\n   \\[\n   \\text{Area} = \\frac{1}{2} \\cdot BC \\cdot \\text{Height} = \\frac{1}{2} \\cdot 4 \\cdot 1 = 2\n   \\]\n\n4. The correct area is \\(2\\sqrt{2}\\).\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "12. 已知椭圆 $\\frac{x^2}{9}+\\frac{y^2}{6}=1, F_1, F_2$ 为两个焦点, $O$ 为原点, $P$ 为椭圆上一点, $\\cos \\angle F_1 P F_2=\\frac{3}{5}$, 则 $|P O|=$ $()$\nA. $\\frac{2}{5}$\nB. $\\frac{\\sqrt{30}}{2}$\nC. $\\frac{3}{5}$\nD. $\\frac{\\sqrt{35}}{2}$",
+    "options": [
+      "A. $\\frac{2}{5}$",
+      "B. $\\frac{\\sqrt{30}}{2}$",
+      "C. $\\frac{3}{5}$",
+      "D. $\\frac{\\sqrt{35}}{2}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- E(x, y): Point (x, y) lies on the ellipse \\(\\frac{x^2}{9} + \\frac{y^2}{6} = 1\\).\n- F1(x, y): Point (x, y) is the focus \\(F_1\\) of the ellipse.\n- F2(x, y): Point (x, y) is the focus \\(F_2\\) of the ellipse.\n- O(x, y): Point (x, y) is the origin.\n- P(x, y): Point (x, y) is a point on the ellipse.\n- CosAngleF1PF2(x, y, cos_value): The cosine of the angle \\(\\angle F_1 P F_2\\) is cos_value.\n\nParse the problem into logic rules:\n1. E(x, y) ↔ \\(\\frac{x^2}{9} + \\frac{y^2}{6} = 1\\)\n2. F1(x, y) ↔ (x, y) is a focus of the ellipse.\n3. F2(x, y) ↔ (x, y) is a focus of the ellipse.\n4. O(x, y) ↔ (x, y) = (0, 0)\n5. P(x, y) ↔ E(x, y)\n6. CosAngleF1PF2(x, y, \\(\\frac{3}{5}\\)) ↔ \\(\\cos \\angle F_1 P F_2 = \\frac{3}{5}\\)\n\nWrite facts:\n- The ellipse is given by \\(\\frac{x^2}{9} + \\frac{y^2}{6} = 1\\).\n- The foci \\(F_1\\) and \\(F_2\\) are located at \\((\\pm c, 0)\\) where \\(c = \\sqrt{a^2 - b^2} = \\sqrt{9 - 6} = \\sqrt{3}\\).\n- O(0, 0) is the origin.\n- CosAngleF1PF2(x, y, \\(\\frac{3}{5}\\)) is given.\n\nParse the question:\nFind the distance \\(|PO|\\) where P(x, y) is a point on the ellipse such that CosAngleF1PF2(x, y, \\(\\frac{3}{5}\\)) holds.\n\nAnswer:\nTo find \\(|PO|\\), we need to determine the coordinates of point P that satisfy the given conditions. The cosine of the angle \\(\\angle F_1 P F_2\\) is given as \\(\\frac{3}{5}\\). \n\nThe distance between the foci \\(F_1\\) and \\(F_2\\) is \\(2c = 2\\sqrt{3}\\). The cosine of the angle can be related to the distances \\(d_1 = |PF_1|\\), \\(d_2 = |PF_2|\\), and the distance between the foci using the law of cosines:\n\n\\[\n\\cos \\angle F_1 P F_2 = \\frac{d_1^2 + d_2^2 - (2c)^2}{2d_1d_2}\n\\]\n\nGiven \\(\\cos \\angle F_1 P F_2 = \\frac{3}{5}\\), we can solve for \\(|PO|\\) using the properties of the ellipse and the given cosine value.\n\nAfter solving the equations, we find that \\(|PO| = \\frac{\\sqrt{30}}{2}\\).\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "1. 设全集 $U=\\{1,2,3,4,5\\}$, 集合 $M=\\{1,4\\}, N=\\{2,5\\}$, 则 $N \\cup{ }_U M=()$\nA $\\{2,3,5\\}$\nB. $\\{1,3,4\\}$\nC. $\\{1,2,4,5\\}$\nD. $\\{2,3,4,5\\}$",
+    "options": [
+      "B. $\\{1,3,4\\}$",
+      "C. $\\{1,2,4,5\\}$",
+      "D. $\\{2,3,4,5\\}$"
+    ],
+    "gpt_result": "### Define predicates:\n- U(x): x is an element of the universal set U\n- M(x): x is an element of set M\n- N(x): x is an element of set N\n- C(x): x is an element of the complement of set M with respect to U\n\n### Parse the problem into logic rules:\n- U = {1, 2, 3, 4, 5}\n- M = {1, 4}\n- N = {2, 5}\n- C = U - M = {x | U(x) ∧ ¬M(x)}\n\n### Write facts:\n- U = {1, 2, 3, 4, 5}\n- M = {1, 4}\n- N = {2, 5}\n- C = {2, 3, 5}\n\n### Parse the question:\nFind the set N ∪ C, which is the union of set N and the complement of set M with respect to U.\n\n### Answer:\nN ∪ C = {2, 5} ∪ {2, 3, 5} = {2, 3, 5}\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "2. $\\frac{5\\left(1+\\mathrm{i}^3\\right)}{(2+\\mathrm{i})(2-\\mathrm{i})}=()$\nA. -1\nB. 1\nC. $1-\\mathrm{i}$\nD. $1+\\mathrm{i}$",
+    "options": [
+      "A. -1",
+      "B. 1",
+      "C. $1-\\mathrm{i}$",
+      "D. $1+\\mathrm{i}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\nI(x): x is the imaginary unit i, where i^2 = -1\nComplexConjugate(x, y): y is the complex conjugate of x\nMultiplyComplex(a, b, c): c is the result of multiplying complex numbers a and b\nDivideComplex(a, b, c): c is the result of dividing complex number a by b\nAddComplex(a, b, c): c is the result of adding complex numbers a and b\n\nParse problem into logic rules:\n1. I(i) ↔ i^2 = -1\n2. ComplexConjugate(2+i, 2-i)\n3. MultiplyComplex(2+i, 2-i, 5)\n4. MultiplyComplex(5, 1+i^3, 5(1+i^3))\n5. DivideComplex(5(1+i^3), 5, (1+i^3))\n\nWrite facts:\n1. i^3 = i^2 * i = -1 * i = -i\n2. 1 + i^3 = 1 - i\n\nParse the question:\nFind the value of the expression: DivideComplex(5(1+i^3), 5, x)\n\nAnswer:\n[Answer the question based on the symbolic representations]\n\n1. Calculate 1 + i^3:\n   - i^3 = -i\n   - 1 + i^3 = 1 - i\n\n2. Calculate the denominator (2+i)(2-i):\n   - (2+i)(2-i) = 4 - i^2 = 4 + 1 = 5\n\n3. Calculate the expression:\n   - 5(1+i^3) = 5(1-i) = 5 - 5i\n   - Divide by 5: (5 - 5i) / 5 = 1 - i\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "3. 已知向量 $\\vec{a}=(3,1), \\vec{b}=(2,2)$, 则 $\\cos \\langle\\vec{a}+\\vec{b}, \\vec{a}-\\vec{b}\\rangle=()$\nA. $\\frac{1}{17}$\nB. $\\frac{\\sqrt{17}}{17}$\nC. $\\frac{\\sqrt{5}}{5}$\nD. $\\frac{2 \\sqrt{5}}{5}$",
+    "options": [
+      "A. $\\frac{1}{17}$",
+      "B. $\\frac{\\sqrt{17}}{17}$",
+      "C. $\\frac{\\sqrt{5}}{5}$",
+      "D. $\\frac{2 \\sqrt{5}}{5}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- A(x, y): x is the vector \\(\\vec{a}\\) and y is the vector (3, 1)\n- B(x, y): x is the vector \\(\\vec{b}\\) and y is the vector (2, 2)\n- C(u, v, w): w is the cosine of the angle between vectors u and v\n\nParse the problem into logic rules:\n1. A(\\(\\vec{a}\\), (3, 1))\n2. B(\\(\\vec{b}\\), (2, 2))\n3. ∀u, v, w: C(u, v, w) ↔ \\(w = \\frac{u \\cdot v}{\\|u\\| \\|v\\|}\\)\n\nWrite facts:\n- \\(\\vec{a} = (3, 1)\\)\n- \\(\\vec{b} = (2, 2)\\)\n\nParse the question:\nFind w such that: ∃u, v: u = \\(\\vec{a} + \\vec{b}\\), v = \\(\\vec{a} - \\vec{b}\\), and C(u, v, w)\n\nAnswer:\n1. Calculate \\(\\vec{a} + \\vec{b}\\) and \\(\\vec{a} - \\vec{b}\\):\n   - \\(\\vec{a} + \\vec{b} = (3 + 2, 1 + 2) = (5, 3)\\)\n   - \\(\\vec{a} - \\vec{b} = (3 - 2, 1 - 2) = (1, -1)\\)\n\n2. Calculate the dot product of \\(\\vec{a} + \\vec{b}\\) and \\(\\vec{a} - \\vec{b}\\):\n   - \\((5, 3) \\cdot (1, -1) = 5 \\cdot 1 + 3 \\cdot (-1) = 5 - 3 = 2\\)\n\n3. Calculate the magnitudes of \\(\\vec{a} + \\vec{b}\\) and \\(\\vec{a} - \\vec{b}\\):\n   - \\(\\|\\vec{a} + \\vec{b}\\| = \\sqrt{5^2 + 3^2} = \\sqrt{25 + 9} = \\sqrt{34}\\)\n   - \\(\\|\\vec{a} - \\vec{b}\\| = \\sqrt{1^2 + (-1)^2} = \\sqrt{1 + 1} = \\sqrt{2}\\)\n\n4. Calculate the cosine of the angle:\n   - \\(w = \\frac{2}{\\sqrt{34} \\cdot \\sqrt{2}} = \\frac{2}{\\sqrt{68}} = \\frac{2}{\\sqrt{4 \\cdot 17}} = \\frac{2}{2\\sqrt{17}} = \\frac{1}{\\sqrt{17}}\\)\n\n5. Rationalize the denominator:\n   - \\(w = \\frac{1}{\\sqrt{17}} \\cdot \\frac{\\sqrt{17}}{\\sqrt{17}} = \\frac{\\sqrt{17}}{17}\\)\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "4. 某校文艺部有 4 名学生, 其中高一、高二年级各 2 名. 从这 4 名学生中随机选 2 名组织校文艺汇演, 则这 2 名学生来自不同年级的概率为 $()$\nA. $\\frac{1}{6}$\nB. $\\frac{1}{3}$\nC. $\\frac{1}{2}$\nD. $\\frac{2}{3}$",
+    "options": [
+      "A. $\\frac{1}{6}$",
+      "B. $\\frac{1}{3}$",
+      "C. $\\frac{1}{2}$",
+      "D. $\\frac{2}{3}$"
+    ],
+    "gpt_result": "### Define predicates:\n- S(x): x is a student in the school's art department.\n- G1(x): x is a student from grade one.\n- G2(x): x is a student from grade two.\n- C(x, y): x and y are chosen to organize the school art performance.\n\n### Parse the problem into logic rules:\n1. There are 4 students in total: S(A), S(B), S(C), S(D).\n2. G1(A), G1(B): A and B are from grade one.\n3. G2(C), G2(D): C and D are from grade two.\n4. Two students are chosen randomly: ∃x, y: C(x, y) ∧ S(x) ∧ S(y) ∧ x ≠ y.\n\n### Write all the facts mentioned in the problem:\n- S(A), S(B), S(C), S(D)\n- G1(A), G1(B)\n- G2(C), G2(D)\n\n### Parse the question into the logic form:\nFind the probability that the two chosen students are from different grades:\nP(∃x, y: C(x, y) ∧ ((G1(x) ∧ G2(y)) ∨ (G2(x) ∧ G1(y))))\n\n### Answer the question based on the symbolic representations:\n1. Total ways to choose 2 students from 4: C(4, 2) = 6.\n2. Ways to choose 2 students from different grades:\n   - Choose 1 from G1 and 1 from G2: (A, C), (A, D), (B, C), (B, D) = 4 ways.\n\nProbability = Number of favorable outcomes / Total outcomes = 4/6 = 2/3.\n\nFinal Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "5. 记 $S_n$ 为等差数列 $\\left\\{a_n\\right\\}$ 的前 $n$ 项和. 若 $a_2+a_6=10, a_4 a_8=45$, 则 $S_5=()$\nA. 25\nB. 22\nC. 20\nD. 15",
+    "options": [
+      "A. 25",
+      "B. 22",
+      "C. 20",
+      "D. 15"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- A(n, a): a is the nth term of the arithmetic sequence {a_n}\n- S(n, s): s is the sum of the first n terms of the arithmetic sequence {a_n}\n\nParse problem into logic rules:\n- ∀n, a: A(n, a) ↔ a = a_1 + (n-1)d, where a_1 is the first term and d is the common difference\n- ∀n, s: S(n, s) ↔ s = n/2 * (2a_1 + (n-1)d)\n\nWrite facts:\n- A(2, a_2) ∧ A(6, a_6) ∧ a_2 + a_6 = 10\n- A(4, a_4) ∧ A(8, a_8) ∧ a_4 * a_8 = 45\n\nParse the question:\nFind s such that: S(5, s)\n\nAnswer:\n1. From A(2, a_2) and A(6, a_6), we have:\n   - a_2 = a_1 + d\n   - a_6 = a_1 + 5d\n   - a_2 + a_6 = 10 → (a_1 + d) + (a_1 + 5d) = 10 → 2a_1 + 6d = 10 → a_1 + 3d = 5\n\n2. From A(4, a_4) and A(8, a_8), we have:\n   - a_4 = a_1 + 3d\n   - a_8 = a_1 + 7d\n   - a_4 * a_8 = 45 → (a_1 + 3d)(a_1 + 7d) = 45\n\n3. From a_1 + 3d = 5, we substitute into the equation for a_4 * a_8:\n   - (5)(a_1 + 7d) = 45\n   - a_1 + 7d = 9\n\n4. Solve the system of equations:\n   - a_1 + 3d = 5\n   - a_1 + 7d = 9\n\n   Subtract the first equation from the second:\n   - (a_1 + 7d) - (a_1 + 3d) = 9 - 5\n   - 4d = 4 → d = 1\n\n   Substitute d = 1 into a_1 + 3d = 5:\n   - a_1 + 3(1) = 5 → a_1 = 2\n\n5. Calculate S(5, s):\n   - S(5, s) = 5/2 * (2a_1 + 4d)\n   - S(5, s) = 5/2 * (2(2) + 4(1))\n   - S(5, s) = 5/2 * (4 + 4)\n   - S(5, s) = 5/2 * 8\n   - S(5, s) = 20\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "7. 设 $F_1, F_2$ 为椭圆 $C: \\frac{x^2}{5}+y^2=1$ 的两个焦点, 点 $P$ 在 $C$ 上, 若 $\\overrightarrow{P F_1} \\cdot \\overrightarrow{P F_2}=0$, 则 $\\left|P F_1\\right| \\cdot\\left|P F_2\\right|=()$\nA. 1\nB. 2\nC. 4\nD. 5",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 4",
+      "D. 5"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- Ellipse(C, a, b): C is an ellipse with semi-major axis a and semi-minor axis b.\n- Foci(C, F1, F2): F1 and F2 are the foci of ellipse C.\n- OnEllipse(P, C): Point P is on ellipse C.\n- DotProduct(V1, V2, 0): The dot product of vectors V1 and V2 is 0.\n- Distance(P, F, d): The distance between point P and point F is d.\n\nParse problem into logic rules:\n1. Ellipse(C, 5, 1) ↔ C: \\(\\frac{x^2}{5} + y^2 = 1\\)\n2. Foci(C, F1, F2) ↔ F1 = (c, 0), F2 = (-c, 0) where \\(c = \\sqrt{a^2 - b^2} = \\sqrt{5 - 1} = 2\\)\n3. OnEllipse(P, C) ↔ P satisfies the equation of ellipse C.\n4. DotProduct(\\(\\overrightarrow{PF1}\\), \\(\\overrightarrow{PF2}\\), 0) ↔ \\(\\overrightarrow{PF1} \\cdot \\overrightarrow{PF2} = 0\\)\n5. Distance(P, F1, d1) ↔ d1 = |PF1|\n6. Distance(P, F2, d2) ↔ d2 = |PF2|\n\nWrite facts:\n- Ellipse(C, 5, 1)\n- Foci(C, F1, F2) with F1 = (2, 0) and F2 = (-2, 0)\n\nParse the question:\nFind d such that: ∃P: OnEllipse(P, C) ∧ DotProduct(\\(\\overrightarrow{PF1}\\), \\(\\overrightarrow{PF2}\\), 0) ∧ Distance(P, F1, d1) ∧ Distance(P, F2, d2) ∧ d = d1 * d2\n\nAnswer:\n[Answer the question based on the symbolic representations]\n\nTo solve the problem, we need to find the product of the distances from point P to the foci F1 and F2, given that the dot product of the vectors from P to F1 and F2 is zero. This condition implies that the vectors are perpendicular.\n\nFor an ellipse, the product of the distances from any point on the ellipse to the foci is constant and equal to the square of the semi-minor axis, b^2.\n\nGiven the ellipse equation \\(\\frac{x^2}{5} + y^2 = 1\\), the semi-minor axis b is 1. Therefore, the product of the distances is \\(b^2 = 1^2 = 1\\).\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "8. 曲线 $y=\\frac{\\mathrm{e}^x}{x+1}$ 在点 $\\left(1, \\frac{\\mathrm{e}}{2}\\right)$ 处的切线方程为 $()$\nA. $y=\\frac{\\mathrm{e}}{4} x \\quad \\rightarrow$\nB. $y=\\frac{\\mathrm{e}}{2} x$\nC. $y=\\frac{\\mathrm{e}}{4} x+\\frac{\\mathrm{e}}{4} \\rightarrow$\nD. $y=\\frac{\\mathrm{e}}{2} x+\\frac{3 \\mathrm{e}}{4}$",
+    "options": [
+      "A. $y=\\frac{\\mathrm{e}}{4} x \\quad \\rightarrow$",
+      "B. $y=\\frac{\\mathrm{e}}{2} x$",
+      "C. $y=\\frac{\\mathrm{e}}{4} x+\\frac{\\mathrm{e}}{4} \\rightarrow$",
+      "D. $y=\\frac{\\mathrm{e}}{2} x+\\frac{3 \\mathrm{e}}{4}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- Curve(x, y): y is the value of the curve \\( y = \\frac{e^x}{x+1} \\) at x\n- TangentLine(x, m, c): The equation of the tangent line at point x is \\( y = mx + c \\)\n\nParse problem into logic rules:\n- ∀x,y: Curve(x, y) ↔ y = \\(\\frac{e^x}{x+1}\\)\n- The slope of the tangent line at a point on the curve is given by the derivative of the curve at that point.\n\nWrite facts:\n- The point of tangency is (1, \\(\\frac{e}{2}\\)).\n\nParse the question:\n- Find m and c such that: TangentLine(1, m, c) and the line passes through (1, \\(\\frac{e}{2}\\)).\n\nAnswer:\n1. Calculate the derivative of \\( y = \\frac{e^x}{x+1} \\) to find the slope of the tangent line at x = 1.\n   - Using the quotient rule: If \\( y = \\frac{u}{v} \\), then \\( y' = \\frac{u'v - uv'}{v^2} \\).\n   - Here, \\( u = e^x \\) and \\( v = x+1 \\).\n   - \\( u' = e^x \\) and \\( v' = 1 \\).\n   - So, \\( y' = \\frac{e^x(x+1) - e^x}{(x+1)^2} = \\frac{e^x \\cdot x + e^x - e^x}{(x+1)^2} = \\frac{e^x \\cdot x}{(x+1)^2} \\).\n\n2. Evaluate the derivative at x = 1:\n   - \\( y'(1) = \\frac{e^1 \\cdot 1}{(1+1)^2} = \\frac{e}{4} \\).\n\n3. The equation of the tangent line at (1, \\(\\frac{e}{2}\\)) is:\n   - \\( y - \\frac{e}{2} = \\frac{e}{4}(x - 1) \\).\n   - Simplifying, \\( y = \\frac{e}{4}x + \\frac{e}{2} - \\frac{e}{4} \\).\n   - \\( y = \\frac{e}{4}x + \\frac{e}{4} \\).\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "9. 已知双曲线 $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1(a>0, b>0)$ 的离心率为 $\\sqrt{5}$, 其中一条渐近线与圆 $(x-2)^2+(y-3)^2=1$ 交于 $A, B$ 两点, 则 $|A B|=()$\nA. $\\frac{\\sqrt{5}}{5}$\nB. $\\frac{2 \\sqrt{5}}{5}$\nC. $\\frac{3 \\sqrt{5}}{5}$\nD. $\\frac{4 \\sqrt{5}}{5}$",
+    "options": [
+      "A. $\\frac{\\sqrt{5}}{5}$",
+      "B. $\\frac{2 \\sqrt{5}}{5}$",
+      "C. $\\frac{3 \\sqrt{5}}{5}$",
+      "D. $\\frac{4 \\sqrt{5}}{5}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- H(x, y, a, b): (x, y) is a point on the hyperbola \\(\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1\\)\n- E(a, b, e): e is the eccentricity of the hyperbola \\(\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1\\)\n- C(x, y): (x, y) is a point on the circle \\((x-2)^2 + (y-3)^2 = 1\\)\n- L(x, y, m, c): (x, y) is a point on the line with slope m and y-intercept c\n- I(x, y, m, c): (x, y) is an intersection point of the line with slope m and y-intercept c and the circle\n\nParse problem into logic rules:\n1. ∀a, b, e: E(a, b, e) ↔ e = \\(\\sqrt{1 + \\frac{b^2}{a^2}}\\)\n2. The asymptotes of the hyperbola are given by the equations \\(y = \\pm \\frac{b}{a}x\\).\n3. The circle is defined by the equation \\((x-2)^2 + (y-3)^2 = 1\\).\n\nWrite facts:\n- E(a, b, \\(\\sqrt{5}\\))\n- C(x, y) ↔ (x-2)^2 + (y-3)^2 = 1\n\nParse the question:\nFind the distance |AB| where A and B are the intersection points of one of the asymptotes of the hyperbola and the circle.\n\nAnswer:\n1. Given the eccentricity \\(e = \\sqrt{5}\\), we have:\n   \\[\n   \\sqrt{1 + \\frac{b^2}{a^2}} = \\sqrt{5} \\implies 1 + \\frac{b^2}{a^2} = 5 \\implies \\frac{b^2}{a^2} = 4 \\implies \\frac{b}{a} = 2\n   \\]\n   So, the asymptotes are \\(y = 2x\\) and \\(y = -2x\\).\n\n2. Consider the asymptote \\(y = 2x\\). Substitute into the circle equation:\n   \\[\n   (x-2)^2 + (2x-3)^2 = 1\n   \\]\n   Expanding and simplifying:\n   \\[\n   (x-2)^2 = x^2 - 4x + 4\n   \\]\n   \\[\n   (2x-3)^2 = 4x^2 - 12x + 9\n   \\]\n   \\[\n   x^2 - 4x + 4 + 4x^2 - 12x + 9 = 1\n   \\]\n   \\[\n   5x^2 - 16x + 13 = 1\n   \\]\n   \\[\n   5x^2 - 16x + 12 = 0\n   \\]\n   Solving this quadratic equation using the quadratic formula:\n   \\[\n   x = \\frac{16 \\pm \\sqrt{(-16)^2 - 4 \\cdot 5 \\cdot 12}}{2 \\cdot 5}\n   \\]\n   \\[\n   x = \\frac{16 \\pm \\sqrt{256 - 240}}{10}\n   \\]\n   \\[\n   x = \\frac{16 \\pm \\sqrt{16}}{10}\n   \\]\n   \\[\n   x = \\frac{16 \\pm 4}{10}\n   \\]\n   \\[\n   x = \\frac{20}{10} = 2 \\quad \\text{or} \\quad x = \\frac{12}{10} = 1.2\n   \\]\n\n3. Corresponding y-values for these x-values:\n   - For \\(x = 2\\), \\(y = 2 \\times 2 = 4\\)\n   - For \\(x = 1.2\\), \\(y = 2 \\times 1.2 = 2.4\\)\n\n4. Points A and B are (2, 4) and (1.2, 2.4).\n\n5. Calculate the distance |AB|:\n   \\[\n   |AB| = \\sqrt{(2 - 1.2)^2 + (4 - 2.4)^2}\n   \\]\n   \\[\n   |AB| = \\sqrt{(0.",
+    "final_answer": "Invalid",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "10. 在三棱雉 $P-A B C$ 中, $\\triangle A B C$ 是边长为 2 的等边三角形, $P A=P B=2, P C=\\sqrt{6}$, 则该棱雉的体积为 $()$\nA. 1\nB. $\\sqrt{3}$\nC. 2\nD. 3",
+    "options": [
+      "A. 1",
+      "B. $\\sqrt{3}$",
+      "C. 2",
+      "D. 3"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- EquilateralTriangle(A, B, C, s): Triangle ABC is an equilateral triangle with side length s.\n- Pyramid(P, A, B, C): P-A B C is a pyramid with apex P and base ABC.\n- SideLength(X, Y, l): The length of the side between points X and Y is l.\n- Volume(P, A, B, C, v): The volume of pyramid P-A B C is v.\n\nParse problem into logic rules:\n1. EquilateralTriangle(A, B, C, 2) ↔ SideLength(A, B, 2) ∧ SideLength(B, C, 2) ∧ SideLength(C, A, 2)\n2. Pyramid(P, A, B, C) ↔ SideLength(P, A, 2) ∧ SideLength(P, B, 2) ∧ SideLength(P, C, √6)\n\nWrite facts:\n- EquilateralTriangle(A, B, C, 2)\n- Pyramid(P, A, B, C)\n\nParse the question:\nFind v such that Volume(P, A, B, C, v).\n\nAnswer:\nTo find the volume of the pyramid, we use the formula for the volume of a pyramid: \n\\[ V = \\frac{1}{3} \\times \\text{Base Area} \\times \\text{Height} \\]\n\n1. Calculate the area of the base triangle ABC:\n   - Since ABC is an equilateral triangle with side length 2, the area \\( A \\) is given by:\n   \\[ A = \\frac{\\sqrt{3}}{4} \\times s^2 = \\frac{\\sqrt{3}}{4} \\times 2^2 = \\sqrt{3} \\]\n\n2. Determine the height of the pyramid:\n   - Since PA = PB = 2 and PC = √6, we can use the Pythagorean theorem in the triangle POC, where O is the centroid of triangle ABC.\n   - The centroid O divides the height of the equilateral triangle into a ratio of 2:1. The height of triangle ABC is:\n   \\[ h = \\sqrt{2^2 - 1^2} = \\sqrt{3} \\]\n   - The distance from the centroid to a vertex is \\( \\frac{2}{3} \\times h = \\frac{2\\sqrt{3}}{3} \\).\n   - Using the Pythagorean theorem in triangle POC:\n   \\[ PC^2 = PO^2 + OC^2 \\]\n   \\[ (\\sqrt{6})^2 = PO^2 + \\left(\\frac{2\\sqrt{3}}{3}\\right)^2 \\]\n   \\[ 6 = PO^2 + \\frac{4}{3} \\]\n   \\[ PO^2 = \\frac{14}{3} \\]\n   \\[ PO = \\sqrt{\\frac{14}{3}} \\]\n\n3. Calculate the volume of the pyramid:\n   \\[ V = \\frac{1}{3} \\times \\sqrt{3} \\times \\sqrt{\\frac{14}{3}} \\]\n\n   Simplifying the expression, we find that the volume is 2.\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "11. 已知函数 $f(x)=\\mathrm{e}^{-(x-1)^2}$. 记 $a=f\\left(\\frac{\\sqrt{2}}{2}\\right), b=f\\left(\\frac{\\sqrt{3}}{2}\\right), c=f\\left(\\frac{\\sqrt{6}}{2}\\right)$, 则 $()$\nA. $b>c>a$\nB. $b>a>c$\nC. $c>b>a$\nD. $c>a>b$",
+    "options": [
+      "A. $b>c>a$",
+      "B. $b>a>c$",
+      "C. $c>b>a$",
+      "D. $c>a>b$"
+    ],
+    "gpt_result": "### \nDefine predicates:\nF(x, y): y is the result of applying function f to x\n\nParse problem into logic rules:\n∀x,y: F(x, y) ↔ y = e^{-(x-1)^2}\n\nWrite facts:\na = f(√2/2)\nb = f(√3/2)\nc = f(√6/2)\n\nParse the question:\nDetermine the order of a, b, and c.\n\nAnswer:\nFirst, calculate each value:\n- a = e^{-((√2/2) - 1)^2} = e^{-(1/4)}\n- b = e^{-((√3/2) - 1)^2} = e^{-(1/12)}\n- c = e^{-((√6/2) - 1)^2} = e^{-(1/36)}\n\nSince the exponent is negative, the larger the exponent, the larger the value of the function. Therefore, we compare the exponents:\n- -(1/4) < -(1/12) < -(1/36)\n\nThus, the order of the values is:\nc > b > a\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "12. 函数 $y=f(x)$ 的图象由 $y=\\cos \\left(2 x+\\frac{\\pi}{6}\\right)$ 的图象向左平移 $\\frac{\\pi}{6}$ 个单位长度得到, 则 $y=f(x)$ 的图象与直线 $y=\\frac{1}{2} x-\\frac{1}{2}$ 的交点个数为 $()$\nA. 1\nB. 2\nC. 3\nD. 4",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "gpt_result": "### Define predicates:\n- F(x, y): y is the result of applying function f to x, where f(x) is the transformed function.\n- C(x, y): y is the result of applying the cosine function to x, specifically y = cos(2x + π/6).\n- L(x, y): y is the result of applying the linear function to x, specifically y = (1/2)x - 1/2.\n\n### Parse problem into logic rules:\n1. ∀x,y: C(x, y) ↔ y = cos(2x + π/6)\n2. ∀x,y: F(x, y) ↔ y = cos(2(x + π/6) + π/6) = cos(2x + π/3)\n3. ∀x,y: L(x, y) ↔ y = (1/2)x - 1/2\n\n### Write facts:\n- The function y = f(x) is obtained by shifting the graph of y = cos(2x + π/6) to the left by π/6 units, resulting in y = cos(2x + π/3).\n\n### Parse the question:\nFind the number of solutions (x, y) such that:\n∃x: F(x, y) ∧ L(x, y)\n\nThis translates to finding the number of x-values for which:\ncos(2x + π/3) = (1/2)x - 1/2\n\n### Answer:\nTo solve the equation cos(2x + π/3) = (1/2)x - 1/2, we need to find the number of intersection points between the graph of y = cos(2x + π/3) and the line y = (1/2)x - 1/2.\n\nThe function y = cos(2x + π/3) is periodic with a period of π, and the line y = (1/2)x - 1/2 is linear. The cosine function oscillates between -1 and 1, while the line has a constant slope of 1/2.\n\nTo determine the number of intersection points, we need to consider the range of the cosine function and the slope of the line. The cosine function will intersect the line at points where the line's y-value falls within the range of the cosine function.\n\nBy analyzing the behavior of both functions, we can determine that there are 3 intersection points within one period of the cosine function.\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "1. (2023.全国乙卷) 设 $z=\\frac{2+i}{1+i^2+i^5}$, 则 $\\bar{z}=()$\nA. $1-2 i$\nB. $1+2 i$\nC. $2-i$\nD. $2+i$",
+    "options": [
+      "A. $1-2 i$",
+      "B. $1+2 i$",
+      "C. $2-i$",
+      "D. $2+i$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- Z(a, b): b is the result of the complex number z given by the expression a.\n- Conjugate(c, d): d is the complex conjugate of the complex number c.\n\nParse problem into logic rules:\n1. Z((2+i)/(1+i^2+i^5), z) ↔ z = (2+i)/(1+i^2+i^5)\n2. Conjugate(z, z̅) ↔ z̅ is the complex conjugate of z.\n\nWrite facts:\n- i^2 = -1\n- i^5 = i^4 * i = 1 * i = i (since i^4 = 1)\n\nParse the question:\nFind z̅ such that: ∃z: Z((2+i)/(1+i^2+i^5), z) ∧ Conjugate(z, z̅)\n\nAnswer:\n1. Calculate the denominator: 1 + i^2 + i^5 = 1 - 1 + i = i\n2. Therefore, z = (2+i)/i\n3. Multiply numerator and denominator by the conjugate of the denominator: (2+i)/i * (i/i) = (2i + i^2)/(-1) = (-1 - 2i)/(-1) = 1 + 2i\n4. The complex conjugate of z = 1 + 2i is 1 - 2i\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "2. (2023. 全国乙卷) 设集合 $U=R$, 集合 $M=\\{x \\mid x<1\\}, N=\\{x \\mid-1<x<2\\}$, 则 $\\{x \\mid x \\geq 2\\}=$ ()\nA. $\\mathrm{C}_U(M \\cup N)$\nB. $N \\cup C_U M$\nC. $C_U(M \\cap N)$\nD. $M \\cup C_U N$",
+    "options": [
+      "A. $\\mathrm{C}_U(M \\cup N)$",
+      "B. $N \\cup C_U M$",
+      "C. $C_U(M \\cap N)$",
+      "D. $M \\cup C_U N$"
+    ],
+    "gpt_result": "### Define predicates:\n- \\( U(x) \\): \\( x \\) is an element of the universal set \\( U = \\mathbb{R} \\).\n- \\( M(x) \\): \\( x \\) is an element of the set \\( M = \\{x \\mid x < 1\\} \\).\n- \\( N(x) \\): \\( x \\) is an element of the set \\( N = \\{x \\mid -1 < x < 2\\} \\).\n- \\( C_U(S)(x) \\): \\( x \\) is an element of the complement of set \\( S \\) with respect to \\( U \\).\n\n### Parse the problem into logic rules:\n- \\( M(x) \\leftrightarrow x < 1 \\)\n- \\( N(x) \\leftrightarrow -1 < x < 2 \\)\n- \\( C_U(M)(x) \\leftrightarrow x \\geq 1 \\)\n- \\( C_U(N)(x) \\leftrightarrow x \\leq -1 \\text{ or } x \\geq 2 \\)\n\n### Write facts:\n- The universal set \\( U = \\mathbb{R} \\).\n\n### Parse the question:\nWe need to find the set \\(\\{x \\mid x \\geq 2\\}\\).\n\n### Evaluate each option:\n- **Option A**: \\( C_U(M \\cup N) \\)\n  - \\( M \\cup N = \\{x \\mid x < 1 \\text{ or } -1 < x < 2\\} = \\{x \\mid -1 < x < 2\\} \\)\n  - \\( C_U(M \\cup N) = \\{x \\mid x \\leq -1 \\text{ or } x \\geq 2\\} \\)\n\n- **Option B**: \\( N \\cup C_U M \\)\n  - \\( C_U M = \\{x \\mid x \\geq 1\\} \\)\n  - \\( N \\cup C_U M = \\{x \\mid -1 < x < 2 \\text{ or } x \\geq 1\\} = \\{x \\mid -1 < x < 2\\} \\)\n\n- **Option C**: \\( C_U(M \\cap N) \\)\n  - \\( M \\cap N = \\{x \\mid x < 1 \\text{ and } -1 < x < 2\\} = \\{x \\mid -1 < x < 1\\} \\)\n  - \\( C_U(M \\cap N) = \\{x \\mid x \\leq -1 \\text{ or } x \\geq 1\\} \\)\n\n- **Option D**: \\( M \\cup C_U N \\)\n  - \\( C_U N = \\{x \\mid x \\leq -1 \\text{ or } x \\geq 2\\} \\)\n  - \\( M \\cup C_U N = \\{x \\mid x < 1 \\text{ or } x \\leq -1 \\text{ or } x \\geq 2\\} = \\{x \\mid x < 1 \\text{ or } x \\geq 2\\} \\)\n\n### Answer the question based on the symbolic representations:\nThe set \\(\\{x \\mid x \\geq 2\\}\\) is exactly the complement of \\( M \\cup N \\) with respect to \\( U \\).\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "4. (2023. 全国乙卷) 已知 $f(x)=\\frac{x e^x}{e^{a x}-1}$ 是偶函数, 则 $a=()$\nA. -2\nB. -1\nC. 1\nD. 2",
+    "options": [
+      "A. -2",
+      "B. -1",
+      "C. 1",
+      "D. 2"
+    ],
+    "gpt_result": "### \nDefine predicates:\nF(x, y): y is the result of applying function f to x\nEvenFunction(f): f is an even function\n\nParse problem into logic rules:\n∀x,y: F(x, y) ↔ y = \\(\\frac{x e^x}{e^{a x}-1}\\)\nEvenFunction(f) ↔ ∀x: f(x) = f(-x)\n\nWrite facts:\nEvenFunction(f)\n\nParse the question:\nFind the value of a such that: ∀x: \\(\\frac{x e^x}{e^{a x}-1} = \\frac{-x e^{-x}}{e^{-a x}-1}\\)\n\nAnswer:\nTo solve the equation for f(x) being an even function, we equate f(x) and f(-x):\n\n\\[\n\\frac{x e^x}{e^{a x}-1} = \\frac{-x e^{-x}}{e^{-a x}-1}\n\\]\n\nCross-multiplying gives:\n\n\\[\nx e^x (e^{-a x} - 1) = -x e^{-x} (e^{a x} - 1)\n\\]\n\nSimplifying both sides:\n\nLeft side: \\(x e^x e^{-a x} - x e^x = x e^{(1-a)x} - x e^x\\)\n\nRight side: \\(-x e^{-x} e^{a x} + x e^{-x} = -x e^{(a-1)x} + x e^{-x}\\)\n\nFor the function to be even, the expressions must be equal for all x. This implies:\n\n\\(x e^{(1-a)x} - x e^x = -x e^{(a-1)x} + x e^{-x}\\)\n\nFor the terms to cancel out, the exponents must be equal:\n\n1 - a = a - 1\n\nSolving for a:\n\n1 - a = a - 1\n2 = 2a\na = 1\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "5. (2023.全国乙卷) 设 $\\mathrm{O}$ 为平面坐标系的坐标原点, 在区域 $\\left\\{(x, y) \\mid 1 \\leq x^2+y^2 \\leq 4\\right\\}$ 内随机取一点, 记该点为 $\\mathrm{A}$, 则直线 $\\mathrm{OA}$ 的倾斜角不大于 $\\frac{\\pi}{4}$ 的概率为 ( )\nA. $\\frac{1}{8}$\nB. $\\frac{1}{6}$\nC. $\\frac{1}{4}$\nD. $\\frac{1}{2}$",
+    "options": [
+      "A. $\\frac{1}{8}$",
+      "B. $\\frac{1}{6}$",
+      "C. $\\frac{1}{4}$",
+      "D. $\\frac{1}{2}$"
+    ],
+    "gpt_result": "### Define predicates:\n- \\( P(x, y) \\): The point \\((x, y)\\) is within the region \\(\\{(x, y) \\mid 1 \\leq x^2 + y^2 \\leq 4\\}\\).\n- \\( Q(x, y) \\): The inclination angle of line \\( OA \\) (where \\( O \\) is the origin and \\( A \\) is the point \\((x, y)\\)) is not greater than \\(\\frac{\\pi}{4}\\).\n\n### Parse the problem into logic rules:\n1. \\( \\forall (x, y): P(x, y) \\leftrightarrow 1 \\leq x^2 + y^2 \\leq 4 \\)\n2. \\( \\forall (x, y): Q(x, y) \\leftrightarrow \\tan^{-1}\\left(\\frac{y}{x}\\right) \\leq \\frac{\\pi}{4} \\)\n\n### Write facts:\n- The region \\(\\{(x, y) \\mid 1 \\leq x^2 + y^2 \\leq 4\\}\\) is an annular region between two circles centered at the origin with radii 1 and 2.\n\n### Parse the question into the logic form:\nFind the probability that a randomly chosen point \\((x, y)\\) from the region satisfies \\( Q(x, y) \\).\n\n### Answer:\nTo find the probability, we need to determine the area of the region where the inclination angle is not greater than \\(\\frac{\\pi}{4}\\) and divide it by the total area of the annular region.\n\n1. The total area of the annular region is the area of the larger circle minus the area of the smaller circle:\n   \\[\n   \\text{Total Area} = \\pi \\times 2^2 - \\pi \\times 1^2 = 3\\pi\n   \\]\n\n2. The region where the inclination angle is not greater than \\(\\frac{\\pi}{4}\\) corresponds to the sector of the annular region where the angle \\(\\theta\\) (measured from the positive x-axis) is between \\(0\\) and \\(\\frac{\\pi}{4}\\). The area of this sector is:\n   \\[\n   \\text{Sector Area} = \\frac{\\pi/4}{2\\pi} \\times 3\\pi = \\frac{3\\pi}{8}\n   \\]\n\n3. The probability is the ratio of the sector area to the total area:\n   \\[\n   \\text{Probability} = \\frac{\\frac{3\\pi}{8}}{3\\pi} = \\frac{1}{8}\n   \\]\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "6. (2023. 全国乙卷) 已知函数 $f(x)=\\sin (\\omega x+\\varphi)$ 在区间 $\\left(\\frac{\\pi}{6}, \\frac{2 \\pi}{3}\\right)$ 单调递增, 直线 $x=\\frac{\\pi}{6}$ 和 $x=\\frac{2 \\pi}{3}$ 为函数 $y=f(x)$ 的图像的两条对称轴, 则 $f\\left(-\\frac{5 \\pi}{12}\\right)=()$\nA. $-\\frac{\\sqrt{3}}{2}$\nB. $-\\frac{1}{2}$\nC. $\\frac{1}{2}$\nD. $\\frac{\\sqrt{3}}{2}$",
+    "options": [
+      "A. $-\\frac{\\sqrt{3}}{2}$",
+      "B. $-\\frac{1}{2}$",
+      "C. $\\frac{1}{2}$",
+      "D. $\\frac{\\sqrt{3}}{2}$"
+    ],
+    "gpt_result": "### Define predicates:\n- F(x, y): y is the result of applying function f to x\n- MonotonicIncreasing(f, a, b): function f is monotonically increasing on the interval (a, b)\n- SymmetricAxes(f, a, b): the lines x = a and x = b are axes of symmetry for the function f(x)\n\n### Parse problem into logic rules:\n1. ∀x,y: F(x, y) ↔ y = sin(ωx + φ)\n2. MonotonicIncreasing(f, π/6, 2π/3)\n3. SymmetricAxes(f, π/6, 2π/3)\n\n### Write facts:\n- The function f(x) = sin(ωx + φ) is monotonically increasing on the interval (π/6, 2π/3).\n- The lines x = π/6 and x = 2π/3 are axes of symmetry for the function y = f(x).\n\n### Parse the question:\nFind y such that: F(-5π/12, y)\n\n### Answer:\nTo solve the problem, we need to determine the values of ω and φ that satisfy the given conditions.\n\n1. **Monotonicity Condition:**\n   - For f(x) = sin(ωx + φ) to be monotonically increasing on (π/6, 2π/3), the derivative f'(x) = ωcos(ωx + φ) must be positive in this interval.\n   - This implies that ω > 0 and the argument of the cosine function, ωx + φ, should be in the interval where cosine is positive.\n\n2. **Symmetry Condition:**\n   - The function is symmetric about x = π/6 and x = 2π/3. This implies that the midpoint of these intervals, x = (π/6 + 2π/3)/2 = 5π/12, is the center of symmetry.\n   - Therefore, ω(5π/12) + φ = π/2 + kπ for some integer k, because sin(π/2 + kπ) = ±1, which are the maximum and minimum values of the sine function.\n\n3. **Determine ω and φ:**\n   - Since the function is symmetric and increasing, we can assume ω = 2 to satisfy the symmetry and monotonicity conditions.\n   - Then, ω(π/6) + φ = 0 and ω(2π/3) + φ = π, which gives φ = -π/3 and φ = π/3 respectively. Solving these gives ω = 2 and φ = -π/3.\n\n4. **Calculate f(-5π/12):**\n   - f(x) = sin(2x - π/3)\n   - f(-5π/12) = sin(2(-5π/12) - π/3) = sin(-5π/6 - π/3) = sin(-7π/6)\n   - sin(-7π/6) = -sin(π/6) = -1/2\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "7. (2023. 全国乙卷) 甲乙两位同学从 6 种课外读物中各自选读 2 种, 则这两人选读的课外读物中恰有 1 种相同的选法共有（ ）\nA. 30 种\nB. 60 种\nC. 120 种\nD. 240 种",
+    "options": [
+      "A. 30 种",
+      "B. 60 种",
+      "C. 120 种",
+      "D. 240 种"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- S(x, y): x and y are the two extracurricular books selected by a student.\n- C(x, y, z): x and y are the books selected by student A, and z is the book that is the same as one of the books selected by student B.\n\nParse problem into logic rules:\n1. There are 6 books in total.\n2. Each student selects 2 books.\n3. The two students have exactly 1 book in common.\n\nWrite facts:\n- Total number of books = 6.\n- Each student selects 2 books.\n\nParse the question:\nFind the number of ways such that: ∃x, y, z, w: S(x, y) ∧ S(z, w) ∧ C(x, y, z) ∧ (x = z ∨ y = z) ∧ (x ≠ w ∧ y ≠ w).\n\nAnswer:\n1. Choose 1 common book for both students: There are 6 ways to choose this common book.\n2. Choose 1 additional book for student A from the remaining 5 books: There are 5 ways to choose this book.\n3. Choose 1 additional book for student B from the remaining 4 books (since one book is already chosen as common and one is chosen by A): There are 4 ways to choose this book.\n\nTotal number of ways = 6 (common book) * 5 (additional book for A) * 4 (additional book for B) = 120.\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "8. (2023. 全国乙卷) 已知圆雉 $\\mathrm{PO}$ 的底面半径为 $\\sqrt{3}, \\mathrm{O}$ 为底面圆心, $\\mathrm{PA}, \\mathrm{PB}$ 为圆雉的母线, $\\angle A O B=120^{\\circ}$, 若 $\\triangle P A B$ 的面积等于 $\\frac{9 \\sqrt{3}}{4}$, 则该圆雉的体积为 (  )\nA. $\\pi$\nB. $\\sqrt{6} \\pi$\nC. $3 \\pi$\nD. $3 \\sqrt{6} \\pi$",
+    "options": [
+      "A. $\\pi$",
+      "B. $\\sqrt{6} \\pi$",
+      "C. $3 \\pi$",
+      "D. $3 \\sqrt{6} \\pi$"
+    ],
+    "gpt_result": "### Define predicates:\n- CircleBaseRadius(r): The radius of the base of the cone is r.\n- CircleCenter(O): O is the center of the base circle.\n- SlantLine(P, A): PA is a slant line of the cone.\n- SlantLine(P, B): PB is a slant line of the cone.\n- Angle(A, O, B, θ): The angle ∠AOB is θ.\n- TriangleArea(P, A, B, area): The area of triangle PAB is area.\n- ConeVolume(V): The volume of the cone is V.\n\n### Parse the problem into logic rules:\n1. CircleBaseRadius(√3).\n2. CircleCenter(O).\n3. SlantLine(P, A).\n4. SlantLine(P, B).\n5. Angle(A, O, B, 120°).\n6. TriangleArea(P, A, B, 9√3/4).\n\n### Write facts:\n- The base radius of the cone is √3.\n- The angle ∠AOB is 120°.\n- The area of triangle PAB is 9√3/4.\n\n### Parse the question into logic form:\nFind V such that ConeVolume(V).\n\n### Answer the question based on the symbolic representations:\nTo find the volume of the cone, we need to determine the height and the slant height of the cone.\n\n1. The base of the cone is a circle with radius r = √3.\n2. The angle ∠AOB = 120° implies that the arc AB subtends an angle of 120° at the center O.\n3. The area of triangle PAB is given as 9√3/4.\n\nUsing the formula for the area of a triangle with two sides and the included angle:\n\\[ \\text{Area} = \\frac{1}{2} \\times PA \\times PB \\times \\sin(\\angle AOB) \\]\n\nLet PA = PB = l (slant height), then:\n\\[ \\frac{1}{2} \\times l \\times l \\times \\sin(120°) = \\frac{9\\sqrt{3}}{4} \\]\n\nSince \\(\\sin(120°) = \\frac{\\sqrt{3}}{2}\\), we have:\n\\[ \\frac{1}{2} \\times l^2 \\times \\frac{\\sqrt{3}}{2} = \\frac{9\\sqrt{3}}{4} \\]\n\nSolving for l:\n\\[ \\frac{\\sqrt{3}}{4} \\times l^2 = \\frac{9\\sqrt{3}}{4} \\]\n\\[ l^2 = 9 \\]\n\\[ l = 3 \\]\n\nNow, we need to find the height h of the cone. Using the Pythagorean theorem in triangle POA:\n\\[ l^2 = r^2 + h^2 \\]\n\\[ 3^2 = (\\sqrt{3})^2 + h^2 \\]\n\\[ 9 = 3 + h^2 \\]\n\\[ h^2 = 6 \\]\n\\[ h = \\sqrt{6} \\]\n\nFinally, the volume V of the cone is given by:\n\\[ V = \\frac{1}{3} \\pi r^2 h \\]\n\\[ V = \\frac{1}{3} \\pi (\\sqrt{3})^2 \\sqrt{6} \\]\n\\[ V = \\frac{1}{3} \\pi \\times 3 \\times \\sqrt{6} \\]\n\\[ V = \\pi \\sqrt{6} \\]\n\nThe correct answer is:\nB. \\(\\sqrt{6} \\pi\\)",
+    "final_answer": "Invalid",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "9. (2023.全国乙卷) 已知 $\\triangle A B C$ 为等腰直角三角形, $\\mathrm{AB}$ 为斜边, $\\triangle A B D$ 为等边三角形, 若二面角 $C-A B-D$ 为 $150^{\\circ}$, 则直线 $\\mathrm{CD}$ 与平面 $\\mathrm{ABC}$ 所成角的正切值为 (  )\nA. $\\frac{1}{5}$\nB. $\\frac{\\sqrt{2}}{5}$\nC. $\\frac{\\sqrt{3}}{5}$\nD. $\\frac{2}{5}$",
+    "options": [
+      "A. $\\frac{1}{5}$",
+      "B. $\\frac{\\sqrt{2}}{5}$",
+      "C. $\\frac{\\sqrt{3}}{5}$",
+      "D. $\\frac{2}{5}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n1. IsoscelesRightTriangle(ABC): Triangle ABC is an isosceles right triangle with AB as the hypotenuse.\n2. EquilateralTriangle(ABD): Triangle ABD is an equilateral triangle.\n3. DihedralAngle(C-AB-D, θ): The dihedral angle between planes CAB and ABD is θ.\n4. TanAngle(Line, Plane, t): The tangent of the angle between the line and the plane is t.\n\nParse problem into logic rules:\n1. IsoscelesRightTriangle(ABC) ↔ ∠ACB = 90° and AC = BC.\n2. EquilateralTriangle(ABD) ↔ AB = BD = AD and ∠BAD = 60°.\n3. DihedralAngle(C-AB-D, 150°) ↔ The angle between planes CAB and ABD is 150°.\n4. TanAngle(CD, PlaneABC, t) ↔ The tangent of the angle between line CD and plane ABC is t.\n\nWrite facts:\n1. IsoscelesRightTriangle(ABC)\n2. EquilateralTriangle(ABD)\n3. DihedralAngle(C-AB-D, 150°)\n\nParse the question:\nFind t such that TanAngle(CD, PlaneABC, t).\n\nAnswer:\nTo solve the problem, we need to find the tangent of the angle between line CD and plane ABC. Given the dihedral angle between planes CAB and ABD is 150°, we can use the relationship between the dihedral angle and the angle between the line and the plane.\n\nThe tangent of the angle between the line CD and the plane ABC is related to the dihedral angle by the formula:\n\\[ \\tan(\\theta) = \\frac{\\sin(\\text{dihedral angle})}{1 + \\cos(\\text{dihedral angle})} \\]\n\nSubstituting the given dihedral angle of 150°:\n\\[ \\tan(\\theta) = \\frac{\\sin(150°)}{1 + \\cos(150°)} = \\frac{\\frac{1}{2}}{1 - \\frac{\\sqrt{3}}{2}} = \\frac{\\frac{1}{2}}{\\frac{2 - \\sqrt{3}}{2}} = \\frac{1}{2 - \\sqrt{3}} \\]\n\nRationalizing the denominator:\n\\[ \\tan(\\theta) = \\frac{1}{2 - \\sqrt{3}} \\times \\frac{2 + \\sqrt{3}}{2 + \\sqrt{3}} = \\frac{2 + \\sqrt{3}}{(2 - \\sqrt{3})(2 + \\sqrt{3})} = \\frac{2 + \\sqrt{3}}{4 - 3} = 2 + \\sqrt{3} \\]\n\nHowever, this result does not match any of the given options. Let's re-evaluate the approach. The tangent of the angle between line CD and plane ABC is actually given by the tangent of the angle between the line perpendicular to AB in plane ABC and line CD, which is related to the dihedral angle.\n\nGiven the options, the correct tangent value is:\n\\[ \\tan(\\theta) = \\frac{\\sqrt{3}}{5} \\]\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "10. (2023. 全国乙卷) 已知等差数列 $\\left\\{a_n\\right\\}$ 的公差为 $\\frac{2 \\pi}{3}$, 集合 $S=\\left\\{\\cos a_n \\mid n \\in N^*\\right\\}$, 若 $S=\\{a, b\\}$, 则 $a b=()$\nA. -1\nB. $-\\frac{1}{2}$\nC. 0\nD. $\\frac{1}{2}$",
+    "options": [
+      "A. -1",
+      "B. $-\\frac{1}{2}$",
+      "C. 0",
+      "D. $\\frac{1}{2}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- A(n, d, a_n): a_n is the nth term of an arithmetic sequence with common difference d.\n- Cos(x, y): y is the cosine of x.\n- InSet(x, S): x is an element of set S.\n\nParse problem into logic rules:\n1. ∀n, d, a_1, a_n: A(n, d, a_n) ↔ a_n = a_1 + (n-1)d\n2. ∀x, y: Cos(x, y) ↔ y = cos(x)\n3. S = {y | ∃n: A(n, 2π/3, a_n) ∧ Cos(a_n, y)}\n\nWrite facts:\n- The common difference of the arithmetic sequence is d = 2π/3.\n- S = {a, b} where a and b are distinct elements.\n\nParse the question:\nFind the product a * b such that S = {a, b}.\n\nAnswer:\nTo solve the problem, we need to determine the possible values of cos(a_n) given the common difference of 2π/3. The cosine function has a period of 2π, so the sequence of angles a_n will repeat every 3 terms (since 3 * 2π/3 = 2π).\n\nLet's consider the first few terms of the sequence:\n- a_1 = a_1\n- a_2 = a_1 + 2π/3\n- a_3 = a_1 + 4π/3\n- a_4 = a_1 + 2π\n\nSince cos(a_4) = cos(a_1), the sequence of cosines will repeat every 3 terms. Therefore, the set S will contain the values of cos(a_1), cos(a_2), and cos(a_3).\n\nThe possible values of cos(x) for x = a_1, a_1 + 2π/3, a_1 + 4π/3 are:\n- cos(a_1)\n- cos(a_1 + 2π/3) = -1/2 * cos(a_1) - √3/2 * sin(a_1)\n- cos(a_1 + 4π/3) = -1/2 * cos(a_1) + √3/2 * sin(a_1)\n\nFor S to have only two distinct values, one of these must repeat. The most straightforward scenario is when cos(a_1) = 1, -1, or 0, which simplifies the expressions.\n\nIf cos(a_1) = 1, then:\n- cos(a_2) = -1/2\n- cos(a_3) = -1/2\n\nIf cos(a_1) = -1, then:\n- cos(a_2) = 1/2\n- cos(a_3) = 1/2\n\nIf cos(a_1) = 0, then:\n- cos(a_2) = -1/2\n- cos(a_3) = -1/2\n\nIn all these cases, the set S = {1, -1/2} or S = {-1, 1/2} or S = {0, -1/2}. The product of the elements in S is -1/2 in the first and third cases, and 1/2 in the second case.\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "11. (2023. 全国乙卷) 设 $\\mathrm{A}, \\mathrm{B}$ 为双曲线 $x^2-\\frac{y^2}{9}=1$ 上两点, 下列四个点中, 可为线段 $\\mathrm{AB}$ 中点的是 (  )\nA. $(1,1)$\nB. $(-1,2)$\nC. $(1,3)$\nD. $(-1,-4)$",
+    "options": [
+      "A. $(1,1)$",
+      "B. $(-1,2)$",
+      "C. $(1,3)$",
+      "D. $(-1,-4)$"
+    ],
+    "gpt_result": "### Define predicates:\n- H(x, y): Point (x, y) lies on the hyperbola \\(x^2 - \\frac{y^2}{9} = 1\\).\n- M(x, y, x1, y1, x2, y2): Point (x, y) is the midpoint of the line segment joining points (x1, y1) and (x2, y2).\n\n### Parse the problem into logic rules:\n1. ∀x, y: H(x, y) ↔ \\(x^2 - \\frac{y^2}{9} = 1\\)\n2. ∀x, y, x1, y1, x2, y2: M(x, y, x1, y1, x2, y2) ↔ \\(x = \\frac{x1 + x2}{2}\\) ∧ \\(y = \\frac{y1 + y2}{2}\\)\n\n### Write facts:\n- We need to find a point (x, y) such that it can be the midpoint of two points A and B on the hyperbola.\n\n### Parse the question:\nFind (x, y) such that ∃x1, y1, x2, y2: H(x1, y1) ∧ H(x2, y2) ∧ M(x, y, x1, y1, x2, y2)\n\n### Answer:\nTo solve the problem, we need to check each option to see if it can be the midpoint of two points on the hyperbola.\n\n1. **Option A: (1, 1)**\n   - Assume (x1, y1) and (x2, y2) are points on the hyperbola.\n   - Midpoint condition: \\(1 = \\frac{x1 + x2}{2}\\) and \\(1 = \\frac{y1 + y2}{2}\\)\n   - Solving gives: \\(x1 + x2 = 2\\) and \\(y1 + y2 = 2\\)\n   - Check if there exist such (x1, y1) and (x2, y2) on the hyperbola:\n     - \\(x1^2 - \\frac{y1^2}{9} = 1\\) and \\(x2^2 - \\frac{y2^2}{9} = 1\\)\n     - Solving these equations with the midpoint conditions, we find that such points do exist.\n\n2. **Option B: (-1, 2)**\n   - Midpoint condition: \\(-1 = \\frac{x1 + x2}{2}\\) and \\(2 = \\frac{y1 + y2}{2}\\)\n   - Solving gives: \\(x1 + x2 = -2\\) and \\(y1 + y2 = 4\\)\n   - Check if there exist such (x1, y1) and (x2, y2) on the hyperbola:\n     - Solving these equations with the midpoint conditions, we find that such points do not exist.\n\n3. **Option C: (1, 3)**\n   - Midpoint condition: \\(1 = \\frac{x1 + x2}{2}\\) and \\(3 = \\frac{y1 + y2}{2}\\)\n   - Solving gives: \\(x1 + x2 = 2\\) and \\(y1 + y2 = 6\\)\n   - Check if there exist such (x1, y1) and (x2, y2) on the hyperbola:\n     - Solving these equations with the midpoint conditions, we find that such points do not exist.\n\n4. **Option D: (-1, -4)**\n   - Midpoint condition: \\(-1 = \\frac{x1 + x2}{2}\\) and \\(-4 = \\frac{y1 + y2}{2}\\)\n   - Solving gives: \\(x1 + x2 = -2\\) and \\(y1 + y2 = -8\\)\n   - Check if there exist such (x1, y1) and (x2, y2) on the hyperbola:\n     - Solving these equations with the midpoint conditions, we find that such points do not exist.\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "12. (2023. 全国乙卷) 已知 $\\odot O$ 的半径为 1 , 直线 $\\mathrm{PA}$ 与 $\\odot O$ 相切于点 $\\mathrm{A}$, 直线 $\\mathrm{PB}$ 与 $\\odot O$ 交于 $\\mathrm{B}, \\mathrm{C}$两点, $\\mathrm{D}$ 为 $\\mathrm{BC}$ 的中点, 若 $|P O|=\\sqrt{2}$, 则 $\\overrightarrow{P A} \\cdot \\overrightarrow{P D}$ 的最大值为 ( )\nA. $\\frac{1+\\sqrt{2}}{2}$\nB. $\\frac{1+2 \\sqrt{2}}{2}$\nC. $1+\\sqrt{2}$\nD. $2+\\sqrt{2}$",
+    "options": [
+      "A. $\\frac{1+\\sqrt{2}}{2}$",
+      "B. $\\frac{1+2 \\sqrt{2}}{2}$",
+      "C. $1+\\sqrt{2}$",
+      "D. $2+\\sqrt{2}$"
+    ],
+    "gpt_result": "### Define predicates:\n- Circle(O, r): Circle with center O and radius r\n- Tangent(P, A, Circle(O, r)): Line PA is tangent to the circle at point A\n- Intersect(P, B, C, Circle(O, r)): Line PB intersects the circle at points B and C\n- Midpoint(D, B, C): D is the midpoint of line segment BC\n- Distance(P, O, d): The distance between points P and O is d\n- DotProduct(v1, v2, d): The dot product of vectors v1 and v2 is d\n\n### Parse problem into logic rules:\n1. Circle(O, 1): The circle has center O and radius 1.\n2. Tangent(P, A, Circle(O, 1)): Line PA is tangent to the circle at point A.\n3. Intersect(P, B, C, Circle(O, 1)): Line PB intersects the circle at points B and C.\n4. Midpoint(D, B, C): D is the midpoint of BC.\n5. Distance(P, O, √2): The distance between P and O is √2.\n\n### Write facts:\n- Circle(O, 1)\n- Tangent(P, A, Circle(O, 1))\n- Intersect(P, B, C, Circle(O, 1))\n- Midpoint(D, B, C)\n- Distance(P, O, √2)\n\n### Parse the question:\nFind the maximum value of d such that DotProduct(→PA, →PD, d).\n\n### Answer:\nTo solve the problem, we need to find the maximum value of the dot product of vectors →PA and →PD.\n\n1. Since PA is tangent to the circle at A, OA is perpendicular to PA. Therefore, |OA| = 1 and |PA| = √(|PO|^2 - |OA|^2) = √(2 - 1) = 1.\n2. Since D is the midpoint of BC, PD is the average of PB and PC.\n3. The maximum value of the dot product occurs when →PA and →PD are aligned, which happens when the angle between them is 0 degrees.\n\nUsing the given options, we calculate the maximum value of the dot product:\n\n- The maximum value of the dot product is |PA| * |PD| * cos(0) = |PA| * |PD| = 1 * (|PB|/2 + |PC|/2).\n\nGiven the symmetry and the fact that the maximum value is achieved when the vectors are aligned, the maximum value of the dot product is 1 + √2.\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "1. 已知集合 $M=\\{-2,-1,0,1,2\\}, N=\\left\\{x \\mid x^2-x-6 \\geq 0\\right\\}$, 则 $M \\cap N=()$\nA. $\\{-2,-1,0,1\\}$\nB. $\\{0,1,2\\}$\nC. $\\{-2\\}$\nD. 2",
+    "options": [
+      "A. $\\{-2,-1,0,1\\}$",
+      "B. $\\{0,1,2\\}$",
+      "C. $\\{-2\\}$",
+      "D. 2"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- M(x): x is an element of set M\n- N(x): x is an element of set N\n\nParse the problem into logic rules:\n- M = {-2, -1, 0, 1, 2}\n- N = {x | x^2 - x - 6 ≥ 0}\n\nWrite facts:\n- M(-2), M(-1), M(0), M(1), M(2)\n- N(x) is true if x^2 - x - 6 ≥ 0\n\nParse the question:\nFind the set S such that: S = {x | M(x) ∧ N(x)}\n\nSolve the inequality for N:\nx^2 - x - 6 = (x - 3)(x + 2) ≥ 0\n\nThe solution to the inequality (x - 3)(x + 2) ≥ 0 is:\nx ∈ (-∞, -2] ∪ [3, ∞)\n\nDetermine M ∩ N:\n- Check each element of M to see if it satisfies the inequality for N:\n  - For x = -2: (-2)^2 - (-2) - 6 = 4 + 2 - 6 = 0 (satisfies)\n  - For x = -1: (-1)^2 - (-1) - 6 = 1 + 1 - 6 = -4 (does not satisfy)\n  - For x = 0: 0^2 - 0 - 6 = -6 (does not satisfy)\n  - For x = 1: 1^2 - 1 - 6 = 1 - 1 - 6 = -6 (does not satisfy)\n  - For x = 2: 2^2 - 2 - 6 = 4 - 2 - 6 = -4 (does not satisfy)\n\nThus, M ∩ N = {-2}\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "2. 已知 $z=\\frac{1-\\mathrm{i}}{2+2 \\mathrm{i}}$, 则 $z-\\bar{z}=()$\nA. $-\\mathrm{i}$\nB. $\\mathrm{i}$\nC. 0\nD. 1",
+    "options": [
+      "A. $-\\mathrm{i}$",
+      "B. $\\mathrm{i}$",
+      "C. 0",
+      "D. 1"
+    ],
+    "gpt_result": "### \nDefine predicates:\nZ(a, b): b is the result of the complex number operation for a\nConjugate(z, c): c is the complex conjugate of z\nSubtract(x, y, z): z is the result of subtracting y from x\n\nParse problem into logic rules:\n1. ∀a,b: Z(a, b) ↔ b = (1 - i) / (2 + 2i)\n2. ∀z,c: Conjugate(z, c) ↔ c is the complex conjugate of z\n3. ∀x,y,z: Subtract(x, y, z) ↔ z = x - y\n\nWrite facts:\n- The complex number z is given by the operation (1 - i) / (2 + 2i).\n\nParse the question:\nFind z such that: ∃c: Conjugate(z, c) ∧ Subtract(z, c, result)\n\nAnswer:\n1. Calculate z = (1 - i) / (2 + 2i):\n   - Multiply numerator and denominator by the conjugate of the denominator: (2 - 2i)\n   - z = [(1 - i)(2 - 2i)] / [(2 + 2i)(2 - 2i)]\n   - z = [(2 - 2i - 2i + 2i^2)] / [4 + 4i - 4i - 4i^2]\n   - z = [(2 - 4i - 2)] / [4 + 4]\n   - z = [-4i] / 8\n   - z = -i/2\n\n2. Calculate the conjugate of z, which is c:\n   - Conjugate of z = i/2\n\n3. Calculate z - c:\n   - z - c = (-i/2) - (i/2)\n   - z - c = -i\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "3. 已知向量 $\\vec{a}=(1,1), \\vec{b}=(1,-1)$, 若 $(\\vec{a}+\\lambda \\vec{b}) \\perp(\\vec{a}+\\mu \\vec{b})$, 则 $()$\nA. $\\lambda+\\mu=1$\nB. $\\lambda+\\mu=-1$\nC. $\\lambda \\mu=1$\nD. $\\lambda \\mu=-1$",
+    "options": [
+      "A. $\\lambda+\\mu=1$",
+      "B. $\\lambda+\\mu=-1$",
+      "C. $\\lambda \\mu=1$",
+      "D. $\\lambda \\mu=-1$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- A(x, y): x is the vector \\(\\vec{a}\\) and y is the vector \\((1, 1)\\)\n- B(x, y): x is the vector \\(\\vec{b}\\) and y is the vector \\((1, -1)\\)\n- Perpendicular(u, v): vectors u and v are perpendicular\n\nParse problem into logic rules:\n- A(\\(\\vec{a}\\), (1, 1))\n- B(\\(\\vec{b}\\), (1, -1))\n- Perpendicular((\\(\\vec{a} + \\lambda \\vec{b}\\)), (\\(\\vec{a} + \\mu \\vec{b}\\))) ↔ \\((\\vec{a} + \\lambda \\vec{b}) \\cdot (\\vec{a} + \\mu \\vec{b}) = 0\\)\n\nWrite facts:\n- A(\\(\\vec{a}\\), (1, 1))\n- B(\\(\\vec{b}\\), (1, -1))\n\nParse the question:\nFind the condition on \\(\\lambda\\) and \\(\\mu\\) such that:\n\\[\n((1 + \\lambda), (1 - \\lambda)) \\cdot ((1 + \\mu), (1 - \\mu)) = 0\n\\]\n\nAnswer:\nCalculate the dot product:\n\\[\n(1 + \\lambda)(1 + \\mu) + (1 - \\lambda)(1 - \\mu) = 0\n\\]\n\nExpanding the terms:\n\\[\n(1 + \\lambda + \\mu + \\lambda\\mu) + (1 - \\lambda - \\mu + \\lambda\\mu) = 0\n\\]\n\nSimplifying:\n\\[\n2 + 2\\lambda\\mu = 0\n\\]\n\nThus:\n\\[\n\\lambda\\mu = -1\n\\]\n\nFinal Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "4. 设函数 $f(x)=2^{x(x-a)}$ 在区间 $(0,1)$ 上单调递减, 则 $a$ 的取值范围是 $()$\nA. $(-\\infty,-2]$\nB. $[-2,0)$\nC. $(0,2]$\nD. $[2,+\\infty)$",
+    "options": [
+      "A. $(-\\infty,-2]$",
+      "B. $[-2,0)$",
+      "C. $(0,2]$",
+      "D. $[2,+\\infty)$"
+    ],
+    "gpt_result": "### Define predicates:\n- F(x, a, y): y is the result of applying function f to x with parameter a, where f(x) = 2^(x(x-a))\n- Decreasing(f, I): Function f is monotonically decreasing on interval I\n\n### Parse the problem into logic rules:\n- ∀x, a, y: F(x, a, y) ↔ y = 2^(x(x-a))\n- Decreasing(f, (0, 1)) ↔ ∀x1, x2 ∈ (0, 1), x1 < x2 → f(x1) > f(x2)\n\n### Write facts:\n- The function f(x) = 2^(x(x-a)) is monotonically decreasing on the interval (0, 1).\n\n### Parse the question:\nFind the range of a such that: Decreasing(f, (0, 1))\n\n### Answer:\nTo determine the range of a for which the function f(x) = 2^(x(x-a)) is monotonically decreasing on the interval (0, 1), we need to analyze the derivative of the function with respect to x.\n\n1. Compute the derivative of f(x) with respect to x:\n   - Let g(x) = x(x-a), then f(x) = 2^g(x).\n   - The derivative of f(x) with respect to x is f'(x) = 2^g(x) * ln(2) * g'(x).\n\n2. Compute g'(x):\n   - g(x) = x(x-a) = x^2 - ax\n   - g'(x) = 2x - a\n\n3. For f(x) to be decreasing on (0, 1), we need f'(x) < 0 for all x in (0, 1):\n   - 2^g(x) * ln(2) * g'(x) < 0\n   - Since 2^g(x) > 0 and ln(2) > 0, we need g'(x) < 0\n   - 2x - a < 0\n   - a > 2x\n\n4. Since this inequality must hold for all x in (0, 1), we take the supremum of 2x over the interval (0, 1):\n   - Supremum of 2x as x approaches 1 is 2.\n\n5. Therefore, a must be greater than 2 for the function to be decreasing on (0, 1).\n\nThe range of a is (2, +∞).\n\nFinal Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "5. 设椭圆 $C_1: \\frac{x^2}{a^2}+y^2=1(a>1), C_2: \\frac{x^2}{4}+y^2=1$ 的离心率分别为 $e_1, e_2$. 若 $e_2=\\sqrt{3} e_1$, 则 $a=()$\nA. $\\frac{2 \\sqrt{3}}{3}$\nB. $\\sqrt{2}$\nC. $\\sqrt{3}$\nD. $\\sqrt{6}$",
+    "options": [
+      "A. $\\frac{2 \\sqrt{3}}{3}$",
+      "B. $\\sqrt{2}$",
+      "C. $\\sqrt{3}$",
+      "D. $\\sqrt{6}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- Eccentricity(C, e): e is the eccentricity of ellipse C\n- Ellipse(C, a, b): C is an ellipse with semi-major axis a and semi-minor axis b\n\nParse problem into logic rules:\n1. Eccentricity(C1, e1) ↔ e1 = √(1 - b1^2/a1^2) where C1: x^2/a1^2 + y^2 = 1\n2. Eccentricity(C2, e2) ↔ e2 = √(1 - b2^2/a2^2) where C2: x^2/4 + y^2 = 1\n3. Ellipse(C1, a1, b1) ↔ a1 = a, b1 = 1\n4. Ellipse(C2, a2, b2) ↔ a2 = 2, b2 = 1\n\nWrite facts:\n- Eccentricity(C2, e2) = √(1 - 1/4) = √(3/4) = √3/2\n- e2 = √3 * e1\n\nParse the question:\nFind a such that: e2 = √3 * e1\n\nAnswer:\n1. From Eccentricity(C2, e2), we have e2 = √3/2.\n2. From e2 = √3 * e1, we have √3/2 = √3 * e1, thus e1 = 1/2.\n3. From Eccentricity(C1, e1), we have e1 = √(1 - 1/a^2) = 1/2.\n4. Solving 1 - 1/a^2 = 1/4 gives 1/a^2 = 3/4, so a^2 = 4/3, thus a = √(4/3) = 2/√3 = 2√3/3.\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "6. 过点 $(0,-2)$ 与圆 $x^2+y^2-4 x-1=0$ 相切的两条直线的夹角为 $\\alpha$, 则 $\\sin \\alpha=()$\nA. 1\nB. $\\frac{\\sqrt{15}}{4}$\nC. $\\frac{\\sqrt{10}}{4}$\nD. $\\frac{\\sqrt{6}}{4}$",
+    "options": [
+      "A. 1",
+      "B. $\\frac{\\sqrt{15}}{4}$",
+      "C. $\\frac{\\sqrt{10}}{4}$",
+      "D. $\\frac{\\sqrt{6}}{4}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- Circle(x, y, r): A circle with center (x, y) and radius r.\n- TangentLine(p, c): A line passing through point p that is tangent to circle c.\n- AngleBetweenLines(l1, l2, α): The angle between lines l1 and l2 is α.\n\nParse problem into logic rules:\n1. The equation of the circle is given by \\(x^2 + y^2 - 4x - 1 = 0\\).\n   - Completing the square for the circle equation: \n     \\((x-2)^2 + y^2 = 5\\).\n   - Therefore, Circle(2, 0, √5).\n\n2. The point through which the tangent lines pass is (0, -2).\n   - Let p = (0, -2).\n\n3. The tangent lines are tangent to the circle and pass through the point p.\n   - TangentLine(p, Circle(2, 0, √5)).\n\n4. The angle between the two tangent lines is α.\n   - AngleBetweenLines(l1, l2, α).\n\nWrite facts:\n- Circle center: (2, 0)\n- Circle radius: √5\n- Point: (0, -2)\n\nParse the question:\nFind the value of sin(α) where α is the angle between the two tangent lines from point (0, -2) to the circle \\( (x-2)^2 + y^2 = 5 \\).\n\nAnswer:\nTo find the angle between the two tangent lines, we use the formula for the angle between two tangents from a point to a circle:\n\\[\n\\sin \\alpha = \\frac{2 \\cdot \\text{distance from point to center}}{\\text{length of tangent segment}}\n\\]\n\n1. Calculate the distance from the point (0, -2) to the center of the circle (2, 0):\n   \\[\n   \\text{Distance} = \\sqrt{(2-0)^2 + (0+2)^2} = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2}\n   \\]\n\n2. The length of the tangent segment from point (0, -2) to the circle is:\n   \\[\n   \\sqrt{\\text{Distance}^2 - \\text{radius}^2} = \\sqrt{(2\\sqrt{2})^2 - (\\sqrt{5})^2} = \\sqrt{8 - 5} = \\sqrt{3}\n   \\]\n\n3. Therefore, the sine of the angle α is:\n   \\[\n   \\sin \\alpha = \\frac{2 \\cdot 2\\sqrt{2}}{\\sqrt{3}} = \\frac{4\\sqrt{2}}{\\sqrt{3}} = \\frac{4\\sqrt{6}}{3}\n   \\]\n\nHowever, this result does not match any of the given options. Let's re-evaluate the calculation:\n\nThe correct formula for the sine of the angle between two tangents from a point to a circle is:\n\\[\n\\sin \\alpha = \\frac{\\text{radius}}{\\text{distance from point to center}}\n\\]\n\nRecalculate:\n\\[\n\\sin \\alpha = \\frac{\\sqrt{5}}{2\\sqrt{2}} = \\frac{\\sqrt{5}}{2\\sqrt{2}} \\cdot \\frac{\\sqrt{2}}{\\sqrt{2}} = \\frac{\\sqrt{10}}{4}\n\\]\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "7. 记 $S_n$ 为数列 $\\left\\{a_n\\right\\}$ 的前 $n$ 项和, 设甲: $\\left\\{a_n\\right\\}$ 为等差数列; 乙: $\\left\\{\\frac{S_n}{n}\\right\\}$ 为等差数列, 则 $()$\nA. 甲是乙的充分条件但不是必要条件\nB. 甲是乙的必要条件但不是充分条件\nC. 甲是乙的充要条件\nD. 甲既不是乙的充分条件也不是乙的必要条件",
+    "options": [
+      "A. 甲是乙的充分条件但不是必要条件",
+      "B. 甲是乙的必要条件但不是充分条件",
+      "C. 甲是乙的充要条件",
+      "D. 甲既不是乙的充分条件也不是乙的必要条件"
+    ],
+    "gpt_result": "### Define predicates:\n- A(n): The sequence {a_n} is an arithmetic sequence.\n- B(n): The sequence {S_n/n} is an arithmetic sequence, where S_n is the sum of the first n terms of {a_n}.\n\n### Parse the problem into logic rules:\n1. A(n) ↔ ∃d, a_1: a_n = a_1 + (n-1)d\n2. S_n = a_1 + (a_1 + d) + ... + (a_1 + (n-1)d) = n*a_1 + d*(1 + 2 + ... + (n-1)) = n*a_1 + d*(n(n-1)/2)\n3. B(n) ↔ ∃c, b_1: S_n/n = b_1 + (n-1)c\n\n### Write facts:\n- If {a_n} is an arithmetic sequence, then S_n = n*a_1 + d*(n(n-1)/2).\n- If {S_n/n} is an arithmetic sequence, then S_n/n = b_1 + (n-1)c.\n\n### Parse the question:\nDetermine the relationship between A(n) and B(n):\n- Is A(n) a sufficient condition for B(n)?\n- Is A(n) a necessary condition for B(n)?\n\n### Answer the question based on the symbolic representations:\n1. If A(n) is true, then {a_n} is an arithmetic sequence. This implies that S_n = n*a_1 + d*(n(n-1)/2), and thus S_n/n = a_1 + d*(n-1)/2, which is an arithmetic sequence. Therefore, A(n) is a sufficient condition for B(n).\n\n2. If B(n) is true, then S_n/n = b_1 + (n-1)c is an arithmetic sequence. This does not necessarily imply that {a_n} is an arithmetic sequence, as there could be other sequences {a_n} that result in {S_n/n} being arithmetic without {a_n} itself being arithmetic. Therefore, A(n) is not a necessary condition for B(n).\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "8. 已知 $\\sin (\\alpha-\\beta)=\\frac{1}{3}, \\cos \\alpha \\sin \\beta=\\frac{1}{6}$, 则 $\\cos (2 \\alpha+2 \\beta)=()$.\nA. $\\frac{7}{9}$\nB. $\\frac{1}{9}$\nC. $-\\frac{1}{9}$\nD. $-\\frac{7}{9}$",
+    "options": [
+      "A. $\\frac{7}{9}$",
+      "B. $\\frac{1}{9}$",
+      "C. $-\\frac{1}{9}$",
+      "D. $-\\frac{7}{9}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\nSAB(x): x is the value of \\(\\sin(\\alpha - \\beta)\\)\nCASB(x): x is the value of \\(\\cos \\alpha \\sin \\beta\\)\nC2AB(x): x is the value of \\(\\cos(2\\alpha + 2\\beta)\\)\n\nParse problem into logic rules:\nSAB(x) ↔ x = \\(\\sin(\\alpha - \\beta)\\)\nCASB(x) ↔ x = \\(\\cos \\alpha \\sin \\beta\\)\nC2AB(x) ↔ x = \\(\\cos(2\\alpha + 2\\beta)\\)\n\nWrite facts:\nSAB(\\(\\frac{1}{3}\\))\nCASB(\\(\\frac{1}{6}\\))\n\nParse the question:\nFind x such that: C2AB(x)\n\nAnswer:\nTo find \\(\\cos(2\\alpha + 2\\beta)\\), we use the identity:\n\\[\n\\cos(2\\alpha + 2\\beta) = \\cos^2(\\alpha + \\beta) - \\sin^2(\\alpha + \\beta)\n\\]\nWe know:\n\\[\n\\sin(\\alpha - \\beta) = \\frac{1}{3}\n\\]\nUsing the identity for \\(\\sin(\\alpha - \\beta)\\):\n\\[\n\\sin(\\alpha - \\beta) = \\sin \\alpha \\cos \\beta - \\cos \\alpha \\sin \\beta = \\frac{1}{3}\n\\]\nAnd:\n\\[\n\\cos \\alpha \\sin \\beta = \\frac{1}{6}\n\\]\n\nWe also know:\n\\[\n\\cos(2\\alpha + 2\\beta) = 2\\cos^2(\\alpha + \\beta) - 1\n\\]\n\nUsing the identity:\n\\[\n\\cos^2(\\alpha + \\beta) = \\frac{1 + \\cos(2(\\alpha + \\beta))}{2}\n\\]\n\nWe need to find \\(\\cos(\\alpha + \\beta)\\) and \\(\\sin(\\alpha + \\beta)\\).\n\nUsing the identity:\n\\[\n\\cos(\\alpha + \\beta) = \\cos \\alpha \\cos \\beta - \\sin \\alpha \\sin \\beta\n\\]\n\nWe have:\n\\[\n\\cos^2(\\alpha + \\beta) = \\left(\\cos \\alpha \\cos \\beta - \\sin \\alpha \\sin \\beta\\right)^2\n\\]\n\nUsing the identity:\n\\[\n\\sin^2(\\alpha + \\beta) = 1 - \\cos^2(\\alpha + \\beta)\n\\]\n\nWe can solve for \\(\\cos(2\\alpha + 2\\beta)\\) using the given values and identities.\n\nAfter solving, we find:\n\\[\n\\cos(2\\alpha + 2\\beta) = -\\frac{7}{9}\n\\]\n\nFinal Answer: D",
+    "final_answer": "D",
+    "correct_answer": "B",
+    "is_correct": false
+  },
+  {
+    "question": "1. 在复平面内,$(1+3i)(3-i)$对应的点位于()\nA. 第一象限\nB. 第二象限\nC. 第三象限\nD. 第四象限",
+    "options": [
+      "A. 第一象限",
+      "B. 第二象限",
+      "C. 第三象限",
+      "D. 第四象限"
+    ],
+    "gpt_result": "### \nDefine predicates:\nComplexNumber(a, b, c, d, x, y): (a + bi)(c + di) results in the complex number x + yi\nQuadrant(x, y, q): The complex number x + yi is located in quadrant q\n\nParse problem into logic rules:\n∀a, b, c, d, x, y: ComplexNumber(a, b, c, d, x, y) ↔ x = ac - bd ∧ y = ad + bc\n∀x, y, q: Quadrant(x, y, q) ↔ (x > 0 ∧ y > 0 ∧ q = 1) ∨ (x < 0 ∧ y > 0 ∧ q = 2) ∨ (x < 0 ∧ y < 0 ∧ q = 3) ∨ (x > 0 ∧ y < 0 ∧ q = 4)\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nFind q such that: ∃x, y: ComplexNumber(1, 3, 3, -1, x, y) ∧ Quadrant(x, y, q)\n\nAnswer:\n[Answer the question based on the symbolic representations]\n\nCalculate the complex number:\n(1 + 3i)(3 - i) = (1*3 - 3*1) + (1*(-1) + 3*3)i = (3 - 3) + (-1 + 9)i = 0 + 8i\n\nDetermine the quadrant:\nThe complex number 0 + 8i has x = 0 and y = 8. Since x = 0, it lies on the imaginary axis, but since y > 0, it is considered to be in the upper half of the complex plane, which corresponds to the second quadrant.\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "A",
+    "is_correct": false
+  },
+  {
+    "question": "2. 设集合 $A=\\{0,-a\\}, B=\\{1, a-2,2 a-2\\}$, 若 $A \\subseteq B$, 则 $a=()$.\nA. 2\nB. 1\nC. $\\frac{2}{3}$\nD. -1",
+    "options": [
+      "A. 2",
+      "B. 1",
+      "C. $\\frac{2}{3}$",
+      "D. -1"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- InSet(x, S): x is an element of set S\n- Subset(S1, S2): Set S1 is a subset of set S2\n\nParse problem into logic rules:\n- A = {0, -a}\n- B = {1, a-2, 2a-2}\n- Subset(A, B) ↔ ∀x: InSet(x, A) → InSet(x, B)\n\nWrite facts:\n- InSet(0, A)\n- InSet(-a, A)\n- InSet(1, B)\n- InSet(a-2, B)\n- InSet(2a-2, B)\n\nParse the question:\nFind the value of a such that Subset(A, B) is true.\n\nAnswer:\nTo satisfy Subset(A, B), both elements of A must be in B:\n1. 0 ∈ B\n2. -a ∈ B\n\nFor 0 ∈ B, we need:\n- 0 = 1 (not possible)\n- 0 = a - 2 → a = 2\n- 0 = 2a - 2 → a = 1\n\nFor -a ∈ B, we need:\n- -a = 1 → a = -1\n- -a = a - 2 → 2a = 2 → a = 1\n- -a = 2a - 2 → 3a = 2 → a = 2/3\n\nChecking the options:\n- A. a = 2: 0 = a - 2 is true, but -a = 2a - 2 is not true.\n- B. a = 1: 0 = 2a - 2 is true, and -a = a - 2 is true.\n- C. a = 2/3: 0 = 2a - 2 is not true.\n- D. a = -1: 0 = a - 2 is not true.\n\nThe only value of a that satisfies both conditions is a = 1.\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "3. 某学校为了解学生参加体育运动的情况, 用比例分配的分层随机抽样方法作抽样调查, 拟从初中部和高中部两层共抽取 60 名学生, 已知该校初中部和高中部分别有 400 名和 200 名学生, 则不同的抽样结果共有 $()$.\nA. $\\mathrm{C}_{400}^{45} \\cdot \\mathrm{C}_{200}^{15}$ 种\nB. $\\mathrm{C}_{400}^{20} \\cdot \\mathrm{C}_{200}^{40}$ 种\nC. $\\mathrm{C}_{400}^{30} \\cdot \\mathrm{C}_{200}^{30}$ 种\nD. $\\mathrm{C}_{400}^{40} \\cdot \\mathrm{C}_{200}^{20}$ 种",
+    "options": [
+      "A. $\\mathrm{C}_{400}^{45} \\cdot \\mathrm{C}_{200}^{15}$ 种",
+      "B. $\\mathrm{C}_{400}^{20} \\cdot \\mathrm{C}_{200}^{40}$ 种",
+      "C. $\\mathrm{C}_{400}^{30} \\cdot \\mathrm{C}_{200}^{30}$ 种",
+      "D. $\\mathrm{C}_{400}^{40} \\cdot \\mathrm{C}_{200}^{20}$ 种"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- S(x, y): y is the number of students sampled from group x.\n- T(x, y): y is the total number of students in group x.\n\nParse the problem into logic rules:\n1. T(Junior, 400): There are 400 students in the junior group.\n2. T(Senior, 200): There are 200 students in the senior group.\n3. S(Junior, y): y is the number of students sampled from the junior group.\n4. S(Senior, z): z is the number of students sampled from the senior group.\n5. y + z = 60: The total number of students sampled from both groups is 60.\n6. y/400 = z/200: The sampling is proportional to the size of each group.\n\nWrite facts:\n- T(Junior, 400)\n- T(Senior, 200)\n\nParse the question:\nFind the number of different sampling results, which is the number of ways to choose y students from the junior group and z students from the senior group such that y + z = 60 and y/400 = z/200.\n\nAnswer:\nFrom the proportionality condition y/400 = z/200, we have y = 2z. Substituting into y + z = 60 gives 2z + z = 60, so 3z = 60, and z = 20. Therefore, y = 40.\n\nThe number of different sampling results is given by the combination formula:\n- Choose 40 students from 400 in the junior group: C(400, 40)\n- Choose 20 students from 200 in the senior group: C(200, 20)\n\nThus, the number of different sampling results is C(400, 40) * C(200, 20).\n\nFinal Answer: D",
+    "final_answer": "D",
+    "correct_answer": "D",
+    "is_correct": true
+  },
+  {
+    "question": "4. 若 $f(x)=(x+a) \\ln \\frac{2 x-1}{2 x+1}$ 为偶函数, 则 $a=()$.\nA. -1\nB. 0\nC. $\\frac{1}{2}$\nD. 1",
+    "options": [
+      "A. -1",
+      "B. 0",
+      "C. $\\frac{1}{2}$",
+      "D. 1"
+    ],
+    "gpt_result": "### \nDefine predicates:\nF(x, a, y): y is the result of applying function f to x with parameter a, where f(x) = (x + a) ln((2x - 1)/(2x + 1))\nEvenFunction(f): f is an even function\n\nParse problem into logic rules:\n∀x, a, y: F(x, a, y) ↔ y = (x + a) ln((2x - 1)/(2x + 1))\nEvenFunction(f) ↔ ∀x: f(x) = f(-x)\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nFind a such that: EvenFunction(f) where f(x) = (x + a) ln((2x - 1)/(2x + 1))\n\nAnswer:\nTo determine the value of a for which f(x) is an even function, we need to satisfy the condition f(x) = f(-x).\n\nGiven:\nf(x) = (x + a) ln((2x - 1)/(2x + 1))\n\nWe need:\nf(x) = f(-x)\n(x + a) ln((2x - 1)/(2x + 1)) = (-x + a) ln((2(-x) - 1)/(2(-x) + 1))\n\nSimplify the right side:\n(-x + a) ln((-2x - 1)/(-2x + 1)) = (-x + a) ln((1 - 2x)/(1 + 2x))\n\nFor f(x) to be equal to f(-x), the expression inside the logarithm must be the same, which implies:\nln((2x - 1)/(2x + 1)) = ln((1 - 2x)/(1 + 2x))\n\nThis is true if:\n(2x - 1)/(2x + 1) = (1 - 2x)/(1 + 2x)\n\nThis condition is satisfied for all x if a = 0, because the function becomes symmetric around the y-axis.\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "B",
+    "is_correct": true
+  },
+  {
+    "question": "5. 已知椭圆 $C: \\frac{x^2}{3}+y^2=1$ 的左、右焦点分别为 $F_1, F_2$, 直线 $y=x+m$ 与 $C$ 交于 $A, B$ 两点, 若$\\triangle F_1 A B$ 面积是$\\triangle F_2 A B$ 面积的 2 倍, 则 $m=()$.\nA. $\\frac{2}{3}$\nB. $\\frac{\\sqrt{2}}{3}$\nC. $-\\frac{\\sqrt{2}}{3}$\nD. $-\\frac{2}{3}$",
+    "options": [
+      "A. $\\frac{2}{3}$",
+      "B. $\\frac{\\sqrt{2}}{3}$",
+      "C. $-\\frac{\\sqrt{2}}{3}$",
+      "D. $-\\frac{2}{3}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- Ellipse(C, x, y): Point (x, y) lies on the ellipse C.\n- LineIntersection(L, C, A, B): Line L intersects ellipse C at points A and B.\n- Area(T, a): The area of triangle T is a.\n- Focus(C, F1, F2): F1 and F2 are the left and right foci of ellipse C.\n\nParse problem into logic rules:\n1. Ellipse(C, x, y) ↔ \\(\\frac{x^2}{3} + y^2 = 1\\)\n2. LineIntersection(y = x + m, C, A, B) ↔ A and B are intersection points of the line y = x + m with ellipse C.\n3. Focus(C, F1, F2) ↔ F1 = (-c, 0) and F2 = (c, 0), where \\(c = \\sqrt{3 - 1} = \\sqrt{2}\\).\n4. Area(ΔF1AB, a1) and Area(ΔF2AB, a2) such that a1 = 2 * a2.\n\nWrite facts:\n- The ellipse C is given by \\(\\frac{x^2}{3} + y^2 = 1\\).\n- The line is given by y = x + m.\n- The foci of the ellipse are F1 = (-√2, 0) and F2 = (√2, 0).\n\nParse the question:\nFind m such that the area of triangle ΔF1AB is twice the area of triangle ΔF2AB.\n\nAnswer:\nTo solve the problem, we need to find the intersection points A and B of the line y = x + m with the ellipse \\(\\frac{x^2}{3} + y^2 = 1\\).\n\nSubstitute y = x + m into the ellipse equation:\n\\[\n\\frac{x^2}{3} + (x + m)^2 = 1\n\\]\n\\[\n\\frac{x^2}{3} + x^2 + 2xm + m^2 = 1\n\\]\n\\[\n\\frac{4x^2}{3} + 2xm + m^2 = 1\n\\]\n\\[\n4x^2 + 6xm + 3m^2 = 3\n\\]\n\\[\n4x^2 + 6xm + 3m^2 - 3 = 0\n\\]\n\nThis is a quadratic equation in x. The roots of this equation will give the x-coordinates of points A and B. The y-coordinates can be found using y = x + m.\n\nThe area of triangle ΔF1AB is given by:\n\\[\n\\text{Area} = \\frac{1}{2} \\left| x_1(y_2 - 0) + x_2(0 - y_1) + (-\\sqrt{2})(y_1 - y_2) \\right|\n\\]\n\nThe area of triangle ΔF2AB is given by:\n\\[\n\\text{Area} = \\frac{1}{2} \\left| x_1(y_2 - 0) + x_2(0 - y_1) + (\\sqrt{2})(y_1 - y_2) \\right|\n\\]\n\nGiven that the area of ΔF1AB is twice the area of ΔF2AB, we have:\n\\[\n\\left| x_1y_2 - x_2y_1 - \\sqrt{2}(y_1 - y_2) \\right| = 2 \\left| x_1y_2 - x_2y_1 + \\sqrt{2}(y_1 - y_2) \\right|\n\\]\n\nSolving this equation for m, we find that m = -\\(\\frac{\\sqrt{2}}{3}\\).\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  },
+  {
+    "question": "6. 已知函数 $f(x)=a \\mathrm{e}^x-\\ln x$ 在区间 $(1,2)$ 上单调递增，则 $a$ 的最小值为 $()$.\nA. $e^2$\nB. e\nC. $\\mathrm{e}^{-1}$\nD. $\\mathrm{e}^{-2}$",
+    "options": [
+      "A. $e^2$",
+      "B. e",
+      "C. $\\mathrm{e}^{-1}$",
+      "D. $\\mathrm{e}^{-2}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\nF(x, a, y): y is the result of applying function f with parameter a to x\nMonotonicIncreasing(f, I): function f is monotonic increasing on interval I\n\nParse problem into logic rules:\n∀x, a, y: F(x, a, y) ↔ y = a * e^x - ln(x)\nMonotonicIncreasing(f, (1, 2)) ↔ ∀x ∈ (1, 2), f'(x) > 0\n\nWrite facts:\nNo additional facts are given in this problem.\n\nParse the question:\nFind the minimum value of a such that: MonotonicIncreasing(f, (1, 2))\n\nAnswer:\n[Answer the question based on the symbolic representations]\n\nTo determine the minimum value of a such that the function f(x) = a * e^x - ln(x) is monotonic increasing on the interval (1, 2), we need to find the derivative of f(x) and ensure it is positive for all x in (1, 2).\n\n1. Compute the derivative of f(x):\n   f'(x) = a * e^x - 1/x\n\n2. Set f'(x) > 0 for x in (1, 2):\n   a * e^x - 1/x > 0\n   a * e^x > 1/x\n   a > 1/(x * e^x)\n\n3. Find the minimum value of 1/(x * e^x) for x in (1, 2):\n   Consider the function g(x) = 1/(x * e^x).\n   To find the minimum, compute the derivative g'(x) and find critical points.\n\n   g(x) = x^(-1) * e^(-x)\n   g'(x) = -x^(-2) * e^(-x) + x^(-1) * (-e^(-x))\n         = -e^(-x) * (1/x^2 + 1/x)\n\n   Set g'(x) = 0:\n   -e^(-x) * (1/x^2 + 1/x) = 0\n   This equation has no real solutions for x in (1, 2), so we check the endpoints.\n\n   Evaluate g(x) at the endpoints:\n   g(1) = 1/(1 * e^1) = 1/e\n   g(2) = 1/(2 * e^2) = 1/(2e^2)\n\n   The minimum value of g(x) on (1, 2) is 1/e at x = 1.\n\n4. Therefore, the minimum value of a is e.\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  },
+  {
+    "question": "7. 已知 $\\alpha$ 为锐角, $\\cos \\alpha=\\frac{1+\\sqrt{5}}{4}$, 则 $\\sin \\frac{\\alpha}{2}=()$.\nA. $\\frac{3-\\sqrt{5}}{8} \\rightarrow$\nB. $\\frac{-1+\\sqrt{5}}{8} \\rightarrow$\nC. $\\frac{3-\\sqrt{5}}{4} \\rightarrow$\nD. $\\frac{-1+\\sqrt{5}}{4}$",
+    "options": [
+      "A. $\\frac{3-\\sqrt{5}}{8} \\rightarrow$",
+      "B. $\\frac{-1+\\sqrt{5}}{8} \\rightarrow$",
+      "C. $\\frac{3-\\sqrt{5}}{4} \\rightarrow$",
+      "D. $\\frac{-1+\\sqrt{5}}{4}$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- Cos(α, x): x is the cosine of angle α.\n- SinHalf(α, y): y is the sine of half of angle α.\n\nParse problem into logic rules:\n- ∀α, x: Cos(α, x) ↔ x = cos(α)\n- ∀α, y: SinHalf(α, y) ↔ y = sin(α/2)\n\nWrite facts:\n- Cos(α, (1 + √5)/4)\n\nParse the question:\nFind y such that: ∃α: Cos(α, (1 + √5)/4) ∧ SinHalf(α, y)\n\nAnswer:\nTo find sin(α/2), we use the half-angle identity for sine:\n\\[ \\sin\\left(\\frac{\\alpha}{2}\\right) = \\sqrt{\\frac{1 - \\cos(\\alpha)}{2}} \\]\n\nGiven that \\(\\cos(\\alpha) = \\frac{1 + \\sqrt{5}}{4}\\), we substitute this into the half-angle formula:\n\\[ \\sin\\left(\\frac{\\alpha}{2}\\right) = \\sqrt{\\frac{1 - \\frac{1 + \\sqrt{5}}{4}}{2}} \\]\n\\[ = \\sqrt{\\frac{\\frac{4 - (1 + \\sqrt{5})}{4}}{2}} \\]\n\\[ = \\sqrt{\\frac{3 - \\sqrt{5}}{8}} \\]\n\nThus, the correct answer is:\n\\[ \\sin\\left(\\frac{\\alpha}{2}\\right) = \\frac{\\sqrt{3 - \\sqrt{5}}}{2} \\]\n\nHowever, the options provided are not in the form of \\(\\frac{\\sqrt{3 - \\sqrt{5}}}{2}\\), but rather in a simplified form. We need to match this with the given options.\n\nThe correct option that matches the simplified form is:\n\\[ \\frac{3 - \\sqrt{5}}{4} \\]\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "D",
+    "is_correct": false
+  },
+  {
+    "question": "8. 记 $S_n$ 为等比数列 $\\left\\{a_n\\right\\}$ 的前 $n$ 项和, 若 $S_4=-5, S_6=21 S_2$, 则 $S_8=()$.\nA. 120\nB. 85\nC. -85\nD. -120",
+    "options": [
+      "A. 120",
+      "B. 85",
+      "C. -85",
+      "D. -120"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- S(n, s): s is the sum of the first n terms of the geometric sequence {a_n}.\n\nParse problem into logic rules:\n- For a geometric sequence with first term a and common ratio r, the sum of the first n terms is given by: \n  ∀n, s: S(n, s) ↔ s = a(1 - r^n) / (1 - r) if r ≠ 1.\n\nWrite facts:\n- S(4, -5): The sum of the first 4 terms is -5.\n- S(6, 21 * S(2)): The sum of the first 6 terms is 21 times the sum of the first 2 terms.\n\nParse the question:\n- Find s such that S(8, s).\n\nAnswer:\n1. From S(4, -5), we have:\n   \\[\n   S_4 = a(1 - r^4) / (1 - r) = -5\n   \\]\n\n2. From S(6, 21 * S(2)), we have:\n   \\[\n   S_6 = a(1 - r^6) / (1 - r) = 21 \\times S_2 = 21 \\times a(1 - r^2) / (1 - r)\n   \\]\n\n3. Solving the equations:\n   - From S_4 = -5:\n     \\[\n     a(1 - r^4) = -5(1 - r)\n     \\]\n\n   - From S_6 = 21 * S_2:\n     \\[\n     a(1 - r^6) = 21a(1 - r^2)\n     \\]\n     \\[\n     1 - r^6 = 21(1 - r^2)\n     \\]\n     \\[\n     1 - r^6 = 21 - 21r^2\n     \\]\n     \\[\n     r^6 - 21r^2 + 20 = 0\n     \\]\n\n   - Let \\( x = r^2 \\), then:\n     \\[\n     x^3 - 21x + 20 = 0\n     \\]\n\n   - Solving for x, we find:\n     \\[\n     (x - 1)(x^2 + x - 20) = 0\n     \\]\n     \\[\n     x = 1 \\quad \\text{or} \\quad x^2 + x - 20 = 0\n     \\]\n\n   - Solving \\( x^2 + x - 20 = 0 \\):\n     \\[\n     x = \\frac{-1 \\pm \\sqrt{1 + 80}}{2} = \\frac{-1 \\pm 9}{2}\n     \\]\n     \\[\n     x = 4 \\quad \\text{or} \\quad x = -5 \\quad (\\text{not possible for } r^2)\n     \\]\n\n   - Therefore, \\( r^2 = 4 \\) or \\( r = 2 \\) or \\( r = -2 \\).\n\n4. Calculate S_8:\n   - If \\( r = 2 \\):\n     \\[\n     S_8 = a(1 - 2^8) / (1 - 2) = a(1 - 256) / (-1) = 255a\n     \\]\n\n   - From S_4 = -5:\n     \\[\n     a(1 - 16) = -5(-1) \\Rightarrow -15a = -5 \\Rightarrow a = \\frac{1}{3}\n     \\]\n\n   - Therefore, \\( S_8 = 255 \\times \\frac{1}{3} = 85 \\).\n\nFinal Answer: B",
+    "final_answer": "B",
+    "correct_answer": "C",
+    "is_correct": false
+  }
+]

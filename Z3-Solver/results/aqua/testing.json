@@ -1,0 +1,16 @@
+[
+  {
+    "question": "A car is being driven, in a straight line and at a uniform speed, towards the base of a vertical tower. The top of the tower is observed from the car and, in the process, it takes 10 minutes for the angle of elevation to change from 45\u00b0 to 60\u00b0. After how much more time will this car reach the base of the tower?",
+    "options": [
+      "A)5(\u221a3 + 1)",
+      "B)6(\u221a3 + \u221a2)",
+      "C)7(\u221a3 \u2013 1)",
+      "D)8(\u221a3 \u2013 2)",
+      "E)None of these"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- T(h, d): h is the height of the tower and d is the initial distance from the car to the base of the tower when the angle of elevation is 45\u00b0.\n- A(t, \u03b8, d): At time t, the angle of elevation \u03b8 is observed from the car, and the distance from the car to the base of the tower is d.\n- V(s): s is the uniform speed of the car.\n\nParse problem into logic rules:\n1. \u2200h,d: T(h, d) \u2194 tan(45\u00b0) = h/d\n2. \u2200h,d: A(10, 60\u00b0, d) \u2194 tan(60\u00b0) = h/(d - s*10)\n3. The car travels at a uniform speed, so the distance covered in time t is s*t.\n\nWrite facts:\n- The angle of elevation changes from 45\u00b0 to 60\u00b0 in 10 minutes.\n\nParse the question:\nFind t such that the car reaches the base of the tower, i.e., the distance to the base becomes 0.\n\nAnswer:\n1. From rule 1: tan(45\u00b0) = 1, so h = d.\n2. From rule 2: tan(60\u00b0) = \u221a3, so h = \u221a3 * (d - s*10).\n3. Equating the two expressions for h: d = \u221a3 * (d - s*10).\n4. Solving for d: d = \u221a3d - 10\u221a3s \u2192 d(1 - \u221a3) = -10\u221a3s \u2192 d = 10\u221a3s/(\u221a3 - 1).\n5. The time to reach the base is when the distance becomes 0: d - s*t = 0.\n6. Substitute d from step 4: 10\u221a3s/(\u221a3 - 1) - s*t = 0.\n7. Solving for t: t = 10\u221a3/(\u221a3 - 1).\n\nSimplifying t:\n- Multiply numerator and denominator by (\u221a3 + 1) to rationalize the denominator:\n  t = 10\u221a3(\u221a3 + 1)/((\u221a3 - 1)(\u221a3 + 1)) = 10\u221a3(\u221a3 + 1)/(3 - 1) = 5\u221a3(\u221a3 + 1) = 5(3 + \u221a3) = 15 + 5\u221a3.\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  }
+]

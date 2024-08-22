@@ -1,0 +1,28 @@
+[
+  {
+    "question": "1. 设集合 $A=\\{x \\quad x=3 k+1, k \\in Z\\}, B=\\{x \\quad x=3 k+2, k \\in Z\\}, U$ 为整数集， $\\mathbf{U}(A \\cup B)=(\\cdots)$\nA. $\\{x \\mid x=3 k, k \\in \\mathbf{Z}\\}$\nB. $\\{x \\mid x=3 k-1, k \\in Z\\}$\nC. $\\{x \\mid x=3 k-2, k \\in Z\\}$\nD. $\\varnothing$",
+    "options": [
+      "A. $\\{x \\mid x=3 k, k \\in \\mathbf{Z}\\}$",
+      "B. $\\{x \\mid x=3 k-1, k \\in Z\\}$",
+      "C. $\\{x \\mid x=3 k-2, k \\in Z\\}$",
+      "D. $\\varnothing$"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- A(x): x is an element of set A, where A = {x | x = 3k + 1, k ∈ Z}\n- B(x): x is an element of set B, where B = {x | x = 3k + 2, k ∈ Z}\n- U(x): x is an element of the universal set U, which is the set of all integers Z.\n\nParse the problem into logic rules:\n- ∀x: A(x) ↔ ∃k ∈ Z: x = 3k + 1\n- ∀x: B(x) ↔ ∃k ∈ Z: x = 3k + 2\n- U is the set of all integers, so U(x) ↔ x ∈ Z\n\nWrite facts:\n- A ∪ B = {x | x = 3k + 1 or x = 3k + 2, k ∈ Z}\n\nParse the question:\n- Find the set U(A ∪ B), which is the complement of A ∪ B in the universal set U.\n\nAnswer:\n- The complement of A ∪ B in the set of all integers is the set of integers that are not of the form 3k + 1 or 3k + 2. These integers are of the form 3k, where k ∈ Z.\n\nFinal Answer: A",
+    "final_answer": "A",
+    "correct_answer": "A",
+    "is_correct": true
+  },
+  {
+    "question": "2. 若复数 $(a+\\mathrm{i})(1-a \\mathrm{i})=2, a \\in \\mathrm{R}$, 则 $a=(\\quad)$\nA. -1\nB. 0\nC. 1\nD. 2",
+    "options": [
+      "A. -1",
+      "B. 0",
+      "C. 1",
+      "D. 2"
+    ],
+    "gpt_result": "### \nDefine predicates:\n- ComplexProduct(a, b): The product of the complex numbers \\((a + \\mathrm{i})\\) and \\((1 - a\\mathrm{i})\\) equals \\(b\\).\n- RealNumber(x): \\(x\\) is a real number.\n\nParse problem into logic rules:\n- ∀a, b: ComplexProduct(a, b) ↔ \\((a + \\mathrm{i})(1 - a\\mathrm{i}) = b\\)\n- ∀a: RealNumber(a) ↔ \\(a \\in \\mathrm{R}\\)\n\nWrite facts:\n- ComplexProduct(a, 2)\n- RealNumber(a)\n\nParse the question:\nFind \\(a\\) such that: ∃a: ComplexProduct(a, 2) ∧ RealNumber(a)\n\nAnswer:\n[Answer the question based on the symbolic representations]\n\nTo solve the equation \\((a + \\mathrm{i})(1 - a\\mathrm{i}) = 2\\), we expand the left-hand side:\n\n\\[\n(a + \\mathrm{i})(1 - a\\mathrm{i}) = a(1) + a(-a\\mathrm{i}) + \\mathrm{i}(1) + \\mathrm{i}(-a\\mathrm{i})\n\\]\n\n\\[\n= a - a^2\\mathrm{i} + \\mathrm{i} - a\\mathrm{i}^2\n\\]\n\nSince \\(\\mathrm{i}^2 = -1\\), we have:\n\n\\[\n= a - a^2\\mathrm{i} + \\mathrm{i} + a\n\\]\n\n\\[\n= 2a + (1 - a^2)\\mathrm{i}\n\\]\n\nWe set the real part equal to 2 and the imaginary part equal to 0:\n\n1. \\(2a = 2\\)\n2. \\(1 - a^2 = 0\\)\n\nFrom the first equation, \\(2a = 2\\), we get \\(a = 1\\).\n\nFrom the second equation, \\(1 - a^2 = 0\\), we get \\(a^2 = 1\\), which gives \\(a = 1\\) or \\(a = -1\\).\n\nSince both conditions are satisfied for \\(a = 1\\), the value of \\(a\\) is 1.\n\nFinal Answer: C",
+    "final_answer": "C",
+    "correct_answer": "C",
+    "is_correct": true
+  }
+]
