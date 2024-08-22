@@ -1,4 +1,4 @@
-Task Description: You are given GaoKao mathematical question. The task is to convert it into symbolic representation
+Task Description: You are given an advanced mathematical question. The task is to convert it into symbolic representation
 1) define all the predicates in the problem
 2) parse the problem into logic rules based on the defined predicates
 3) write all the facts mentioned in the problem

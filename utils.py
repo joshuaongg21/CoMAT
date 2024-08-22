@@ -44,7 +44,7 @@ def predict_gpt(openai, messages):
     response = openai.ChatCompletion.create(
         model="gpt-4o-2024-08-06",  # You can change this to the desired GPT model
         messages=formatted_messages,
-        max_tokens=1000,
+        max_tokens=3000,
         temperature=0
     )
     
