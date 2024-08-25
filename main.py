@@ -62,6 +62,15 @@ def main():
         model = openai
         tokenizer = None
         device = None
+    elif args.model == "llama3.1_8b":
+        model_name = "meta-llama/Meta-Llama-3.1-8B-Instruct"
+        tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_name,
+            device_map="auto",
+            use_auth_token=True,
+            torch_dtype=torch.float16
+        )
     else:  # llama
         model_name = "TheBloke/TinyLlama-1.1B-Chat-v0.3-AWQ"
         tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True)
