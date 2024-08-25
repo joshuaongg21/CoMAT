@@ -2,6 +2,7 @@ import io
 import sys
 from z3 import *
 import openai
+import torch
 
 def predict_claude(anthropic, messages):
     system_message = None
@@ -51,6 +52,38 @@ def predict_gpt(openai, messages):
     prediction = response.choices[0].message['content'].strip()
     return prediction
 
+def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
+    inputs = tokenizer(prompt, return_tensors="pt").to(device)
+    
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            num_return_sequences=1,
+            do_sample=False,
+            temperature=0.0
+        )
+    
+    prediction = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return prediction
+
+def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
+    attention_mask = torch.ones_like(input_ids).to(device)
+    pad_token_id = tokenizer.pad_token_id
+    output = model.generate(
+        input_ids,
+        attention_mask=attention_mask,
+        pad_token_id=pad_token_id,
+        max_new_tokens=max_new_tokens,
+        num_return_sequences=1,
+        do_sample=False,
+        temperature=0.0
+    )
+    prediction = tokenizer.decode(output[0, input_ids.shape[1]:], skip_special_tokens=True)
+    return prediction
+
 def gpt4o_mini_decoder(question, options, z3_result):
     messages = [
         {"role": "system", "content": "You are a decoder that selects the correct MMLU option based on the Z3 code output. If the Z3 output doesn't align with any option, respond with 'z3-code is wrong, try again'. DO NOT PROVIDE YOUR OWN ANSWER OR REASONING"},
@@ -78,106 +111,3 @@ def evaluate_gpt4o_mini(question, gpt_result, correct_answer):
     )
 
     return response.choices[0].message['content'].strip()
-   
-# def symbolic_representation(question):
-#     with open(formulation_prompt_path, 'r') as f:
-#         system_content = f.read()
-
-#     messages = [
-#         {"role": "system", "content": system_content},
-#         {"role": "user", "content": f"Question: {question}"}
-#     ]
-
-#     symbolic_form = predict_claude(anthropic_client, messages)
-#     return symbolic_form
-
-# def z3_converter(question, symbolic_form):
-#     with open(z3_solver_prompt_path, 'r') as f:
-#         system_content = f.read()
-
-#     messages = [
-#         {"role": "system", "content": system_content},
-#         {"role": "user", "content": f"Question: {question}\nSymbolic form: {symbolic_form}"}
-#     ]
-
-#     response = openai.ChatCompletion.create(
-#         model="gpt-4o",
-#         messages=messages,
-#         temperature=0.0
-#     )
-
-#     code = response.choices[0].message['content'].strip()
-#     code = code.replace('```python', '').replace('```', '').strip()
-#     return code
-
-# def execute_z3_code(z3_code: str):
-#     global_namespace = {
-#         'Solver': Solver,
-#         'Int': Int,
-#         'Real': Real,
-#         'sat': sat,
-#         'print': print,
-#         'exp': lambda x: 2.718281828459045**x,
-#         'Exp': lambda x: 2.718281828459045**x,
-#         'And': And,
-#         'Or': Or,
-#         'Not': Not,
-#         'If': If,
-#         'pi': 3.141592653589793,
-#         'Sum': Sum,
-#         'sqrt': lambda x: x**(0.5),
-#         'ForAll': ForAll,
-#         'Exists': Exists,
-#         'Function': Function,
-#         'BitVec': BitVec,
-#         'BitVecVal': BitVecVal,
-#         'Extract': Extract,
-#         'Concat': Concat,
-#         'BV2Int': BV2Int,
-#         'Int2BV': Int2BV,
-#         'sin': lambda x: Sin(x),
-#         'cos': lambda x: Cos(x),
-#         'tan': lambda x: Tan(x),
-#         'log': lambda x: Log(x),
-#     }
-
-#     old_stdout = sys.stdout
-#     new_stdout = io.StringIO()
-#     sys.stdout = new_stdout
-
-#     try:
-#         exec(z3_code, global_namespace)
-#         output = new_stdout.getvalue().strip()
-#         return output
-#     except Exception as e:
-#         return f"Error executing Z3 code: {str(e)}"
-#     finally:
-#         sys.stdout = old_stdout
-
-# def z3_evaluate_mmlu(question):
-#     symbolic_form = symbolic_representation(question)
-#     print("Generated symbolic representation:")
-#     print(symbolic_form)
-
-#     z3_code = z3_converter(question, symbolic_form)
-#     print("Generated Z3 code:")
-#     print(z3_code)
-
-#     result = execute_z3_code(z3_code)
-#     print("Execution result:")
-#     print(result)
-#     return symbolic_form, z3_code, result
-
-# def gpt4o_mini_decoder(question, options, z3_result):
-#     messages = [
-#         {"role": "system", "content": "You are a decoder that selects the correct MMLU option based on the Z3 code output. If the Z3 output doesn't align with any option, respond with 'z3-code is wrong, try again'. DO NOT PROVIDE YOUR OWN ANSWER OR REASONING"},
-#         {"role": "user", "content": f"Question: {question}\nOptions: {options}\nZ3 Result: {z3_result}\n\nBased on the Z3 result, which option is correct? If none match, say 'z3-code is wrong, try again'."}
-#     ]
-
-#     response = openai.ChatCompletion.create(
-#         model="gpt-4o-mini",
-#         messages=messages,
-#         temperature=0.0
-#     )
-
-#     return response.choices[0].message['content'].strip()
