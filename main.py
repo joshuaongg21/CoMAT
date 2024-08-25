@@ -29,7 +29,7 @@ def main():
     parser = argparse.ArgumentParser(description="Process MMLU, MMLU-Pro, AQUA, GaoKao, or TruthfulQA questions")
     parser.add_argument("--dataset", choices=["mmlu", "mmlu-pro", "aqua", "gaokao", "truthfulqa", "math", "gpqa"], required=True, help="Choose the dataset: 'mmlu', 'mmlu-pro', 'aqua', 'gaokao', 'truthfulqa', 'math', or 'gpqa'")
     parser.add_argument("--method", choices=["cot", "non-cot", "symbolicot"], required=True, help="Choose the method: 'cot', 'non-cot', or 'symbolicot'")
-    parser.add_argument("--model", choices=["gpt", "llama"], required=True, help="Choose the model: 'gpt' or 'llama'")
+    parser.add_argument("--model", choices=["gpt", "llama", "llama3.1_8b"], required=True, help="Choose the model: 'gpt' or 'llama'")
     args = parser.parse_args()
 
     output_dir = f"results/{args.dataset}/{args.method}/{args.model}"
