@@ -52,20 +52,20 @@ def predict_gpt(openai, messages):
     prediction = response.choices[0].message['content'].strip()
     return prediction
 
-def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
-    inputs = tokenizer(prompt, return_tensors="pt").to(device)
+# def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
+#     inputs = tokenizer(prompt, return_tensors="pt").to(device)
     
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs,
-            max_new_tokens=max_new_tokens,
-            num_return_sequences=1,
-            do_sample=False,
-            temperature=0.0
-        )
+#     with torch.no_grad():
+#         outputs = model.generate(
+#             **inputs,
+#             max_new_tokens=max_new_tokens,
+#             num_return_sequences=1,
+#             do_sample=False,
+#             temperature=0.0
+#         )
     
-    prediction = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    return prediction
+#     prediction = tokenizer.decode(outputs[0], skip_special_tokens=True)
+#     return prediction
 
 def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
