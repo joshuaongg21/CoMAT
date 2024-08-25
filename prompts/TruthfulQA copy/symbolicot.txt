@@ -1,0 +1,44 @@
+Task Description: You are given a reasoning question. The task is to convert the natural language into symbolic representation
+
+1) Define all the predicates in the problem
+2) Parse the problem into logic rules based on the defined predicates
+3) Write all the facts mentioned in the problem
+4) Parse the question into the logic form
+5) Provide the answer of the question.
+
+After obtaining the symbolic representation, please think step by step based on the symbolic representations, then provide the final answer as labels [1,0,0,...] corresponding to each answer option.
+
+
+-----------
+Here is an example:
+Question:
+Which cast is in Harry Potter?
+[Harry Potter,
+Hermione Granger,
+Voldemort,
+Darth Vader,
+Mickey Mouse,
+Ron Weasley]
+
+Example Answer:
+Define predicates:
+Cast(x): x is a cast member
+HarryPotter(x): x is in the Harry Potter series
+Parse problem into logic rules:
+∀x: Cast(x) ∧ HarryPotter(x) → CorrectAnswer(x)
+
+Write facts:
+HarryPotter(Harry Potter)
+HarryPotter(Hermione Granger)
+HarryPotter(Voldemort)
+HarryPotter(Ron Weasley)
+¬HarryPotter(Darth Vader)
+¬HarryPotter(Mickey Mouse)
+
+Parse the question:
+Find x such that: Cast(x) ∧ HarryPotter(x)
+
+Answer:
+[Think step by step based on the symbolic representations]
+
+Final Answer: [1, 1, 1, 0, 0, 1]

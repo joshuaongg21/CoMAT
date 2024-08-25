@@ -1,7 +1,209 @@
+from datasets import load_dataset
 import json
 from tqdm import tqdm
-import re
-from utils import predict_gpt
+from utils import predict_gpt, evaluate_gpt4o_mini
+
+def process_gpqa_questions(dataset, output_file_path, formulation_prompt_path, openai_client):
+    results = []
+    correct_count = 0
+    total_count = 0
+
+    print(f"Dataset type: {type(dataset)}")
+    print(f"Dataset keys: {dataset.keys()}")
+
+    # Assuming 'train' is the correct split, adjust if necessary
+    train_dataset = dataset['train']
+    print(f"Train dataset type: {type(train_dataset)}")
+    print(f"Train dataset length: {len(train_dataset)}")
+    
+    if len(train_dataset) > 0:
+        print(f"First item keys: {train_dataset[0].keys()}")
+        print(f"First item: {json.dumps(train_dataset[0], indent=2)}")
+
+    with open(formulation_prompt_path, 'r') as f:
+        system_content = f.read()
+
+    for example in tqdm(train_dataset, desc="Processing questions"):
+        try:
+            question = example['Pre-Revision Question']
+            correct_answer = example['Pre-Revision Correct Answer']
+
+            print(f"\nProcessing question: {question[:100]}...")  # Print first 100 chars of question
+
+            messages = [
+                {"role": "system", "content": system_content},
+                {"role": "user", "content": f"Question: {question}"}
+            ]
+            
+            gpt_result = predict_gpt(openai_client, messages)
+            print(f"GPT result: {gpt_result[:100]}...")  # Print first 100 chars of result
+
+            # Evaluate the result
+            evaluation = evaluate_gpt4o_mini(question, gpt_result, correct_answer)
+            is_correct = (evaluation == '1')
+            
+            if is_correct:
+                correct_count += 1
+            total_count += 1
+
+            result = {
+                "question": question,
+                "gpt_result": gpt_result,
+                "correct_answer": correct_answer,
+                "is_correct": is_correct
+            }
+            results.append(result)
+            print(f"Evaluation result: {'Correct' if is_correct else 'Incorrect'}")
+
+            # Save results after each successful question
+            with open(output_file_path, 'w') as f:
+                json.dump(results, f, indent=2)
+            print(f"Saved results for question {total_count}")
+
+        except KeyError as e:
+            print(f"KeyError: {e}. Skipping this example.")
+            print(f"Example content: {json.dumps(example, indent=2)}")
+        except Exception as e:
+            print(f"Unexpected error: {e}. Skipping this example.")
+            print(f"Example content: {json.dumps(example, indent=2)}")
+
+    accuracy = correct_count / total_count if total_count > 0 else 0
+    print(f"Accuracy: {accuracy:.2%}")
+    return results, accuracy
+
+def process_competition_math_questions(dataset, output_file_path, formulation_prompt_path, openai_client):
+    results = []
+    correct_count = 0
+    total_count = 0
+
+    print(f"Dataset loaded. Number of items: {len(dataset)}")
+
+    with open(formulation_prompt_path, 'r') as f:
+        system_content = f.read()
+
+    for example in tqdm(dataset, desc="Processing questions"):
+        question = example['problem']
+        correct_answer = example['solution']
+
+        print(f"\nProcessing question: {question[:100]}...")  # Print first 100 chars of question
+
+        messages = [
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": f"Question: {question}"}
+        ]
+        
+        gpt_result = predict_gpt(openai_client, messages)
+        print(f"GPT result: {gpt_result[:100]}...")  # Print first 100 chars of result
+
+        # Evaluate the result
+        evaluation = evaluate_gpt4o_mini(question, gpt_result, correct_answer)
+        is_correct = (evaluation == '1')
+        
+        if is_correct:
+            correct_count += 1
+        total_count += 1
+
+        result = {
+            "question": question,
+            "gpt_result": gpt_result,
+            "correct_answer": correct_answer,
+            "is_correct": is_correct
+        }
+        results.append(result)
+        print(f"Evaluation result: {'Correct' if is_correct else 'Incorrect'}")
+
+        # Save results after each successful question
+        with open(output_file_path, 'w') as f:
+            json.dump(results, f, indent=2)
+        print(f"Saved results for question {total_count}")
+
+    accuracy = correct_count / total_count if total_count > 0 else 0
+    print(f"Accuracy: {accuracy:.2%}")
+    return results, accuracy
+
+def process_truthfulqa_questions(dataset, output_file_path, formulation_prompt_path, openai):
+    results = []
+    correct_count = 0
+    total_count = 0
+
+    print(f"Dataset type: {type(dataset)}")
+    print(f"Dataset keys: {dataset.keys()}")
+    
+    # Assuming 'validation' is the correct split, adjust if necessary
+    validation_set = dataset['validation']
+    print(f"Validation set type: {type(validation_set)}")
+    print(f"Validation set length: {len(validation_set)}")
+    
+    if len(validation_set) > 0:
+        print(f"First item type: {type(validation_set[0])}")
+        print(f"First item keys: {validation_set[0].keys()}")
+        print(f"First item: {json.dumps(validation_set[0], indent=2)}")
+
+    for example in tqdm(validation_set, desc="Processing questions"):
+        print(f"\nProcessing example: {json.dumps(example, indent=2)}")
+        
+        question = example['question']
+        mc1_targets = example['mc1_targets']
+        mc2_targets = example['mc2_targets']
+        
+        # We'll use mc2_targets for this task
+        options = mc2_targets['choices']
+        correct_labels = mc2_targets['labels']
+
+        print(f"Processing question: {question}")
+        print(f"Options: {options}")
+        print(f"Correct labels: {correct_labels}")
+
+        with open(formulation_prompt_path, 'r') as f:
+            system_content = f.read()
+
+        formatted_options = "\n".join([f"{chr(65+i)}. {option}" for i, option in enumerate(options)])
+
+        messages = [
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
+        ]
+        
+        gpt_result = predict_gpt(openai, messages)
+        print(f"GPT result: {gpt_result}")
+
+        # Extract the predicted labels from the GPT result
+        predicted_labels = [0] * len(options)
+        label_matches = re.findall(r'\[(\d+)\]', gpt_result)
+        print(f"Extracted label matches: {label_matches}")
+        
+        for match in label_matches:
+            index = int(match)
+            if 0 <= index < len(options):
+                predicted_labels[index] = 1
+
+        print(f"Predicted labels: {predicted_labels}")
+
+        is_correct = (predicted_labels == correct_labels)
+        if is_correct:
+            correct_count += 1
+        total_count += 1
+
+        result = {
+            "question": question,
+            "options": options,
+            "gpt_result": gpt_result,
+            "predicted_labels": predicted_labels,
+            "correct_labels": correct_labels,
+            "is_correct": is_correct
+        }
+        results.append(result)
+        print(f"Result: {json.dumps(result, indent=2)}")
+
+        # Save results after each successful question
+        with open(output_file_path, 'w') as f:
+            json.dump(results, f, indent=2)
+        print(f"Saved results for question {total_count}")
+
+    accuracy = correct_count / total_count if total_count > 0 else 0
+    print(f"Accuracy: {accuracy:.2%}")
+    return results, accuracy
+    
 
 def process_mmlu_questions(dataset, output_file_path, formulation_prompt_path, openai):
     results = []

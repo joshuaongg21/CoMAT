@@ -100,8 +100,8 @@ def gpt4o_mini_decoder(question, options, z3_result):
 
 def evaluate_gpt4o_mini(question, gpt_result, correct_answer):
     messages = [
-        {"role": "system", "content": "You are a decider that decides whether the answer is the same as the correct answer. If the the output doesn't align with the correct answer, respond with '0', whereas if it's correct, then respond with '1'. DO NOT PROVIDE YOUR OWN ANSWER OR REASONING, JUST SELECT '0' OR '1'."},
-        {"role": "user", "content": f"Question: {question}\nGPT-4o Result: {gpt_result}\nCorrect Answer: {correct_answer}. Answer with 0 (Wrong) or 1 (Correct)."}
+        {"role": "system", "content": "You are a decider that decides whether the answer is the same as the correct answer. If the output doesn't align with the correct answer, respond with '0', whereas if it's correct, then respond with '1'. DO NOT PROVIDE YOUR OWN ANSWER OR REASONING, JUST SELECT '0' OR '1'."},
+        {"role": "user", "content": f"GPT-4o Result: {gpt_result}\nCorrect Answer: {correct_answer}. Answer with 0 (Wrong) or 1 (Correct)."}
     ]
 
     response = openai.ChatCompletion.create(
