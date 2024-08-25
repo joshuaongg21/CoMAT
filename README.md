@@ -3,6 +3,12 @@ To run an evaluation, use the following command:
 python main.py --dataset [dataset] --method [method] --model [model]
 ```
 
+For example.
+```
+python main.py --dataset AQUA --method symbolicot --model gpt
+```
+
+
 **Datasets**
 You can evaluate the following datasets:
 
