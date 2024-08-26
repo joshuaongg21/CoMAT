@@ -14,5 +14,3 @@ Example Answer:
 [Think Step by Step here]
 
 Final Answer: B
-
-
