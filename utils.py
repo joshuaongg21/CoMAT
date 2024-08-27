@@ -43,9 +43,9 @@ def predict_gpt(openai, messages):
         formatted_messages.insert(0, {"role": "system", "content": system_message})
     
     response = openai.ChatCompletion.create(
-        model="gpt-4o-2024-08-06",  # You can change this to the desired GPT model
+        model="gpt-4o-2024-08-06",  
         messages=formatted_messages,
-        max_tokens=3000,
+        max_tokens=4000,
         temperature=0
     )
     
@@ -67,11 +67,15 @@ def predict_gpt(openai, messages):
 #     prediction = tokenizer.decode(outputs[0], skip_special_tokens=True)
 #     return prediction
 
-def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
+def predict_llama(model, tokenizer, prompt, max_new_tokens):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
-    attention_mask = torch.ones_like(input_ids).to(device)
+    attention_mask = torch.ones_like(input_ids).to(device) 
     pad_token_id = tokenizer.pad_token_id
+    
+    # Generate prediction
     output = model.generate(
         input_ids,
         attention_mask=attention_mask,
@@ -81,6 +85,7 @@ def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
         do_sample=False,
         temperature=0.0
     )
+    
     prediction = tokenizer.decode(output[0, input_ids.shape[1]:], skip_special_tokens=True)
     return prediction
 

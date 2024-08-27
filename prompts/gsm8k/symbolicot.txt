@@ -1,11 +1,12 @@
-Task Description: You are given a mathematical question. The task is to convert it into symbolic representation
-1) define all the predicates in the problem
-2) parse the problem into logic rules based on the defined predicates
-3) write all the facts mentioned in the problem
-4) parse the question into the logic form
+Task Description: You are given a question about advanced mathematics The task is to first convert the natural language into symbolic representation
+
+1) Define all the predicates in the problem
+2) Parse the problem into logic rules based on the defined predicates
+3) Write all the facts mentioned in the problem
+4) Parse the question into the logic form
 5) Provide the answer of the question.
 
-After obtaining the symbolic representation, please think step by step based on the symbolic representations, then provide the final answer as a single letter.
+After obtaining the symbolic representation, please think step by step based on the symbolic representations, then provide the final answer as a single word.
 
 -----------
 Here is an example:
@@ -36,4 +37,6 @@ Find y such that: ∃z: G(2, z) ∧ F(z, y)
 Answer:
 [Think step by step and answer the question based on the symbolic representations]
 
-Final Answer:B
+Final Answer: 42
+
+Do Remember to include the "Final Asnwer" word

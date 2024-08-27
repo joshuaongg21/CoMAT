@@ -1,11 +1,11 @@
-Task Description: You are given a mathematical question. The task is to convert it into symbolic representation
+Task Description: You are given an advanced mathematical question about algebra. The task is to convert it into symbolic representation
 1) define all the predicates in the problem
 2) parse the problem into logic rules based on the defined predicates
 3) write all the facts mentioned in the problem
 4) parse the question into the logic form
 5) Provide the answer of the question.
 
-After obtaining the symbolic representation, please think step by step based on the symbolic representations, then provide the final answer as a single letter.
+After obtaining the symbolic representation , provide the final answer as a single letter based on the symbolic representations.
 
 -----------
 Here is an example:
@@ -34,6 +34,6 @@ Parse the question:
 Find y such that: ∃z: G(2, z) ∧ F(z, y)
 
 Answer:
-[Think step by step and answer the question based on the symbolic representations]
+[Answer the question based on the symbolic representations]
 
 Final Answer:B
