@@ -39,4 +39,4 @@ Answer:
 
 Final Answer: 42
 
-Do Remember to include the "Final Asnwer" word
+Do Remember to include the "Final Answer" word, and at the final answer do not include any symbols or units, just the numbers.
