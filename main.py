@@ -39,7 +39,7 @@ def main():
     parser = argparse.ArgumentParser(description="Process MMLU, MMLU-Pro, AQUA, GaoKao, TruthfulQA, Math, GPQA, MGSM, or GSM8K questions")
     parser.add_argument("--dataset", choices=["mmlu", "mmlu-pro", "aqua", "gaokao", "truthfulqa", "math", "gpqa", "mgsm", "gsm8k"], required=True, help="Choose the dataset")
     parser.add_argument("--method", choices=["cot", "non-cot", "symbolicot"], required=True, help="Choose the method")
-    parser.add_argument("--model", choices=["gpt", "llama", "llama3.1_8b", "phi-3", "codestral", "llama3.1_70b", "qwen2"], required=True, help="Choose the model")
+    parser.add_argument("--model", choices=["gpt", "llama3.1_8b", "phi-3", "codestral", "llama3.1_70b", "qwen2"], required=True, help="Choose the model")
     parser.add_argument("--dataconfig", choices=["normal", "shuffle", "swapping"], default="normal", help="Choose the data configuration")
     args = parser.parse_args()
 
@@ -107,9 +107,8 @@ def main():
             model_name,
             use_auth_token=True,
             torch_dtype=torch.float16,
+            device_map="auto"
         )
-        model = model.to(device)
-        model = DataParallel(model) 
         model.eval()
     elif args.model == "llama3.1_70b":
         model_name = "meta-llama/Meta-Llama-3.1-70B-Instruct"
@@ -118,26 +117,27 @@ def main():
             model_name,
             use_auth_token=True,
             torch_dtype=torch.float16,
+            device_map="auto"
         )
-        model = model.to(device)
-        model = DataParallel(model) 
         model.eval()
     elif args.model == "phi-3":
         model_id = "microsoft/Phi-3.5-mini-instruct"
         tokenizer = AutoTokenizer.from_pretrained(model_id)
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
-            device_map="cuda",
             torch_dtype=torch.float16,
-            trust_remote_code=True,
+            device_map="auto",
+            trust_remote_code=True
         )
-        model = model.to(device)
         model.eval()
     elif args.model == "codestral":
         model_id = "mistralai/Codestral-22B-v0.1"
         tokenizer = AutoTokenizer.from_pretrained(model_id)
-        model = AutoModelForCausalLM.from_pretrained(model_id)
-        model = model.to(device)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_id,
+            torch_dtype=torch.float16,
+            device_map="auto"
+        )
         model.eval()
     elif args.model == "qwen2":
         model_id = "Qwen/Qwen2-7B-Instruct"

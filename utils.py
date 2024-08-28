@@ -58,7 +58,7 @@ def predict_gpt(openai, messages):
 
 def predict_phi3(model, tokenizer, prompt, max_new_tokens=3500):
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    
+
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
@@ -66,20 +66,28 @@ def predict_phi3(model, tokenizer, prompt, max_new_tokens=3500):
             do_sample=False,
             temperature=0.0
         )
-    
-    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
-    model_to_use = model.module if isinstance(model, DataParallel) else model
-    device = next(model_to_use.parameters()).device
+    return tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
 
-    # Tokenize and move tensors to the same device as the model
-    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
-    attention_mask = torch.ones_like(input_ids).to(device)
+# def predict_llama(model, tokenizer, prompt, max_new_tokens=3500):
+#     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+
+#     with torch.no_grad():
+#         outputs = model.generate(
+#             **inputs,
+#             max_new_tokens=max_new_tokens,
+#             do_sample=False,
+#             temperature=0.0
+#         )
+
+#     return tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
+
+def predict_llama(model, tokenizer, prompt, max_new_tokens):
+    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
+    attention_mask = torch.ones_like(input_ids).to(model.device)
     pad_token_id = tokenizer.pad_token_id
     
-    # Generate output
-    output = model_to_use.generate(
+    output = model.generate(
         input_ids,
         attention_mask=attention_mask,
         pad_token_id=pad_token_id,
@@ -89,7 +97,6 @@ def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
         temperature=0.0
     )
     
-    # Decode output
     prediction = tokenizer.decode(output[0, input_ids.shape[1]:], skip_special_tokens=True)
     return prediction
 
@@ -151,11 +158,12 @@ def model_evaluation(model_type, model, tokenizer, system_content, question, for
         model_result = predict_phi3(model, tokenizer, prompt, max_new_tokens=3500)
     elif model_type == "llama3.1_8b" or model_type == "llama3.1_70b":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-        model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=3500, device=device)
+        model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=3500)
     elif model_type == "codestral":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
         model_result = predict_codestral(model, tokenizer, prompt, max_new_tokens=3500)
     elif model_type == "qwen2":
+        prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
         model_result = predict_qwen2(model, tokenizer, system_content, question, formatted_options)
     else: 
         raise ValueError(f"Unknown model_type: {model_type}")
