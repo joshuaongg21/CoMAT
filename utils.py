@@ -7,6 +7,7 @@ from torch.nn import DataParallel
 from transformers import pipeline
 
 
+
 def predict_claude(anthropic, messages):
     system_message = None
     formatted_messages = []
@@ -55,40 +56,18 @@ def predict_gpt(openai, messages):
     prediction = response.choices[0].message['content'].strip()
     return prediction
 
-
-
-def predict_phi3(pipe, prompt, max_new_tokens, model, tokenizer):
-    messages = [
-        {"role": "user", "content": prompt}
-    ]
-    generation_args = {
-        "max_new_tokens": max_new_tokens,
-        "return_full_text": False,
-        "temperature": 0.0,
-        "do_sample": False,
-    }
-    pipe = pipeline(
-    "text-generation",
-    model=model,
-    tokenizer=tokenizer,
-)
-    output = pipe(messages, **generation_args)
-    return output[0]['generated_text']
-
-# def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
-#     inputs = tokenizer(prompt, return_tensors="pt").to(device)
+def predict_phi3(model, tokenizer, prompt, max_new_tokens=3500):
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     
-#     with torch.no_grad():
-#         outputs = model.generate(
-#             **inputs,
-#             max_new_tokens=max_new_tokens,
-#             num_return_sequences=1,
-#             do_sample=False,
-#             temperature=0.0
-#         )
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            do_sample=False,
+            temperature=0.0
+        )
     
-#     prediction = tokenizer.decode(outputs[0], skip_special_tokens=True)
-#     return prediction
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
     model_to_use = model.module if isinstance(model, DataParallel) else model
@@ -114,20 +93,6 @@ def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
     prediction = tokenizer.decode(output[0, input_ids.shape[1]:], skip_special_tokens=True)
     return prediction
 
-def gpt4o_mini_decoder(question, options, z3_result):
-    messages = [
-        {"role": "system", "content": "You are a decoder that selects the correct MMLU option based on the Z3 code output. If the Z3 output doesn't align with any option, respond with 'z3-code is wrong, try again'. DO NOT PROVIDE YOUR OWN ANSWER OR REASONING"},
-        {"role": "user", "content": f"Question: {question}\nOptions: {options}\nZ3 Result: {z3_result}\n\nBased on the Z3 result, which option is correct? If none match, say 'z3-code is wrong, try again'."}
-    ]
-
-    response = openai.ChatCompletion.create(
-        model="gpt-4o-mini",
-        messages=messages,
-        temperature=0.0
-    )
-
-    return response.choices[0].message['content'].strip()
-
 def evaluate_gpt4o_mini(question, gpt_result, correct_answer):
     messages = [
         {"role": "system", "content": "You are a decider that decides whether the answer is the same as the correct answer. If the output doesn't align with the correct answer, respond with '0', whereas if it's correct, then respond with '1'. DO NOT PROVIDE YOUR OWN ANSWER OR REASONING, JUST SELECT '0' OR '1'."},
@@ -142,6 +107,38 @@ def evaluate_gpt4o_mini(question, gpt_result, correct_answer):
 
     return response.choices[0].message['content'].strip()
 
+def predict_codestral(model, tokenizer, prompt, max_new_tokens=3000):
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    
+    with torch.no_grad():
+        outputs = model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False)
+    
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+def predict_qwen2(model, tokenizer, system_content, question, formatted_options, max_new_tokens=3500):
+    prompt = f"Question: {question}\n\nOptions:\n{formatted_options}"
+    messages = [
+        {"role": "system", "content": system_content},
+        {"role": "user", "content": prompt}
+    ]
+    text = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
+    model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+    
+    with torch.no_grad():
+        generated_ids = model.generate(
+            model_inputs.input_ids,
+            max_new_tokens=max_new_tokens,
+            do_sample=False,
+            temperature=0.0
+        )
+    
+    response = tokenizer.decode(generated_ids[0][len(model_inputs.input_ids[0]):], skip_special_tokens=True)
+    return response
+
 def model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device=None):
     if model_type == "gpt":
         messages = [
@@ -151,10 +148,15 @@ def model_evaluation(model_type, model, tokenizer, system_content, question, for
         model_result = predict_gpt(model, messages)
     elif model_type == "phi-3":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-        model_result = predict_phi3(model, prompt, max_new_tokens=3500)
-    elif model_type == "llama3.1_8b":
+        model_result = predict_phi3(model, tokenizer, prompt, max_new_tokens=3500)
+    elif model_type == "llama3.1_8b" or model_type == "llama3.1_70b":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
         model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=3500, device=device)
+    elif model_type == "codestral":
+        prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
+        model_result = predict_codestral(model, tokenizer, prompt, max_new_tokens=3500)
+    elif model_type == "qwen2":
+        model_result = predict_qwen2(model, tokenizer, system_content, question, formatted_options)
     else: 
         raise ValueError(f"Unknown model_type: {model_type}")
 
