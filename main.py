@@ -5,27 +5,30 @@ from datasets import load_dataset
 from utils import predict_gpt, predict_llama
 import re
 import argparse
-from data_preprocessing import  process_competition_math_questions, process_gpqa_questions, load_mgsm_questions, process_mgsm_questions
 from data_preprocess.aqua import load_aqua_questions, process_aqua_questions, process_aqua_questions_swapping_simple, process_aqua_questions_swapping_complex
 from data_preprocess.gaokao import load_gaokao_questions, process_gaokao_questions, process_gaokao_questions_swap_complex
 from data_preprocess.mmlu import process_mmlu_questions, process_mmlu_questions_swap_complex, process_mmlu_questions_shuffled
 from data_preprocess.mmlupro import process_mmlu_pro_questions_shuffled, process_mmlu_pro_questions, process_mmlu_pro_questions_swap_complex
-from data_preprocess.gsm8k import load_gsm8k_questions, process_gsm8k_questions, process_gsm8k_questions_shuffled, process_gsm8k_questions_swap_complex
+from data_preprocess.gsm8k import load_gsm8k_questions, process_gsm8k_questions
+from data_preprocess.mgsm import load_mgsm_questions, process_mgsm_questions
+from data_preprocess.gpqa import process_gpqa_questions
+from data_preprocess.math import process_competition_math_questions
+
 from dotenv import load_dotenv
 import openai
 import anthropic
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 from huggingface_hub import login
 import random
+from torch.nn import DataParallel
 
 load_dotenv()
 
 openai.api_key = os.getenv('OPENAI_API_KEY')
 login(token=os.getenv('HUGGING_FACE_HUB_TOKEN'))
 anthropic_client = anthropic.Client(api_key=os.getenv('CLAUDE_API_KEY'))
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
@@ -36,7 +39,7 @@ def main():
     parser = argparse.ArgumentParser(description="Process MMLU, MMLU-Pro, AQUA, GaoKao, TruthfulQA, Math, GPQA, MGSM, or GSM8K questions")
     parser.add_argument("--dataset", choices=["mmlu", "mmlu-pro", "aqua", "gaokao", "truthfulqa", "math", "gpqa", "mgsm", "gsm8k"], required=True, help="Choose the dataset")
     parser.add_argument("--method", choices=["cot", "non-cot", "symbolicot"], required=True, help="Choose the method")
-    parser.add_argument("--model", choices=["gpt", "llama", "llama3.1_8b"], required=True, help="Choose the model")
+    parser.add_argument("--model", choices=["gpt", "llama", "llama3.1_8b", "phi-3"], required=True, help="Choose the model")
     parser.add_argument("--dataconfig", choices=["normal", "shuffle", "swapping"], default="normal", help="Choose the data configuration")
     args = parser.parse_args()
 
@@ -66,13 +69,19 @@ def main():
     elif args.dataset == "truthfulqa":
         prompt_dir = 'prompts/TruthfulQA'
     elif args.dataset == "math":
-        prompt_dir = 'MATH'
+        prompt_dir = 'prompts/MATH'
     elif args.dataset == "mgsm":
         prompt_dir = 'prompts/MGSM'
     elif args.dataset == "gsm8k":
         prompt_dir = 'prompts/gsm8k'
-    else:  # gaokao
+    elif args.dataset == "gpqa":
+        prompt_dir = 'prompts/gpqa'
+    elif args.dataset == 'gaokao':  
         prompt_dir = 'prompts/GaoKao-Math'
+    elif args.dataset == 'mgsm':
+        prompt_dir = 'prompts/mgsm'
+    else:
+        raise ValueError ("prompts not inside the folder, please select a suitable dataset")
 
     formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
 
@@ -98,18 +107,22 @@ def main():
             model_name,
             use_auth_token=True,
             torch_dtype=torch.float16,
-        ).to(device)
+        )
+        model = model.to(device)
+        model = DataParallel(model) 
         model.eval()
-
-    else:  # llama
-        model_name = "TheBloke/TinyLlama-1.1B-Chat-v0.3-AWQ"
-        tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True)
+    elif args.model == "phi-3":
+        model_id = "microsoft/Phi-3-medium-128k-instruct"
         model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            device_map="auto",
-            use_auth_token=True,
-            torch_dtype=torch.float16
-        ).to(device)
+            model_id,
+            device_map="cuda", 
+            torch_dtype="auto", 
+            trust_remote_code=True, 
+        )
+        tokenizer = AutoTokenizer.from_pretrained(model_id)
+        model.eval()
+    else: 
+        print("none")
 
     if args.dataset == "mmlu":
         # Load MMLU dataset
@@ -152,31 +165,24 @@ def main():
     #     dataset = load_dataset("truthfulqa/truthful_qa", "multiple_choice")
     #     results, accuracy = process_truthfulqa_questions(dataset, output_file_path, formulation_prompt_path, openai)
     elif args.dataset == "math":
-        prompt_dir = 'prompts/MATH'
-        formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
         dataset = load_dataset("hendrycks/competition_math", split="test")
         results, accuracy = process_competition_math_questions(dataset, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
     elif args.dataset == "gpqa":
-        prompt_dir = 'prompts/GPQA'
-        formulation_prompt_path = f"{prompt_dir}/{args.method}_v2.txt"
         dataset = load_dataset("Idavidrein/gpqa", "gpqa_diamond")
         results, accuracy = process_gpqa_questions(dataset, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
     elif args.dataset == "mgsm":
-        prompt_dir = 'prompts/mgsm'
-        formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
         questions = load_mgsm_questions(load_dataset)
-        results, accuracy = process_mgsm_questions(questions, output_file_path, formulation_prompt_path, model)
+        if args.dataconfig == "normal":
+            results, accuracy = process_mgsm_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+        else:
+            raise ValueError("Please select --dataconfig normal")
     elif args.dataset == "gsm8k":
-        prompt_dir = 'prompts/gsm8k'
-        formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
         dataset = load_dataset("gsm8k", "main", split="test")
         questions = load_gsm8k_questions(dataset)
         if args.dataconfig == "normal":
-            results, accuracy = process_gsm8k_questions(questions, output_file_path, formulation_prompt_path, model)
-        elif args.dataconfig == "shuffle":
-            results, accuracy = process_gsm8k_questions_shuffled(questions, output_file_path, formulation_prompt_path, model)
-        elif args.dataconfig == "swapping":
-            results, accuracy = process_gsm8k_questions_swap_complex(questions, output_file_path, formulation_prompt_path, model)
+            results, accuracy = process_gsm8k_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+        else:
+            raise ValueError("Please select --dataconfig normal")
     elif args.dataset == "gaokao":  
         questions = load_gaokao_questions('prompts/GaoKao-Math/2023_Math_MCQs.json')
         if args.dataconfig == "normal":

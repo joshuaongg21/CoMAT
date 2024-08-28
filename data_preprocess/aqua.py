@@ -2,10 +2,11 @@ import re
 from datasets import load_dataset
 import json
 from tqdm import tqdm
-from utils import predict_gpt, predict_llama
+from utils import predict_gpt, predict_llama, predict_phi3, model_evaluation
 import random
 import torch
 import openai
+from transformers import pipeline
 
 def load_aqua_questions(file_path):
     questions = []
@@ -36,15 +37,7 @@ def process_aqua_questions(questions, output_file_path, formulation_prompt_path,
 
         formatted_options = "\n".join([f"{option}" for option in options])
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 
@@ -101,20 +94,7 @@ def process_aqua_questions_swapping_simple(questions, output_file_path, formulat
         # Format shuffled options as A, B, C, D, E
         formatted_options = "\n".join([f"{chr(65 + i)}. {option}" for i, option in enumerate(shuffled_options)])
 
-        messages = [
-            {"role": "system", "content": system_content},
-            {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-        ]
-        
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 
@@ -199,17 +179,9 @@ def process_aqua_questions_swapping_complex(questions, output_file_path, formula
         # Format shuffled options
         formatted_options = "\n".join(shuffled_options)
         
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
-        print(f"Model result: {model_result}")  # Debug print
+        print(f"Model result: {model_result}")
 
         # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([A-" + chr(65+len(shuffled_options)-1) + "])", model_result)
@@ -227,7 +199,7 @@ def process_aqua_questions_swapping_complex(questions, output_file_path, formula
             "question": question,
             "original_options": example['options'],
             "shuffled_options_with_additional": shuffled_options,
-            "gpt_result": gpt_result,
+            "gpt_result": model_result,
             "final_answer": final_answer_letter,
             "original_correct_answer": correct_answer,
             "new_correct_answer": new_correct_answer,

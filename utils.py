@@ -3,6 +3,9 @@ import sys
 from z3 import *
 import openai
 import torch
+from torch.nn import DataParallel
+from transformers import pipeline
+
 
 def predict_claude(anthropic, messages):
     system_message = None
@@ -52,6 +55,26 @@ def predict_gpt(openai, messages):
     prediction = response.choices[0].message['content'].strip()
     return prediction
 
+
+
+def predict_phi3(pipe, prompt, max_new_tokens, model, tokenizer):
+    messages = [
+        {"role": "user", "content": prompt}
+    ]
+    generation_args = {
+        "max_new_tokens": max_new_tokens,
+        "return_full_text": False,
+        "temperature": 0.0,
+        "do_sample": False,
+    }
+    pipe = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+)
+    output = pipe(messages, **generation_args)
+    return output[0]['generated_text']
+
 # def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
 #     inputs = tokenizer(prompt, return_tensors="pt").to(device)
     
@@ -67,16 +90,17 @@ def predict_gpt(openai, messages):
 #     prediction = tokenizer.decode(outputs[0], skip_special_tokens=True)
 #     return prediction
 
-def predict_llama(model, tokenizer, prompt, max_new_tokens):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model.to(device)
-    
+def predict_llama(model, tokenizer, prompt, max_new_tokens, device):
+    model_to_use = model.module if isinstance(model, DataParallel) else model
+    device = next(model_to_use.parameters()).device
+
+    # Tokenize and move tensors to the same device as the model
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
-    attention_mask = torch.ones_like(input_ids).to(device) 
+    attention_mask = torch.ones_like(input_ids).to(device)
     pad_token_id = tokenizer.pad_token_id
     
-    # Generate prediction
-    output = model.generate(
+    # Generate output
+    output = model_to_use.generate(
         input_ids,
         attention_mask=attention_mask,
         pad_token_id=pad_token_id,
@@ -86,6 +110,7 @@ def predict_llama(model, tokenizer, prompt, max_new_tokens):
         temperature=0.0
     )
     
+    # Decode output
     prediction = tokenizer.decode(output[0, input_ids.shape[1]:], skip_special_tokens=True)
     return prediction
 
@@ -116,3 +141,22 @@ def evaluate_gpt4o_mini(question, gpt_result, correct_answer):
     )
 
     return response.choices[0].message['content'].strip()
+
+def model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device=None):
+    if model_type == "gpt":
+        messages = [
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
+        ]
+        model_result = predict_gpt(model, messages)
+    elif model_type == "phi-3":
+        prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
+        model_result = predict_phi3(model, prompt, max_new_tokens=3500)
+    elif model_type == "llama3.1_8b":
+        prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
+        model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=3500, device=device)
+    else: 
+        raise ValueError(f"Unknown model_type: {model_type}")
+
+    print(f"Model result: {model_result}")
+    return model_result

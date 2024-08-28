@@ -2,7 +2,7 @@ import random
 import re
 import json
 from tqdm import tqdm
-from utils import predict_gpt, predict_llama
+from utils import predict_gpt, predict_llama, model_evaluation
 
 def process_mmlu_questions(dataset, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
     results = []
@@ -21,15 +21,7 @@ def process_mmlu_questions(dataset, output_file_path, formulation_prompt_path, m
 
         formatted_options = "\n".join([f"{chr(65+i)}. {option}" for i, option in enumerate(options)])
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  # llama or llama3.1_8b
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 
@@ -62,7 +54,7 @@ def process_mmlu_questions(dataset, output_file_path, formulation_prompt_path, m
     print(f"Accuracy: {accuracy:.2%}")
     return results, accuracy
 
-def process_mmlu_questions_shuffled(dataset, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
+def process_mmlu_questions_shuffled(dataset, output_file_path, formulation_prompt_path, model_type, model, model_evaluation, tokenizer=None, device=None):
     results = []
     correct_count = 0
     total_count = 0
@@ -90,15 +82,7 @@ def process_mmlu_questions_shuffled(dataset, output_file_path, formulation_promp
         # Format shuffled options as A, B, C, D
         formatted_options = "\n".join([f"{chr(65 + i)}. {option}" for i, option in enumerate(shuffled_options)])
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  # llama or llama3.1_8b
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 
@@ -134,7 +118,7 @@ def process_mmlu_questions_shuffled(dataset, output_file_path, formulation_promp
     print(f"Accuracy: {accuracy:.2%}")
     return results, accuracy
 
-def process_mmlu_questions_swap_complex(dataset, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
+def process_mmlu_questions_swap_complex(dataset, output_file_path, formulation_prompt_path, model_type, model, model_evaluation, tokenizer=None, device=None):
     results = []
     correct_count = 0
     total_count = 0
@@ -177,15 +161,7 @@ def process_mmlu_questions_swap_complex(dataset, output_file_path, formulation_p
         # Format shuffled options
         formatted_options = "\n".join(shuffled_options)
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  # llama or llama3.1_8b
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 

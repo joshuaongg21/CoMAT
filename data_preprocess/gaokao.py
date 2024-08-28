@@ -2,7 +2,7 @@ import re
 from datasets import load_dataset
 import json
 from tqdm import tqdm
-from utils import predict_gpt, evaluate_gpt4o_mini, predict_llama
+from utils import predict_gpt, evaluate_gpt4o_mini, predict_llama, model_evaluation
 import random
 
 def load_gaokao_questions(file_path):
@@ -29,15 +29,9 @@ def process_gaokao_questions(questions, output_file_path, formulation_prompt_pat
         # Format options as A, B, C, D
         formatted_options = "\n".join(options)
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
+
+        print(f"Model result: {model_result}")
 
         # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([ABCD])", model_result)
@@ -123,15 +117,9 @@ def process_gaokao_questions_swap_complex(questions, output_file_path, formulati
         question_without_options = re.sub(r'[A-D]\..*?(?=[A-D]\.|\Z)', '', question, flags=re.DOTALL)
         question_without_options = question_without_options.strip()
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
+
+        print(f"Model result: {model_result}")
 
         # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([A-E])", model_result)
@@ -199,15 +187,9 @@ def process_gaokao_questions_shuffled(questions, output_file_path, formulation_p
         question_without_options = re.sub(r'[A-D]\..*?(?=[A-D]\.|\Z)', '', question, flags=re.DOTALL)
         question_without_options = question_without_options.strip()
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
+
+        print(f"Model result: {model_result}")
 
         # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([ABCD])", model_result)

@@ -3,7 +3,7 @@ import random
 import re
 import json
 from tqdm import tqdm
-from utils import predict_gpt, predict_llama
+from utils import predict_gpt, predict_llama, model_evaluation
 
 def process_mmlu_pro_questions(dataset, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
     results = []
@@ -26,16 +26,10 @@ def process_mmlu_pro_questions(dataset, output_file_path, formulation_prompt_pat
             system_content = f.read()
 
         formatted_options = "\n".join([f"{chr(65+j)}. {option}" for j, option in enumerate(options)])
+    
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  # llama or llama3.1_8b
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        print(f"Model result: {model_result}")
 
         final_answer_match = re.search(r"Final Answer: ([A-Z])", model_result)
         if final_answer_match:
@@ -69,7 +63,7 @@ def process_mmlu_pro_questions(dataset, output_file_path, formulation_prompt_pat
     return results, accuracy
 
 
-def process_mmlu_pro_questions_shuffled(dataset, output_file_path, formulation_prompt_path, openai):
+def process_mmlu_pro_questions_shuffled(dataset, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
     results = []
     correct_count = 0
     total_count = 0
@@ -99,17 +93,11 @@ def process_mmlu_pro_questions_shuffled(dataset, output_file_path, formulation_p
             system_content = f.read()
 
         # Format shuffled options as A, B, C, D
-        formatted_options = "\n".join([f"{chr(65 + i)}. {option}" for i, option in enumerate(shuffled_options)])
+        formatted_options = "\n".join([f"{chr(65+j)}. {option}" for j, option in enumerate(options)])
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  # llama or llama3.1_8b
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
+
+        print(f"Model result: {model_result}")
 
         # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([A-Z])", model_result)
@@ -145,7 +133,7 @@ def process_mmlu_pro_questions_shuffled(dataset, output_file_path, formulation_p
     print(f"Accuracy: {accuracy:.2%}")
     return results, accuracy
 
-def process_mmlu_pro_questions_swap_complex(dataset, output_file_path, formulation_prompt_path, openai):
+def process_mmlu_pro_questions_swap_complex(dataset, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
     results = []
     correct_count = 0
     total_count = 0
@@ -192,15 +180,9 @@ def process_mmlu_pro_questions_swap_complex(dataset, output_file_path, formulati
         # Format shuffled options
         formatted_options = "\n".join(shuffled_options)
 
-        if model_type == "gpt":
-            messages = [
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
-            ]
-            model_result = predict_gpt(model, messages)
-        else:  # llama or llama3.1_8b
-            prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-            model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=1024)
+        model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
+
+        print(f"Model result: {model_result}")
 
         # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([A-" + chr(65+len(shuffled_options)-1) + "])", model_result)
