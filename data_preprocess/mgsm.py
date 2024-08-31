@@ -27,10 +27,14 @@ def process_mgsm_questions(questions, output_file_path, formulation_prompt_path,
     results = {}
     total_correct = 0
     total_questions = 0
+    accuracies = {}
 
     with open(formulation_prompt_path, 'r') as f:
         system_content = f.read()
 
+    # Create a text file for accuracies
+    accuracy_file_path = output_file_path.replace('.json', '_accuracies.txt')
+    
     for config, config_questions in questions.items():
         results[config] = []
         correct_count = 0
@@ -39,18 +43,17 @@ def process_mgsm_questions(questions, output_file_path, formulation_prompt_path,
             question = example['question']
             correct_answer = example['answer']
             
-            print(f"Processing question ({config}): {question}")  # Debug print
+            print(f"Processing question ({config}): {question}")
 
             model_result = model_evaluation(model_type, model, tokenizer, system_content, question, None, device)
 
             print(f"Model result: {model_result}")
 
-            # Extract the numeric answer from the model's response
             final_answer_match = re.search(r"Final Answer: (\d+)", model_result)
             if final_answer_match:
                 final_answer = final_answer_match.group(1)
             else:
-                final_answer = "Invalid"  # Invalid answer
+                final_answer = "Invalid"
 
             is_correct = (final_answer == correct_answer)
             if is_correct:
@@ -65,17 +68,27 @@ def process_mgsm_questions(questions, output_file_path, formulation_prompt_path,
             }
             results[config].append(result)
 
-            # Save results after each question
             with open(output_file_path, 'w', encoding='utf-8') as f:
                 json.dump(results, f, indent=2, ensure_ascii=False)
-            print(f"Saved results for question {len(results[config])} in {config}")  # Debug print
+            print(f"Saved results for question {len(results[config])} in {config}")
 
         config_accuracy = correct_count / len(config_questions) if len(config_questions) > 0 else 0
+        accuracies[config] = config_accuracy
         print(f"Accuracy for {config}: {config_accuracy:.2%}")
         
         total_correct += correct_count
         total_questions += len(config_questions)
 
     overall_accuracy = total_correct / total_questions if total_questions > 0 else 0
+    accuracies['overall'] = overall_accuracy
     print(f"Overall Accuracy: {overall_accuracy:.2%}")
+
+    # Write accuracies to the text file
+    with open(accuracy_file_path, 'w') as f:
+        for config, accuracy in accuracies.items():
+            f.write(f"Accuracy for {config}: {accuracy:.2%}\n")
+        f.write(f"Overall Accuracy: {overall_accuracy:.2%}\n")
+
+    print(f"Accuracies saved to {accuracy_file_path}")
+
     return results, overall_accuracy

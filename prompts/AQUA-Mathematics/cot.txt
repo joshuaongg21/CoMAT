@@ -11,6 +11,6 @@ D: 30
 E: 500
 
 Example Answer:
-[Please review step by step, and answer the question]
+Since g(2)
 
 Final Answer: B

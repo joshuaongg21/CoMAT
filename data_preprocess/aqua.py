@@ -2,7 +2,7 @@ import re
 from datasets import load_dataset
 import json
 from tqdm import tqdm
-from utils import predict_gpt, predict_llama, predict_phi3, model_evaluation
+from utils import predict_gpt, predict_llama, model_evaluation
 import random
 import torch
 import openai

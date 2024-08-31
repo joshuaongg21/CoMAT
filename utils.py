@@ -5,7 +5,7 @@ import openai
 import torch
 from torch.nn import DataParallel
 from transformers import pipeline
-
+import google.generativeai as genai
 
 
 def predict_claude(anthropic, messages):
@@ -56,32 +56,6 @@ def predict_gpt(openai, messages):
     prediction = response.choices[0].message['content'].strip()
     return prediction
 
-def predict_phi3(model, tokenizer, prompt, max_new_tokens=3500):
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs,
-            max_new_tokens=max_new_tokens,
-            do_sample=False,
-            temperature=0.0
-        )
-
-    return tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
-
-# def predict_llama(model, tokenizer, prompt, max_new_tokens=3500):
-#     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-
-#     with torch.no_grad():
-#         outputs = model.generate(
-#             **inputs,
-#             max_new_tokens=max_new_tokens,
-#             do_sample=False,
-#             temperature=0.0
-#         )
-
-#     return tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
-
 def predict_llama(model, tokenizer, prompt, max_new_tokens):
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
     attention_mask = torch.ones_like(input_ids).to(model.device)
@@ -100,6 +74,25 @@ def predict_llama(model, tokenizer, prompt, max_new_tokens):
     prediction = tokenizer.decode(output[0, input_ids.shape[1]:], skip_special_tokens=True)
     return prediction
 
+
+def predict_gemini(genai_client, messages, model_name="gemini-1.5-pro-001", max_tokens=700, temperature=0):
+    model = genai.GenerativeModel(model_name)
+    
+    prompt = ""
+    for message in messages:
+        prompt += f"{message['role']}: {message['content']}\n"
+        print(f"message-role: {message['role']}\nmessage-content: {message['content']}\n")
+    
+    response = model.generate_content(
+        prompt,
+        generation_config=genai.types.GenerationConfig(
+            max_output_tokens=max_tokens,
+            temperature=temperature
+        ),
+    )
+    
+    return response.text
+
 def evaluate_gpt4o_mini(question, gpt_result, correct_answer):
     messages = [
         {"role": "system", "content": "You are a decider that decides whether the answer is the same as the correct answer. If the output doesn't align with the correct answer, respond with '0', whereas if it's correct, then respond with '1'. DO NOT PROVIDE YOUR OWN ANSWER OR REASONING, JUST SELECT '0' OR '1'."},
@@ -113,14 +106,6 @@ def evaluate_gpt4o_mini(question, gpt_result, correct_answer):
     )
 
     return response.choices[0].message['content'].strip()
-
-def predict_codestral(model, tokenizer, prompt, max_new_tokens=3000):
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    
-    with torch.no_grad():
-        outputs = model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False)
-    
-    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 def predict_qwen2(model, tokenizer, system_content, question, formatted_options, max_new_tokens=3500):
     prompt = f"Question: {question}\n\nOptions:\n{formatted_options}"
@@ -153,16 +138,19 @@ def model_evaluation(model_type, model, tokenizer, system_content, question, for
             {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
         ]
         model_result = predict_gpt(model, messages)
-    elif model_type == "phi-3":
-        prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-        model_result = predict_phi3(model, tokenizer, prompt, max_new_tokens=3500)
-    elif model_type == "llama3.1_8b" or model_type == "llama3.1_70b":
+    elif model_type == "gemini":
+        messages = [
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
+        ]
+        model_result = predict_gemini(model, messages)
+    elif model_type == "llama3.1_70b":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
         model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=3500)
-    elif model_type == "codestral":
+    elif model_type == "qwen2-7b":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-        model_result = predict_codestral(model, tokenizer, prompt, max_new_tokens=3500)
-    elif model_type == "qwen2":
+        model_result = predict_qwen2(model, tokenizer, system_content, question, formatted_options)
+    elif model_type == "qwen2-72b":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
         model_result = predict_qwen2(model, tokenizer, system_content, question, formatted_options)
     else: 

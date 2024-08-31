@@ -12,6 +12,9 @@ E: 500
 
 Example Answer:
 [Please review step by step, and answer the question]
+1. Calculate g(2) 
+2. Calcilate f(g(2))
+3. Provide the Final Answer, eg "Final Answer: 42"
 
 Final Answer: 42
 

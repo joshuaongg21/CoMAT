@@ -11,7 +11,10 @@ D: 30
 E: 500
 
 Example Answer:
-Final Answer: B
+[Please review step by step, and answer the question]
+1. Calculate g(2) 
+2. Calcilate f(g(2))
+3. Provide the Final Answer, eg "Final Answer: B"
 
 Do Remember to include the "Final Answer" word and STRICTLY FOLLOW THE EXAMPLE "FINAL ANSWER" FORMAT ABOVE WITHOUT ADDING OR MODIFYING ANY OTHER WORDS FROM THE FORMAT.
 STRICTLY DO NOT USE "THE FINAL ANSWER IS:", OR OTHER VARIANTS/WORDS, ONLY USE "FINAL ANSWER:"
