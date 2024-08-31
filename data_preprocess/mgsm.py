@@ -10,13 +10,12 @@ def load_mgsm_questions(dataset):
     configs = ['bn', 'de', 'en', 'es', 'fr', 'ja', 'ru', 'sw', 'te', 'th', 'zh']
     for config in configs:
         try:
-            # Load the dataset for each configuration
             config_dataset = load_dataset("juletxara/mgsm", config, split="test")
             questions[config] = []
             for item in config_dataset:
                 questions[config].append({
                     'question': item['question'],
-                    'answer': str(item['answer_number'])  # Convert to string for consistency
+                    'answer': str(item['answer_number'])
                 })
             print(f"Loaded {len(questions[config])} questions for {config} configuration")
         except Exception as e:
@@ -27,17 +26,12 @@ def process_mgsm_questions(questions, output_file_path, formulation_prompt_path,
     results = {}
     total_correct = 0
     total_questions = 0
-    accuracies = {}
 
     with open(formulation_prompt_path, 'r') as f:
         system_content = f.read()
 
-    # Create a text file for accuracies
-    accuracy_file_path = output_file_path.replace('.json', '_accuracies.txt')
-    
     for config, config_questions in questions.items():
         results[config] = []
-        correct_count = 0
         
         for example in tqdm(config_questions, desc=f"Processing MGSM questions ({config})"):
             question = example['question']
@@ -57,7 +51,7 @@ def process_mgsm_questions(questions, output_file_path, formulation_prompt_path,
 
             is_correct = (final_answer == correct_answer)
             if is_correct:
-                correct_count += 1
+                total_correct += 1
             
             result = {
                 "question": question,
@@ -67,28 +61,13 @@ def process_mgsm_questions(questions, output_file_path, formulation_prompt_path,
                 "is_correct": is_correct
             }
             results[config].append(result)
+            total_questions += 1
 
-            with open(output_file_path, 'w', encoding='utf-8') as f:
-                json.dump(results, f, indent=2, ensure_ascii=False)
-            print(f"Saved results for question {len(results[config])} in {config}")
+        with open(output_file_path, 'w', encoding='utf-8') as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+        print(f"Saved results for {config}")
 
-        config_accuracy = correct_count / len(config_questions) if len(config_questions) > 0 else 0
-        accuracies[config] = config_accuracy
-        print(f"Accuracy for {config}: {config_accuracy:.2%}")
-        
-        total_correct += correct_count
-        total_questions += len(config_questions)
+    final_accuracy = total_correct / total_questions if total_questions > 0 else 0
+    print(f"Final Accuracy: {final_accuracy:.2%}")
 
-    overall_accuracy = total_correct / total_questions if total_questions > 0 else 0
-    accuracies['overall'] = overall_accuracy
-    print(f"Overall Accuracy: {overall_accuracy:.2%}")
-
-    # Write accuracies to the text file
-    with open(accuracy_file_path, 'w') as f:
-        for config, accuracy in accuracies.items():
-            f.write(f"Accuracy for {config}: {accuracy:.2%}\n")
-        f.write(f"Overall Accuracy: {overall_accuracy:.2%}\n")
-
-    print(f"Accuracies saved to {accuracy_file_path}")
-
-    return results, overall_accuracy
+    return results, final_accuracy
