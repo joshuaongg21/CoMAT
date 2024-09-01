@@ -8,6 +8,7 @@ import argparse
 from data_preprocess.aqua import load_aqua_questions, process_aqua_questions, process_aqua_questions_swapping_simple, process_aqua_questions_swapping_complex
 from data_preprocess.gaokao import load_gaokao_questions, process_gaokao_questions, process_gaokao_questions_swap_complex
 from data_preprocess.mmlu import process_mmlu_questions, process_mmlu_questions_swap_complex, process_mmlu_questions_shuffled
+from data_preprocess.mmlu_redux import process_mmlu_redux_questions, process_mmlu_redux_questions_shuffled, process_mmlu_redux_questions_swap_complex
 from data_preprocess.gsm8k import load_gsm8k_questions, process_gsm8k_questions
 from data_preprocess.mgsm import load_mgsm_questions, process_mgsm_questions
 from data_preprocess.olympiadbench import process_olympiadbench_questions
@@ -34,8 +35,24 @@ def ensure_dir(file_path):
         os.makedirs(directory)
 
 def main():
+    DATASET_CHOICES = [
+        [
+            "mmlu-redux-high_school_statistics",
+            "mmlu-redux-abstract_algebra",
+            "mmlu-redux-elementary_mathematics",
+            "mmlu-redux-high_school_mathematics",
+            "mmlu-redux-college_mathematics",
+            "mmlu",
+            "aqua",
+            "gaokao",
+            "mgsm",
+            "gsm8k",
+            "olympiadbench-en",
+            "olympiadbench-cn"
+        ]
+    ]
     parser = argparse.ArgumentParser(description="Process MMLU, AQUA, GaoKao, MGSM, Olympiad Bench or GSM8K questions")
-    parser.add_argument("--dataset", choices=["mmlu", "aqua", "gaokao", "mgsm", "gsm8k", "olympiadbench-en", "olympiadbench-cn"], required=True, help="Choose the dataset")
+    parser.add_argument("--dataset", choices=DATASET_CHOICES, required=True, help="Choose the dataset")
     parser.add_argument("--method", choices=["cot", "non-cot", "symbolicot"], required=True, help="Choose the method")
     parser.add_argument("--model", choices=["gpt", "llama3.1_70b", "qwen2-7b", "qwen2-72b", "gemini", "claude"], required=True, help="Choose the model")
     parser.add_argument("--dataconfig", choices=["normal", "shuffle", "swapping"], default="normal", help="Choose the data configuration")
@@ -60,6 +77,16 @@ def main():
 
     if args.dataset == "mmlu":
         prompt_dir = 'prompts/MMLU-Mathematics'
+    elif args.dataset == "mmlu-redux-high_school_statistics":
+        prompt_dir = 'prompts/MMLU-Redux-high_school_statistics'
+    elif args.dataset == "mmlu-redux-abstract_algebra":
+        prompt_dir = 'prompts/MMLU-Redux-abstract_algebra'
+    elif args.dataset == "mmlu-redux-elementary_mathematics":
+        prompt_dir = 'prompts/MMLU-Redux-elementary_mathematics'
+    elif args.dataset == "mmlu-redux-high_school_mathematics":
+        prompt_dir = 'prompts/MMLU-Redux-high_school_mathematics'
+    elif args.dataset == "mmlu-redux-college_mathematics":
+        prompt_dir = 'prompts/MMLU-Redux-college_mathematics'
     elif args.dataset == "aqua":
         prompt_dir = 'prompts/AQUA-Mathematics'
     elif args.dataset == "mgsm":
@@ -133,6 +160,15 @@ def main():
             results, accuracy = process_mmlu_questions_shuffled(dataset, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
         elif args.dataconfig == "swapping":
             results, accuracy = process_mmlu_questions_swap_complex(dataset, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+    elif args.dataset.startswith("mmlu-redux"):
+        subject = args.dataset.split("-")[-1]
+        dataset = load_dataset("edinburgh-dawg/mmlu-redux-2.0", subject, split="test")
+        if args.dataconfig == "normal":
+            results, accuracy = process_mmlu_redux_questions(dataset, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+        elif args.dataconfig == "shuffle":
+            results, accuracy = process_mmlu_redux_questions_shuffled(dataset, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+        elif args.dataconfig == "swapping":
+            results, accuracy = process_mmlu_redux_questions_swap_complex(dataset, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
     elif args.dataset == "aqua":
         questions = load_aqua_questions('prompts/AQUA-Mathematics/test.json')
         if args.dataconfig == "normal":
