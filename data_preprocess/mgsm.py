@@ -68,6 +68,6 @@ def process_mgsm_questions(questions, output_file_path, formulation_prompt_path,
         print(f"Saved results for {config}")
 
     final_accuracy = total_correct / total_questions if total_questions > 0 else 0
-    print(f"Final Accuracy: {final_accuracy:.2%}")
+    print(f"Final Accuracy: {final_accuracy:.2%}") #print final accuracy
 
     return results, final_accuracy
