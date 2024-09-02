@@ -2,3 +2,4 @@ transformers
 z3-solver
 openai
 anthropic
+google-generativeai
