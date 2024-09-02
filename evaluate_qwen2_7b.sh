@@ -2,7 +2,7 @@
 
 datasets=("gsm8k" "olympiadbench-en" "olympiadbench-cn" "mgsm")
 methods=("non-cot" "cot" "symbolicot")
-model="qwen2-8b"
+model="qwen2-7b"
 dataconfigs=("normal" "shuffle" "swapping")
 
 # Set the visible CUDA devices 
