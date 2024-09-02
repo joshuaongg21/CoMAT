@@ -26,7 +26,7 @@ load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 # login(token=os.getenv('HUGGING_FACE_HUB_TOKEN'))
 anthropic_client = anthropic.Client(api_key=os.getenv('CLAUDE_API_KEY'))
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
