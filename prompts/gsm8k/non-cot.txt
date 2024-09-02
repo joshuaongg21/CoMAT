@@ -1,4 +1,4 @@
-Answer with only a single word. The following is a question about advanced mathematics.
+Answer with only the format of 'Final Answer: [Answer]', without any symbols or units. The following is a question about advanced mathematics.
 
 -----------
 Here is an example:
@@ -11,9 +11,6 @@ D: 30
 E: 500
 
 Example Answer:
-Final Answer: 42
+Final Answer: 42 
 
-Do Remember to include the "Final Answer" word
-
-Do Remember to include the "Final Answer" word and STRICTLY FOLLOW THE EXAMPLE "FINAL ANSWER" FORMAT ABOVE WITHOUT ADDING OR MODIFYING ANY OTHER WORDS FROM THE FORMAT.
-STRICTLY DO NOT USE "THE FINAL ANSWER IS:", OR OTHER VARIANTS/WORDS, ONLY USE "FINAL ANSWER:"
+Do Remember to include the "Final Answer" word, and at the final answer do not include any symbols or units, just the numbers.
