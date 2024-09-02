@@ -104,7 +104,7 @@ def main():
             device_map="auto"
         )
         model.eval()
-    elif args.model == "qwen2-8b":
+    elif args.model == "qwen2-7b":
         model_id = "Qwen/Qwen2-7B-Instruct"
         tokenizer = AutoTokenizer.from_pretrained(model_id)
         model = AutoModelForCausalLM.from_pretrained(
