@@ -24,7 +24,7 @@ The evaluation can be performed using different methods:
 
 - cot: Chain of thought reasoning, which involves multi-step reasoning processes.
 - noncot: Standard question-answering without reasoning steps.
-- MATHResoning: Our novel approach in utilising symbolic reasoning for reasoning process.
+- symbolicot: Our novel approach in utilising symbolic reasoning for reasoning process.
 
 **Models**
 The following models are supported:
