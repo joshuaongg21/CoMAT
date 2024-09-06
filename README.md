@@ -5,36 +5,35 @@ python main.py --dataset [dataset] --method [method] --model [model] --dataconfi
 
 For example.
 ```
-python main.py --dataset AQUA --method symbolicot --model gpt --dataconfig shuffle
+python main.py --dataset AQUA --method symbolicot --model gpt --dataconfig normal 
 ```
 
 
 **Datasets**
 You can evaluate the following datasets:
 
-- GPQA
-- MATH
-- MMLU-Pro
-- MMLU
+- MMLU-Redux
 - AQUA
-- TruthfulQA
+- GSM8K
+- MGSM
+- Olympiad Bench
+- GaoKao Mathematics
 
 **Methods**
 The evaluation can be performed using different methods:
 
 - cot: Chain of thought reasoning, which involves multi-step reasoning processes.
 - noncot: Standard question-answering without reasoning steps.
-- symbolicot: Symbolic chain of thought reasoning, which combines symbolic reasoning with natural language.
+- MATHResoning: Our novel approach in utilising symbolic reasoning for reasoning process.
 
 **Models**
 The following models are supported:
 - gpt: gpt-4o
-- llama: 8b and 70b
-- codestral
-- qwen2: 7b
-- phi-3.5
+- gemini: gemini-1.5-pro
+- llama: 70b
+- qwen2: 7b and 72b
 
-**Dataconfig**
+**Dataconfig (optional)**
 - shuffle (shuffling the dataset options)
 - swapping (randomly swap the answers and options)
-- normal (unchanged)
+- Default: normal (unchanged)
