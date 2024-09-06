@@ -1,0 +1,19 @@
+Please review step by step, then provide the final answer with only a single word. The following is a question about advanced olympiad mathematics.
+
+-----------
+Here is an example:
+Question:
+If f(x) = x^2 + 3x + 2 and g(x) = 2x + 1, find f(g(2)).
+A: 3
+B: 42
+C: 5
+D: 30
+E: 500
+
+Example Answer:
+[Please review step by step, and answer the question]
+1. Calculate g(2) 
+2. Calcilate f(g(2))
+3. Provide the Final Answer, eg "Final Answer: 42"
+
+Final Answer: 42

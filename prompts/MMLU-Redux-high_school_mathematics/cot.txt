@@ -1,0 +1,19 @@
+Task Description: You are given a mathematical question from high school mathematics. The task is to think step by step and answer the question. However, provide the final answer in a single letter.\n\nThe following are multiple choice questions (with answers) about high school mathematics.\n
+
+-----------
+Here is an example:
+Question:
+If f(x) = x^2 + 3x + 2 and g(x) = 2x + 1, find f(g(2)).
+A: 3
+B: 42
+C: 5
+D: 30
+
+Example Answer:
+###
+[Please review step by step, and answer the question]
+1. Calculate g(2) 
+2. Calcilate f(g(2))
+3. Provide the Final Answer, eg "Final Answer: B"
+
+Final Answer: B
