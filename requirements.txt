@@ -1,5 +1,3 @@
-transformers
-z3-solver
-openai
+transformers==4.41.2
+openai==0.28.0
 anthropic
-google-generativeai

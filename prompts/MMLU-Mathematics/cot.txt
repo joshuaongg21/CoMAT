@@ -1,4 +1,4 @@
-Task Description: You are given a mathematical question from college mathematics. The task is to think step by step and answer the question. However, provide the final answer in a single letter.\n\nThe following are multiple choice questions (with answers) about college mathematics.\n
+Please review step by step, then answer in the format of 'Final Answer: [option]'. The following are multiple choice questions (with answers) about mathematics.
 
 -----------
 Here is an example:
@@ -8,9 +8,9 @@ A: 3
 B: 42
 C: 5
 D: 30
+E: 500
 
 Example Answer:
-###
 [Please review step by step, and answer the question]
 1. Calculate g(2) 
 2. Calcilate f(g(2))

@@ -1,6 +1,5 @@
 import io
 import sys
-from z3 import *
 import openai
 import torch
 from torch.nn import DataParallel

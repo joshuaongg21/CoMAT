@@ -7,7 +7,7 @@ from datasets import load_dataset
 
 def load_mgsm_questions(dataset):
     questions = {}
-    configs = ['bn', 'de', 'en', 'es', 'fr', 'ja', 'ru', 'sw', 'te', 'th', 'zh']
+    configs = ['bn', 'sw', 'te', 'th', 'zh']
     for config in configs:
         try:
             config_dataset = load_dataset("juletxara/mgsm", config, split="test")

@@ -1,10 +1,18 @@
 import json
 import os
-from tqdm import tqdm
-from datasets import load_dataset
-from utils import predict_gpt, predict_llama
 import re
 import argparse
+from tqdm import tqdm
+from datasets import load_dataset
+import torch
+from dotenv import load_dotenv
+import openai
+import anthropic
+import google.generativeai as genai
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from huggingface_hub import login
+
+from utils import predict_gpt, predict_llama
 from data_preprocess.aqua import load_aqua_questions, process_aqua_questions, process_aqua_questions_swapping_simple, process_aqua_questions_swapping_complex
 from data_preprocess.gaokao import load_gaokao_questions, process_gaokao_questions, process_gaokao_questions_swap_complex
 from data_preprocess.mmlu import process_mmlu_questions, process_mmlu_questions_swap_complex, process_mmlu_questions_shuffled
@@ -12,20 +20,10 @@ from data_preprocess.mmlu_redux import process_mmlu_redux_questions, process_mml
 from data_preprocess.gsm8k import load_gsm8k_questions, process_gsm8k_questions
 from data_preprocess.mgsm import load_mgsm_questions, process_mgsm_questions
 from data_preprocess.olympiadbench import process_olympiadbench_questions
-import google.generativeai as genai
-
-from dotenv import load_dotenv
-import openai
-import anthropic
-import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-from huggingface_hub import login
 
 load_dotenv()
 
 openai.api_key = os.getenv('OPENAI_API_KEY')
-# login(token=os.getenv('HUGGING_FACE_HUB_TOKEN'))
 anthropic_client = anthropic.Client(api_key=os.getenv('CLAUDE_API_KEY'))
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -60,15 +58,12 @@ def main():
     output_file_path = f"{output_dir}/{args.method}_{args.model}_{args.dataconfig}.json"
     log_file_path = f"{output_dir}/{args.method}_{args.model}_{args.dataconfig}_log.txt"
 
-    # Ensure the directory exists
     ensure_dir(output_file_path)
 
-    # Create the output file
     with open(output_file_path, 'w') as f:
         json.dump([], f)
     print(f"Created output file: {output_file_path}")
 
-    # Create and write to the log file
     with open(log_file_path, 'w') as f:
         f.write(f"Start evaluating the {args.dataset} dataset with {args.method} method using {args.model} model and {args.dataconfig} configuration\n")
     print(f"Created log file: {log_file_path}")
@@ -102,15 +97,12 @@ def main():
 
     formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
 
-    # Ensure the directory exists
     ensure_dir(output_file_path)
 
-    # Create the output file
     with open(output_file_path, 'w') as f:
         json.dump([], f)
     print(f"Created output file: {output_file_path}")
 
-    # Initialize device, model, and tokenizer
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = None
     tokenizer = None
