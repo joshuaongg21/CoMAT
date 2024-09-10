@@ -36,20 +36,18 @@ def ensure_dir(file_path):
 
 def main():
     DATASET_CHOICES = [
-        [
-            "mmlu-redux-high_school_statistics",
-            "mmlu-redux-abstract_algebra",
-            "mmlu-redux-elementary_mathematics",
-            "mmlu-redux-high_school_mathematics",
-            "mmlu-redux-college_mathematics",
-            "mmlu",
-            "aqua",
-            "gaokao",
-            "mgsm",
-            "gsm8k",
-            "olympiadbench-en",
-            "olympiadbench-cn"
-        ]
+        "mmlu-redux-high_school_statistics",
+        "mmlu-redux-abstract_algebra",
+        "mmlu-redux-elementary_mathematics",
+        "mmlu-redux-high_school_mathematics",
+        "mmlu-redux-college_mathematics",
+        "mmlu",
+        "aqua",
+        "gaokao",
+        "mgsm",
+        "gsm8k",
+        "olympiadbench-en",
+        "olympiadbench-cn"
     ]
     parser = argparse.ArgumentParser(description="Process MMLU, AQUA, GaoKao, MGSM, Olympiad Bench or GSM8K questions")
     parser.add_argument("--dataset", choices=DATASET_CHOICES, required=True, help="Choose the dataset")
