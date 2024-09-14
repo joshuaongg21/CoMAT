@@ -16,7 +16,7 @@ fi
 
 dataset=$1
 methods=("non-cot" "cot" "symbolicot")
-model="qwen2-7b"
+model="qwen2-72b"
 dataconfig="normal"
 
 for method in "${methods[@]}"; do
