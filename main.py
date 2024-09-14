@@ -90,8 +90,12 @@ def main():
         prompt_dir = 'prompts/GaoKao-Math'
     elif args.dataset == "olympiadbench-en":
         prompt_dir = 'prompts/OlympiadBench'
+        if not os.path.isdir(prompt_dir):
+            prompt_dir = 'prompts/olympiadbench'
     elif args.dataset == "olympiadbench-cn":
         prompt_dir = 'prompts/OlympiadBench'
+        if not os.path.isdir(prompt_dir):
+            prompt_dir = 'prompts/olympiadbench'
     else:
         raise ValueError ("prompts not inside the folder, please select a suitable dataset")
 
