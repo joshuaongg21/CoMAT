@@ -8,18 +8,16 @@ if [ -z "$1" ]; then
 fi
 
 # Check if the CUDA_VISIBLE_DEVICES argument is provided, if not default to "0"
-if [ -z "$2" ]; then
+if [ -z "$3" ]; then
     export CUDA_VISIBLE_DEVICES="0"
 else
-    export CUDA_VISIBLE_DEVICES="$2"
+    export CUDA_VISIBLE_DEVICES="$3"
 fi
 
 dataset=$1
-methods=("non-cot" "cot" "symbolicot")
+method=$2
 model="qwen2-72b"
 dataconfig="normal"
 
-for method in "${methods[@]}"; do
-    echo "Running: python main.py --dataset $dataset --method $method --model $model --dataconfig $dataconfig"
-    python main.py --dataset "$dataset" --method "$method" --model "$model" --dataconfig "$dataconfig"
-done
+echo "Running: python main.py --dataset $dataset --method $method --model $model --dataconfig $dataconfig"
+python main.py --dataset "$dataset" --method "$method" --model "$model" --dataconfig "$dataconfig"
