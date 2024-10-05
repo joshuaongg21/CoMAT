@@ -28,7 +28,7 @@ The evaluation can be performed using different methods:
 
 - noncot: Standard question-answering without reasoning steps.
 - cot: Chain of thought reasoning, which involves multi-step reasoning processes.
-- symbolicot: Our CoMAT approach in utilising symbolic reasoning for reasoning process.
+- CoMAT: Our CoMAT approach in utilising symbolic reasoning for reasoning process.
 
 **Models**
 The following models are supported:
