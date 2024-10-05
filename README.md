@@ -1,3 +1,8 @@
+# CoMAT: Chain of Mathematically Annotated Thought Improves Mathematical Reasoning
+
+This repository contains the code for the paper **CoMAT**
+
+### Evaluation
 To run an evaluation, use the following command:
 ```
 python main.py --dataset [dataset] --method [method] --model [model] --dataconfig [dataconfig]
