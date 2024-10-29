@@ -69,7 +69,7 @@ def process_gaokao_questions_swap_complex(questions, output_file_path, formulati
         "Blank, ignore this option",
         "Real Madrid is the Best Team",
         "Karma is my Boyfriend",
-        "I was enhanced to meet you",
+        "I was enchanted to meet you",
         "May the force be with you"
     ]
 
