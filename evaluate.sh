@@ -1,11 +1,8 @@
-#!/bin/bash
-
-datasets=("mmlu" "aqua" "GPQA" "gaokao" "mmlu-pro" "gsm8k" "mgsm")
+datasets=("mmlu" "aqua" "gaokao" "gsm8k" "olympiadbench-en" "olympiadbench-cn" "mmlu-redux-abstract_algebra" "mmlu-redux-elementary_mathematics" "mmlu-redux-high_school_mathematics" "mmlu-redux-college_mathematics")
 methods=("non-cot" "cot" "symbolicot")
-models=("codestral" "llama3.1_8b")
-dataconfigs=("normal" "shuffle" "swapping")
+models=("gpt" "gemini" "qwen2-7b" "qwen2-72b")
+dataconfigs=("normal" "swapping")
 
-# Set the visible CUDA devices 
 export CUDA_VISIBLE_DEVICES=0,1
 
 for dataset in "${datasets[@]}"; do
