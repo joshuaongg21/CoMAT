@@ -19,26 +19,24 @@ def process_gaokao_questions(questions, output_file_path, formulation_prompt_pat
         question = example['question']
         options = re.findall(r'([A-D]\..*?)(?=[A-D]\.|\Z)', question, re.DOTALL)
         options = [opt.strip() for opt in options]
-        correct_answer = example['answer'][0]  # Assuming the first answer is the correct one
+        correct_answer = example['answer'][0]  
         
-        print(f"Processing question: {question}")  # Debug print
+        print(f"Processing question: {question}")  
 
         with open(formulation_prompt_path, 'r') as f:
             system_content = f.read()
 
-        # Format options as A, B, C, D
         formatted_options = "\n".join(options)
 
         model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 
-        # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([ABCD])", model_result)
         if final_answer_match:
             final_answer_letter = final_answer_match.group(1)
         else:
-            final_answer_letter = "Invalid"  # Invalid answer
+            final_answer_letter = "Invalid" 
 
         is_correct = (final_answer_letter == correct_answer)
         if is_correct:
@@ -54,10 +52,9 @@ def process_gaokao_questions(questions, output_file_path, formulation_prompt_pat
             "is_correct": is_correct
         })
 
-        # Save results after each successful question
         with open(output_file_path, 'w', encoding='utf-8') as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
-        print(f"Saved results for question {total_count}")  # Debug print
+        print(f"Saved results for question {total_count}") 
 
     accuracy = correct_count / total_count if total_count > 0 else 0
     print(f"Accuracy: {accuracy:.2%}")
@@ -80,15 +77,13 @@ def process_gaokao_questions_swap_complex(questions, output_file_path, formulati
         question = example['question']
         options = re.findall(r'([A-D]\..*?)(?=[A-D]\.|\Z)', question, re.DOTALL)
         options = [opt.strip() for opt in options]
-        correct_answer = example['answer'][0]  # Assuming the first answer is the correct one
+        correct_answer = example['answer'][0]  
         
-        print(f"Processing question: {question}")  # Debug print
+        print(f"Processing question: {question}") 
 
-        # Add a random additional option
         additional_option = random.choice(additional_options)
         options.append(f"E. {additional_option}")
 
-        # Safely extract option contents
         option_contents = []
         for opt in options:
             parts = opt.split('.', 1)
@@ -97,23 +92,18 @@ def process_gaokao_questions_swap_complex(questions, output_file_path, formulati
             else:
                 option_contents.append(opt.strip())
 
-        # Randomly shuffle the contents of the options
         random.shuffle(option_contents)
 
-        # Create new options with shuffled content
         shuffled_options = [f"{chr(65+i)}. {content}" for i, content in enumerate(option_contents)]
 
-        # Find the new position of the correct answer
         correct_content = options[ord(correct_answer) - 65].split('.', 1)[1].strip()
         new_correct_answer = chr(65 + option_contents.index(correct_content))
 
         with open(formulation_prompt_path, 'r', encoding='utf-8') as f:
             system_content = f.read()
 
-        # Format shuffled options
         formatted_options = "\n".join(shuffled_options)
 
-        # Remove options from the original question
         question_without_options = re.sub(r'[A-D]\..*?(?=[A-D]\.|\Z)', '', question, flags=re.DOTALL)
         question_without_options = question_without_options.strip()
 
@@ -121,12 +111,11 @@ def process_gaokao_questions_swap_complex(questions, output_file_path, formulati
 
         print(f"Model result: {model_result}")
 
-        # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([A-E])", model_result)
         if final_answer_match:
             final_answer_letter = final_answer_match.group(1)
         else:
-            final_answer_letter = "Invalid"  # Invalid answer
+            final_answer_letter = "Invalid"  
 
         is_correct = (final_answer_letter == new_correct_answer)
         if is_correct:
@@ -135,7 +124,7 @@ def process_gaokao_questions_swap_complex(questions, output_file_path, formulati
 
         results.append({
             "question": question_without_options,
-            "original_options": options[:4],  # Original A, B, C, D options
+            "original_options": options[:4], 
             "shuffled_options_with_additional": shuffled_options,
             "model_result": model_result,
             "final_answer": final_answer_letter,
@@ -145,10 +134,9 @@ def process_gaokao_questions_swap_complex(questions, output_file_path, formulati
             "additional_option": additional_option
         })
 
-        # Save results after each successful question
         with open(output_file_path, 'w', encoding='utf-8') as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
-        print(f"Saved results for question {total_count}")  # Debug print
+        print(f"Saved results for question {total_count}") 
 
     accuracy = correct_count / total_count if total_count > 0 else 0
     print(f"Accuracy: {accuracy:.2%}")
@@ -163,27 +151,22 @@ def process_gaokao_questions_shuffled(questions, output_file_path, formulation_p
         question = example['question']
         options = re.findall(r'([A-D]\..*?)(?=[A-D]\.|\Z)', question, re.DOTALL)
         options = [opt.strip() for opt in options]
-        correct_answer = example['answer'][0]  # Assuming the first answer is the correct one
+        correct_answer = example['answer'][0]  
 
         print(f"Processing question: {question}")
 
-        # Randomly swap options
         shuffled_options = options.copy()
         random.shuffle(shuffled_options)
 
-        # Create a mapping of new positions to old positions
         option_mapping = {new: old for new, old in enumerate(shuffled_options)}
 
-        # Update the correct answer based on the new positions
         new_correct_answer = chr(65 + shuffled_options.index(options[ord(correct_answer) - 65]))
 
         with open(formulation_prompt_path, 'r', encoding='utf-8') as f:
             system_content = f.read()
 
-        # Format shuffled options as A, B, C, D
         formatted_options = "\n".join([f"{chr(65 + i)}. {option.split('.', 1)[1].strip()}" for i, option in enumerate(shuffled_options)])
 
-        # Remove options from the original question
         question_without_options = re.sub(r'[A-D]\..*?(?=[A-D]\.|\Z)', '', question, flags=re.DOTALL)
         question_without_options = question_without_options.strip()
 
@@ -191,12 +174,11 @@ def process_gaokao_questions_shuffled(questions, output_file_path, formulation_p
 
         print(f"Model result: {model_result}")
 
-        # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([ABCD])", model_result)
         if final_answer_match:
             final_answer_letter = final_answer_match.group(1)
         else:
-            final_answer_letter = "Invalid"  # Invalid answer
+            final_answer_letter = "Invalid"  
 
         is_correct = (final_answer_letter == new_correct_answer)
         if is_correct:
@@ -214,7 +196,6 @@ def process_gaokao_questions_shuffled(questions, output_file_path, formulation_p
             "is_correct": is_correct
         })
 
-        # Save results after each successful question
         with open(output_file_path, 'w', encoding='utf-8') as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
         print(f"Saved results for question {total_count}")

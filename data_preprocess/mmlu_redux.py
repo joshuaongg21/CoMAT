@@ -32,7 +32,7 @@ def process_mmlu_redux_questions(dataset, output_file_path, formulation_prompt_p
             final_answer_letter = final_answer_match.group(1)
             final_answer_numeric = ord(final_answer_letter) - ord('A')
         else:
-            final_answer_numeric = -1  # Invalid answer
+            final_answer_numeric = -1  
 
         is_correct = (final_answer_numeric == correct_answer)
         if is_correct:
@@ -70,33 +70,28 @@ def process_mmlu_redux_questions_shuffled(dataset, output_file_path, formulation
 
         print(f"Processing question: {question}")
 
-        # Randomly swap options
         shuffled_options = options.copy()
         random.shuffle(shuffled_options)
 
-        # Create a mapping of new positions to old positions
         option_mapping = {new: old for new, old in enumerate(shuffled_options)}
 
-        # Update the correct answer based on the new positions
         new_correct_answer = shuffled_options.index(options[correct_answer])
 
         with open(formulation_prompt_path, 'r') as f:
             system_content = f.read()
 
-        # Format shuffled options as A, B, C, D
         formatted_options = "\n".join([f"{chr(65 + i)}. {option}" for i, option in enumerate(shuffled_options)])
 
         model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 
-        # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([ABCD])", model_result)
         if final_answer_match:
             final_answer_letter = final_answer_match.group(1)
             final_answer_numeric = ord(final_answer_letter) - ord('A')
         else:
-            final_answer_numeric = -1  # Invalid answer
+            final_answer_numeric = -1  
 
         is_correct = (final_answer_numeric == new_correct_answer)
         if is_correct:
@@ -131,7 +126,7 @@ def process_mmlu_redux_questions_swap_complex(dataset, output_file_path, formula
         "Blank, ignore this option",
         "Real Madrid is the Best Team",
         "Karma is my Boyfriend",
-        "I was enhanced to meet you",
+        "I was enchanted to meet you",
         "May the force be with you"
     ]
 
@@ -144,39 +139,32 @@ def process_mmlu_redux_questions_swap_complex(dataset, output_file_path, formula
 
         print(f"Processing question: {question}")
 
-        # Add a random additional option
         additional_option = random.choice(additional_options)
         options.append(additional_option)
 
-        # Safely extract option contents
         option_contents = options.copy()
 
-        # Randomly shuffle the contents of the options
         random.shuffle(option_contents)
 
-        # Create new options with shuffled content
         shuffled_options = [f"{chr(65+i)}. {content}" for i, content in enumerate(option_contents)]
 
-        # Find the new position of the correct answer
         correct_content = example['choices'][correct_answer]
         new_correct_answer = chr(65 + option_contents.index(correct_content))
 
         with open(formulation_prompt_path, 'r') as f:
             system_content = f.read()
 
-        # Format shuffled options
         formatted_options = "\n".join(shuffled_options)
 
         model_result = model_evaluation(model_type, model, tokenizer, system_content, question, formatted_options, device)
 
         print(f"Model result: {model_result}")
 
-        # Parse the final answer
         final_answer_match = re.search(r"Final Answer: ([A-" + chr(65+len(shuffled_options)-1) + "])", model_result)
         if final_answer_match:
             final_answer_letter = final_answer_match.group(1)
         else:
-            final_answer_letter = "Invalid"  # Invalid answer
+            final_answer_letter = "Invalid"  
 
         is_correct = (final_answer_letter == new_correct_answer)
         if is_correct:

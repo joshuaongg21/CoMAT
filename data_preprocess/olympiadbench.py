@@ -6,7 +6,6 @@ import os
 def process_olympiadbench_questions(questions, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
     print(f"Starting to process {len(questions)} questions")
     
-    # Load existing results if file exists
     if os.path.exists(output_file_path):
         with open(output_file_path, 'r') as f:
             results = json.load(f)
@@ -45,7 +44,6 @@ def process_olympiadbench_questions(questions, output_file_path, formulation_pro
             results.append(result)
             print(f"Evaluation result: {'Correct' if is_correct else 'Incorrect'}")
             
-            # Append new result to file
             try:
                 with open(output_file_path, 'w') as f:
                     json.dump(results, f, indent=2)

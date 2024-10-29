@@ -6,29 +6,6 @@ from torch.nn import DataParallel
 from transformers import pipeline
 import google.generativeai as genai
 
-
-def predict_claude(anthropic, messages):
-    system_message = None
-    formatted_messages = []
-    for message in messages:
-        if message["role"] == "system":
-            system_message = message["content"]
-        else:
-            formatted_messages.append({
-                "role": message["role"],
-                "content": [{"type": "text", "text": message["content"]}]
-            })
-    
-    response = anthropic.messages.create(
-        model="claude-3-5-sonnet-20240620",
-        max_tokens=700,
-        temperature=0,
-        system=system_message,
-        messages=formatted_messages
-    )
-    prediction = response.content[0].text
-    return prediction
-
 def predict_gpt(openai, messages):
     system_message = None
     formatted_messages = []
@@ -54,25 +31,6 @@ def predict_gpt(openai, messages):
     
     prediction = response.choices[0].message['content'].strip()
     return prediction
-
-def predict_llama(model, tokenizer, prompt, max_new_tokens):
-    input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
-    attention_mask = torch.ones_like(input_ids).to(model.device)
-    pad_token_id = tokenizer.pad_token_id
-    
-    output = model.generate(
-        input_ids,
-        attention_mask=attention_mask,
-        pad_token_id=pad_token_id,
-        max_new_tokens=max_new_tokens,
-        num_return_sequences=1,
-        do_sample=False,
-        temperature=0.0
-    )
-    
-    prediction = tokenizer.decode(output[0, input_ids.shape[1]:], skip_special_tokens=True)
-    return prediction
-
 
 def predict_gemini(genai_client, messages, model_name="gemini-1.5-pro-001", max_tokens=700, temperature=0):
     model = genai.GenerativeModel(model_name)
@@ -143,9 +101,6 @@ def model_evaluation(model_type, model, tokenizer, system_content, question, for
             {"role": "user", "content": f"Question: {question}\n\nOptions:\n{formatted_options}"}
         ]
         model_result = predict_gemini(model, messages)
-    elif model_type == "llama3.1_70b":
-        prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
-        model_result = predict_llama(model, tokenizer, prompt, max_new_tokens=3500)
     elif model_type == "qwen2-7b":
         prompt = f"{system_content}\n\nQuestion: {question}\n\nOptions:\n{formatted_options}"
         model_result = predict_qwen2(model, tokenizer, system_content, question, formatted_options)
