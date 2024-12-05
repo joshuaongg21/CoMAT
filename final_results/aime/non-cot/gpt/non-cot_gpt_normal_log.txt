@@ -1,3 +1,0 @@
-Start evaluating the aime dataset with non-cot method using gpt model and normal configuration
-Final Accuracy: 15.22%
-Evaluation Duration: 10974.05 seconds

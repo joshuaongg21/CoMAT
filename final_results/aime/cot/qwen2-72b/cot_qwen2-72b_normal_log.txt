@@ -1,1 +1,0 @@
-Start evaluating the aime dataset with cot method using qwen2-72b model and normal configuration

@@ -1,1 +1,0 @@
-Start evaluating the aime dataset with non-cot method using gemini model and normal configuration
