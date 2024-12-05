@@ -1,0 +1,3 @@
+Start evaluating the aime dataset with non-cot method using qwen2-7b model and normal configuration
+Final Accuracy: 7.61%
+Evaluation Duration: 1014.30 seconds

@@ -1,0 +1,1 @@
+Start evaluating the aime dataset with comat method using qwen2-7b model and normal configuration

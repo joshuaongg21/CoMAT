@@ -1,0 +1,3 @@
+Start evaluating the aime dataset with cot method using gpt model and normal configuration
+Final Accuracy: 19.61%
+Evaluation Duration: 16068.77 seconds

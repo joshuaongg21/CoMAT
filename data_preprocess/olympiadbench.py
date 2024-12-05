@@ -1,6 +1,6 @@
 import json
 from tqdm import tqdm
-from utils import predict_gpt, predict_llama, evaluate_gpt4o_mini, model_evaluation
+from utils import predict_gpt, evaluate_gpt4o_mini, model_evaluation
 import os
 
 def process_olympiadbench_questions(questions, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):

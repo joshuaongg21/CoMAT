@@ -2,7 +2,7 @@ import random
 import re
 import json
 from tqdm import tqdm
-from utils import predict_gpt, predict_llama, model_evaluation
+from utils import predict_gpt,model_evaluation
 
 def process_mmlu_redux_questions(dataset, output_file_path, formulation_prompt_path, model_type, model, tokenizer=None, device=None):
     results = []

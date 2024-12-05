@@ -2,7 +2,7 @@ import random
 import re
 import json
 from tqdm import tqdm
-from utils import predict_gpt, predict_llama, model_evaluation
+from utils import predict_gpt, model_evaluation
 
 def load_gsm8k_questions(dataset):
     questions = []

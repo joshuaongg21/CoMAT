@@ -2,7 +2,7 @@ import re
 from datasets import load_dataset
 import json
 from tqdm import tqdm
-from utils import predict_gpt, evaluate_gpt4o_mini, predict_llama, model_evaluation
+from utils import predict_gpt, evaluate_gpt4o_mini, model_evaluation
 import random
 
 def load_gaokao_questions(file_path):

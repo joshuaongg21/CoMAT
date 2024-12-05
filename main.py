@@ -10,15 +10,16 @@ import openai
 import anthropic
 import google.generativeai as genai
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from huggingface_hub import login
+import time
 
 from utils import predict_gpt
-from data_preprocess.aqua import load_aqua_questions, process_aqua_questions, process_aqua_questions_swapping_simple, process_aqua_questions_swapping_complex
+from data_preprocess.aqua import load_aqua_questions, process_aqua_questions, process_aqua_questions_swapping_complex
 from data_preprocess.gaokao import load_gaokao_questions, process_gaokao_questions, process_gaokao_questions_swap_complex
-from data_preprocess.mmlu_redux import process_mmlu_redux_questions, process_mmlu_redux_questions_shuffled, process_mmlu_redux_questions_swap_complex
+from data_preprocess.mmlu_redux import process_mmlu_redux_questions, process_mmlu_redux_questions_swap_complex
 from data_preprocess.gsm8k import load_gsm8k_questions, process_gsm8k_questions
 from data_preprocess.mgsm import load_mgsm_questions, process_mgsm_questions
 from data_preprocess.olympiadbench import process_olympiadbench_questions
+from data_preprocess.AIME import load_aime_questions, process_aime_questions  # Added import for AIME
 
 load_dotenv()
 
@@ -43,9 +44,10 @@ def main():
         "mgsm",
         "gsm8k",
         "olympiadbench-en",
-        "olympiadbench-cn"
+        "olympiadbench-cn",
+        "aime"  # Added AIME to the dataset choices
     ]
-    parser = argparse.ArgumentParser(description="Process MMLU, AQUA, GaoKao, MGSM, Olympiad Bench or GSM8K questions")
+    parser = argparse.ArgumentParser(description="Process datasets")
     parser.add_argument("--dataset", choices=DATASET_CHOICES, required=True, help="Choose the dataset")
     parser.add_argument("--method", choices=["cot", "non-cot", "comat"], required=True, help="Choose the method")
     parser.add_argument("--model", choices=["gpt", "qwen2-7b", "qwen2-72b", "gemini"], required=True, help="Choose the model")
@@ -66,6 +68,7 @@ def main():
         f.write(f"Start evaluating the {args.dataset} dataset with {args.method} method using {args.model} model and {args.dataconfig} configuration\n")
     print(f"Created log file: {log_file_path}")
 
+    start_time = time.time()  # Start timing the evaluation
 
     if args.dataset == "mmlu-redux-abstract_algebra":
         prompt_dir = 'prompts/MMLU-Redux-abstract_algebra'
@@ -83,24 +86,16 @@ def main():
         prompt_dir = 'prompts/gsm8k'
     elif args.dataset == 'gaokao':  
         prompt_dir = 'prompts/GaoKao-Math'
-    elif args.dataset == "olympiadbench-en":
+    elif args.dataset == "olympiadbench-en" or args.dataset == "olympiadbench-cn":
         prompt_dir = 'prompts/OlympiadBench'
         if not os.path.isdir(prompt_dir):
             prompt_dir = 'prompts/olympiadbench'
-    elif args.dataset == "olympiadbench-cn":
-        prompt_dir = 'prompts/OlympiadBench'
-        if not os.path.isdir(prompt_dir):
-            prompt_dir = 'prompts/olympiadbench'
+    elif args.dataset == "aime":
+        prompt_dir = 'prompts/AIME'  # Added prompt directory for AIME
     else:
-        raise ValueError ("prompts not inside the folder, please select a suitable dataset")
+        raise ValueError ("Prompts not inside the folder, please select a suitable dataset")
 
     formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
-
-    ensure_dir(output_file_path)
-
-    with open(output_file_path, 'w') as f:
-        json.dump([], f)
-    print(f"Created output file: {output_file_path}")
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = None
@@ -168,7 +163,6 @@ def main():
             results, accuracy = process_gaokao_questions(questions, output_file_path, formulation_prompt_path, openai)
     elif args.dataset == "olympiadbench-en":
         dataset = load_dataset("Hothan/OlympiadBench", "OE_TO_maths_en_COMP", split="train")
-        
         questions = [
             {
                 "question": item['question'],
@@ -176,11 +170,9 @@ def main():
             }
             for item in dataset
         ]
-        
         results, accuracy = process_olympiadbench_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
     elif args.dataset == "olympiadbench-cn":
         dataset = load_dataset("Hothan/OlympiadBench", "OE_TO_maths_zh_COMP", split="train")
-        
         questions = [
             {
                 "question": item['question'],
@@ -188,20 +180,38 @@ def main():
             }
             for item in dataset
         ]
-        
         results, accuracy = process_olympiadbench_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+    elif args.dataset == "aime":
+        questions = load_aime_questions('prompts/AIME/AIME_Dataset_1983_2024.csv')  # Update the path as needed
+        if args.dataconfig == "normal":
+            results, accuracy = process_aime_questions(
+                questions,
+                output_file_path,
+                formulation_prompt_path,
+                args.model,
+                model,
+                tokenizer,
+                device
+            )
+        else:
+            raise ValueError("Please select --dataconfig normal")
     else:
         raise ValueError ("Dataset not found")
 
+
+    end_time = time.time()
+    duration = end_time - start_time
     print(results)
     print(f"Final results saved to {output_file_path}")
     print(f"Final Accuracy: {accuracy:.2%}")
+    print(f"Evaluation Duration: {duration:.2f} seconds")
+
 
     with open(log_file_path, 'a') as f:
         f.write(f"Final Accuracy: {accuracy:.2%}\n")
+        f.write(f"Evaluation Duration: {duration:.2f} seconds\n")
 
     print(f"Log file updated: {log_file_path}")
-
 
 if __name__ == "__main__":
     main()
