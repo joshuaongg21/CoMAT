@@ -49,7 +49,7 @@ def main():
         "olympiadbench-cn",
         "aime",
         "svamp",
-        "multiarath"  # Added MultiArath dataset
+        "multiarath"  
     ]
 
     parser = argparse.ArgumentParser(description="Process datasets")
@@ -73,7 +73,7 @@ def main():
         f.write(f"Start evaluating the {args.dataset} dataset with {args.method} method using {args.model} model and {args.dataconfig} configuration\n")
     print(f"Created log file: {log_file_path}")
 
-    start_time = time.time()  # Start timing the evaluation
+    start_time = time.time() 
 
     if args.dataset == "mmlu-redux-abstract_algebra":
         prompt_dir = 'prompts/MMLU-Redux-abstract_algebra'
@@ -135,7 +135,6 @@ def main():
     else: 
         raise ValueError("Model does not exist")
 
-    # Handle each dataset case:
     if args.dataset.startswith("mmlu-redux"):
         subject = args.dataset.split("-")[-1]
         dataset = load_dataset("edinburgh-dawg/mmlu-redux-2.0", subject, split="test")
