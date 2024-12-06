@@ -1,6 +1,6 @@
-datasets=("mmlu" "aqua" "gaokao" "gsm8k" "olympiadbench-en" "olympiadbench-cn" "mmlu-redux-abstract_algebra" "mmlu-redux-elementary_mathematics" "mmlu-redux-high_school_mathematics" "mmlu-redux-college_mathematics")
+datasets=("svamp" "multiarath")
 methods=("non-cot" "cot" "comat")
-models=("gpt" "gemini" "qwen2-7b" "qwen2-72b")
+models=("qwen2-7b" "qwen2-72b" "gpt" "gemini" )
 dataconfigs=("normal")
 
 export CUDA_VISIBLE_DEVICES=0,1
