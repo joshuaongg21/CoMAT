@@ -12,14 +12,16 @@ import google.generativeai as genai
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import time
 
-from utils import predict_gpt
+from utils import predict_gpt, model_evaluation, evaluate_gpt4o_mini
 from data_preprocess.aqua import load_aqua_questions, process_aqua_questions, process_aqua_questions_swapping_complex
 from data_preprocess.gaokao import load_gaokao_questions, process_gaokao_questions, process_gaokao_questions_swap_complex
 from data_preprocess.mmlu_redux import process_mmlu_redux_questions, process_mmlu_redux_questions_swap_complex
 from data_preprocess.gsm8k import load_gsm8k_questions, process_gsm8k_questions
 from data_preprocess.mgsm import load_mgsm_questions, process_mgsm_questions
 from data_preprocess.olympiadbench import process_olympiadbench_questions
-from data_preprocess.AIME import load_aime_questions, process_aime_questions  # Added import for AIME
+from data_preprocess.AIME import load_aime_questions, process_aime_questions
+from data_preprocess.svamp import load_svamp_questions, process_svamp_questions
+from data_preprocess.multiarath import load_multiarath_questions, process_multiarath_questions
 
 load_dotenv()
 
@@ -45,8 +47,11 @@ def main():
         "gsm8k",
         "olympiadbench-en",
         "olympiadbench-cn",
-        "aime"  # Added AIME to the dataset choices
+        "aime",
+        "svamp",
+        "multiarath"  # Added MultiArath dataset
     ]
+
     parser = argparse.ArgumentParser(description="Process datasets")
     parser.add_argument("--dataset", choices=DATASET_CHOICES, required=True, help="Choose the dataset")
     parser.add_argument("--method", choices=["cot", "non-cot", "comat"], required=True, help="Choose the method")
@@ -91,9 +96,13 @@ def main():
         if not os.path.isdir(prompt_dir):
             prompt_dir = 'prompts/olympiadbench'
     elif args.dataset == "aime":
-        prompt_dir = 'prompts/AIME'  # Added prompt directory for AIME
+        prompt_dir = 'prompts/AIME'
+    elif args.dataset == "svamp":
+        prompt_dir = 'prompts/svamp'
+    elif args.dataset == "multiarath":
+        prompt_dir = 'prompts/multiarath'
     else:
-        raise ValueError ("Prompts not inside the folder, please select a suitable dataset")
+        raise ValueError("Prompts not inside the folder, please select a suitable dataset")
 
     formulation_prompt_path = f"{prompt_dir}/{args.method}.txt"
 
@@ -126,6 +135,7 @@ def main():
     else: 
         raise ValueError("Model does not exist")
 
+    # Handle each dataset case:
     if args.dataset.startswith("mmlu-redux"):
         subject = args.dataset.split("-")[-1]
         dataset = load_dataset("edinburgh-dawg/mmlu-redux-2.0", subject, split="test")
@@ -152,7 +162,7 @@ def main():
             results, accuracy = process_gsm8k_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
         else:
             raise ValueError("Please select --dataconfig normal")
-    elif args.dataset == "gaokao":  
+    elif args.dataset == "gaokao":
         questions = load_gaokao_questions('prompts/GaoKao-Math/2023_Math_MCQs.json')
         if args.dataconfig == "normal":
             results, accuracy = process_gaokao_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
@@ -182,7 +192,7 @@ def main():
         ]
         results, accuracy = process_olympiadbench_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
     elif args.dataset == "aime":
-        questions = load_aime_questions('prompts/AIME/AIME_Dataset_1983_2024.csv')  # Update the path as needed
+        questions = load_aime_questions('prompts/AIME/AIME_Dataset_1983_2024.csv')
         if args.dataconfig == "normal":
             results, accuracy = process_aime_questions(
                 questions,
@@ -195,9 +205,22 @@ def main():
             )
         else:
             raise ValueError("Please select --dataconfig normal")
+    elif args.dataset == "svamp":
+        dataset = load_dataset("svamp", split="test")
+        questions = load_svamp_questions(dataset)
+        if args.dataconfig == "normal":
+            results, accuracy = process_svamp_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+        else:
+            raise ValueError("Please select --dataconfig normal")
+    elif args.dataset == "multiarath":
+        dataset = load_dataset("ChilleD/MultiArith", split="test")
+        questions = load_multiarath_questions(dataset)
+        if args.dataconfig == "normal":
+            results, accuracy = process_multiarath_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
+        else:
+            raise ValueError("Please select --dataconfig normal")
     else:
-        raise ValueError ("Dataset not found")
-
+        raise ValueError("Dataset not found")
 
     end_time = time.time()
     duration = end_time - start_time
@@ -206,12 +229,12 @@ def main():
     print(f"Final Accuracy: {accuracy:.2%}")
     print(f"Evaluation Duration: {duration:.2f} seconds")
 
-
     with open(log_file_path, 'a') as f:
         f.write(f"Final Accuracy: {accuracy:.2%}\n")
         f.write(f"Evaluation Duration: {duration:.2f} seconds\n")
 
     print(f"Log file updated: {log_file_path}")
+
 
 if __name__ == "__main__":
     main()
