@@ -205,7 +205,7 @@ def main():
         else:
             raise ValueError("Please select --dataconfig normal")
     elif args.dataset == "svamp":
-        dataset = load_dataset("svamp", split="test")
+        dataset = load_dataset("Dahoas/svamp", split="test")
         questions = load_svamp_questions(dataset)
         if args.dataconfig == "normal":
             results, accuracy = process_svamp_questions(questions, output_file_path, formulation_prompt_path, args.model, model, tokenizer, device)
