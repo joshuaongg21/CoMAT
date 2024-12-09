@@ -1,12 +1,8 @@
 # CoMAT: Chain of Mathematically Annotated Thought Improves Mathematical Reasoning
 
-This repository contains the evaluation code for the paper "[**CoMAT: Chain of Mathematically Annotated Thought Improves Mathematical Reasoning**](https://arxiv.org/pdf/2410.10336)"
-
 ### Installation
 1. Clone the repository:
-```bash 
-git clone https://github.com/joshuaongg21/CoMAT.git
-```
+
 2. Navigate to the project directory:
 ```bash 
 cd COMAT
